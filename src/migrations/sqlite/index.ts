@@ -1,5 +1,6 @@
 import * as migration_20260814_135408_initial_schema from './20260814_135408_initial_schema';
 import * as migration_20260814_135422_add_related_services from './20260814_135422_add_related_services';
+import * as migration_20260814_143719_add_service_capability_headings from './20260814_143719_add_service_capability_headings';
 
 export const migrations = [
   {
@@ -10,6 +11,11 @@ export const migrations = [
   {
     up: migration_20260814_135422_add_related_services.up,
     down: migration_20260814_135422_add_related_services.down,
-    name: '20260814_135422_add_related_services'
+    name: '20260814_135422_add_related_services',
+  },
+  {
+    up: migration_20260814_143719_add_service_capability_headings.up,
+    down: migration_20260814_143719_add_service_capability_headings.down,
+    name: '20260814_143719_add_service_capability_headings'
   },
 ];

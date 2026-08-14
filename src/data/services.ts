@@ -9,6 +9,8 @@ export type ServiceDetailData = {
   heroIntro: string
   heroImage: ImageData
   intro?: { title: string; body: string; image?: ImageData }
+  capabilitiesEyebrow?: string
+  capabilitiesTitle?: string
   capabilities: Array<{ title: string; description: string }>
   expertise: Array<{ title: string; summary: string; href: string }>
   relatedServices: Array<{ title: string; summary: string; href: string }>
@@ -123,9 +125,11 @@ export const production: ServiceDetailData = {
   heroImage: { src: '/images/people-workshop.jpg', alt: 'Powerspex vakmensen aan het werk in de eigen werkplaats' },
   intro: {
     title: 'Eigen werkplaats. Eigen vakmensen. Grip op realisatie',
-    body: 'Hardware engineering gaat over ontwerpen en engineeren; Productie gaat over bouwen en realiseren. Powerspex kan een aangeleverd engineeringspakket zelfstandig omzetten in een gebouwd paneel of een kast. De paneelbouw wordt door eigen vakmensen in de eigen werkplaats uitgevoerd en niet standaard uitbesteed. Is engineering vooraf nodig, dan kan die als aanvullende dienst worden betrokken.',
-    image: { src: '/images/people-workshop.jpg', alt: 'Paneelbouw door Powerspex-medewerkers in de eigen werkplaats' },
+    body: 'Hardware engineering gaat over ontwerpen en engineeren; Productie gaat over bouwen en realiseren. Powerspex kan een aangeleverd engineeringspakket zelfstandig omzetten in een gebouwd paneel of een kast. De paneelbouw wordt door Powerspex-vakmensen in de eigen werkplaats uitgevoerd. Is engineering vooraf nodig, dan kan die als aanvullende dienst worden betrokken.',
+    image: { src: '/images/service-inspectie.jpg', alt: 'Powerspex-specialist bij een industrieel besturingspaneel' },
   },
+  capabilitiesEyebrow: 'Productie',
+  capabilitiesTitle: 'Wat we bouwen',
   capabilities: [
     { title: 'Besturingspanelen en -kasten', description: 'Paneel- en kastenbouw voor industriële besturingen op basis van de afgesproken technische opdracht.' },
     { title: 'MCC-panelen', description: 'Bouw en levering van motor control center-panelen voor industriële installaties.' },

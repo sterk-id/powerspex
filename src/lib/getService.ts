@@ -30,6 +30,8 @@ function mapService(source: Row): ServiceDetailData {
     heroIntro: text(source.heroIntro, text(source.summary)),
     heroImage,
     intro: text(intro?.title) && text(intro?.body) ? { title: text(intro?.title), body: text(intro?.body), image: media(intro?.image) } : undefined,
+    capabilitiesEyebrow: text(source.capabilitiesEyebrow, 'Wat we doen'),
+    capabilitiesTitle: text(source.capabilitiesTitle, 'Werkzaamheden'),
     capabilities: list(source.capabilities).map((item) => ({ title: text(item.title), description: text(item.description) })).filter((item) => item.title && item.description),
     expertise: list(source.relatedExpertise).map((item) => ({ title: text(item.title), summary: text(item.summary), href: `/expertises/${text(item.slug)}` })).filter((item) => item.title && item.href !== '/expertises/'),
     relatedServices: list(source.relatedServices).map((item) => ({ title: text(item.title), summary: text(item.summary), href: `/wat-we-doen/${text(item.slug)}` })).filter((item) => item.title && item.href !== '/wat-we-doen/'),

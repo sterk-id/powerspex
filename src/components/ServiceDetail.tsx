@@ -25,7 +25,7 @@ export function ServiceDetail({ service }: { service: ServiceDetailData }) {
       </div></section>}
 
       {service.capabilities.length > 0 && <section className="capabilities-section"><div className="container">
-        <div className="section-intro"><div><span className="eyebrow">Wat we doen</span><h2>Werkzaamheden<span className="dot">.</span></h2></div><p>{service.shortSummary}</p></div>
+        <div className="section-intro"><div><span className="eyebrow">{service.capabilitiesEyebrow || 'Wat we doen'}</span><h2>{service.capabilitiesTitle || 'Werkzaamheden'}<TitleDot title={service.capabilitiesTitle || 'Werkzaamheden'} /></h2></div><p>{service.shortSummary}</p></div>
         <div className="capability-grid">{service.capabilities.map((item, index) => <article key={item.title}><span>[{String(index + 1).padStart(2, '0')}]</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div>
       </div></section>}
 
