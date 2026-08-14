@@ -30,6 +30,8 @@ export function ServiceDetail({ service }: { service: ServiceDetailData }) {
         <div><p>{item.summary}</p><Link className="pill-button light-pill" href={item.href}>Meer over {item.title} <span aria-hidden="true">→</span></Link></div>
       </div></section>)}
 
+      {service.relatedServices.length > 0 && <section className="related-services-section"><div className="container"><span className="eyebrow">Aansluitende diensten</span><div className="related-services-grid">{service.relatedServices.map((item) => <article key={item.href}><div><h2>{item.title}<span className="dot">.</span></h2><p>{item.summary}</p></div><Link className="text-link" href={item.href}>Meer over {item.title} <span aria-hidden="true">→</span></Link></article>)}</div></div></section>}
+
       {service.standards.length > 0 && <section className="standards-section"><div className="container"><span className="eyebrow">Kwaliteit & zekerheid</span><h2>Certificeringen & standaarden<span className="dot">.</span></h2><div className="standards-grid">{service.standards.map((item) => <article key={item.name}><small>{item.type}</small><h3>{item.name}</h3>{item.description && <p>{item.description}</p>}</article>)}</div></div></section>}
 
       {service.process.length > 0 && <section className="process-section"><div className="container"><span className="eyebrow">Van vraagstuk naar uitvoering</span><h2>Werkwijze<span className="dot">.</span></h2><div className="process-list">{service.process.map((item) => <article key={`${item.number}-${item.title}`}><span>[{item.number}]</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></div></section>}

@@ -1,7 +1,7 @@
 import config from '@payload-config'
 import { getPayload } from 'payload'
 import { cache } from 'react'
-import { softwareEngineering, type ServiceDetailData } from '@/data/services'
+import { hardwareEngineering, softwareEngineering, type ServiceDetailData } from '@/data/services'
 import type { ImageData } from '@/data/homepage'
 
 type Row = Record<string, unknown>
@@ -32,6 +32,7 @@ function mapService(source: Row): ServiceDetailData {
     intro: text(intro?.title) && text(intro?.body) ? { title: text(intro?.title), body: text(intro?.body), image: media(intro?.image) } : undefined,
     capabilities: list(source.capabilities).map((item) => ({ title: text(item.title), description: text(item.description) })).filter((item) => item.title && item.description),
     expertise: list(source.relatedExpertise).map((item) => ({ title: text(item.title), summary: text(item.summary), href: `/expertises/${text(item.slug)}` })).filter((item) => item.title && item.href !== '/expertises/'),
+    relatedServices: list(source.relatedServices).map((item) => ({ title: text(item.title), summary: text(item.summary), href: `/wat-we-doen/${text(item.slug)}` })).filter((item) => item.title && item.href !== '/wat-we-doen/'),
     standards: list(source.standards).filter((item) => item.validated === true).map((item) => ({ name: text(item.name), type: text(item.type), description: text(item.description) })).filter((item) => item.name),
     process: list(source.process).map((item, index) => ({ number: text(item.number, String(index + 1).padStart(2, '0')), title: text(item.title), description: text(item.description) })).filter((item) => item.title && item.description),
     projects: list(source.relatedProjects).map((item) => ({ title: text(item.title), meta: [text(item.sector), text(item.period) || (typeof item.year === 'number' ? String(item.year) : '')].filter(Boolean).join(' · '), href: `/projecten/${text(item.slug)}`, image: media(item.featuredImage, { alt: text(item.title) }) ?? { alt: text(item.title) } })).filter((item) => item.title && item.href !== '/projecten/'),
@@ -41,16 +42,18 @@ function mapService(source: Row): ServiceDetailData {
   }
 }
 
-function completeSoftwareEngineering(data: ServiceDetailData): ServiceDetailData {
-  if (data.slug !== softwareEngineering.slug) return data
+function completeService(data: ServiceDetailData): ServiceDetailData {
+  const fallback = [softwareEngineering, hardwareEngineering].find((item) => item.slug === data.slug)
+  if (!fallback) return data
   return {
     ...data,
-    intro: data.intro ?? softwareEngineering.intro,
-    capabilities: data.capabilities.length > 0 ? data.capabilities : softwareEngineering.capabilities,
-    expertise: data.expertise.length > 0 ? data.expertise : softwareEngineering.expertise,
-    process: data.process.length > 0 ? data.process : softwareEngineering.process,
-    faq: data.faq.length > 0 ? data.faq : softwareEngineering.faq,
-    cta: data.cta ?? softwareEngineering.cta,
+    intro: data.intro ?? fallback.intro,
+    capabilities: data.capabilities.length > 0 ? data.capabilities : fallback.capabilities,
+    expertise: data.expertise.length > 0 ? data.expertise : fallback.expertise,
+    relatedServices: data.relatedServices.length > 0 ? data.relatedServices : fallback.relatedServices,
+    process: data.process.length > 0 ? data.process : fallback.process,
+    faq: data.faq.length > 0 ? data.faq : fallback.faq,
+    cta: data.cta ?? fallback.cta,
   }
 }
 
@@ -59,11 +62,11 @@ async function loadService(slug: string): Promise<ServiceDetailData | null> {
     const payload = await getPayload({ config })
     const result = await payload.find({ collection: 'services', depth: 2, draft: false, limit: 1, where: { slug: { equals: slug } } })
     const source = row(result.docs[0])
-    if (source) return completeSoftwareEngineering(mapService(source))
+    if (source) return completeService(mapService(source))
   } catch (error) {
     console.warn('Service CMS data is unavailable; checking the approved fallback.', error instanceof Error ? error.message : error)
   }
-  return slug === softwareEngineering.slug ? softwareEngineering : null
+  return [softwareEngineering, hardwareEngineering].find((service) => service.slug === slug) ?? null
 }
 
 export const getService = cache(loadService)
