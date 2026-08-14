@@ -9,6 +9,8 @@ export type ServiceDetailData = {
   heroIntro: string
   heroImage: ImageData
   intro?: { title: string; body: string; image?: ImageData }
+  capabilitiesEyebrow?: string
+  capabilitiesTitle?: string
   capabilities: Array<{ title: string; description: string }>
   expertise: Array<{ title: string; summary: string; href: string }>
   relatedServices: Array<{ title: string; summary: string; href: string }>
@@ -71,7 +73,7 @@ export const hardwareEngineering: ServiceDetailData = {
   intro: {
     title: 'Van elektrotechnisch ontwerp naar uitvoerbare engineering',
     body: 'Hardware engineering omvat het ontwerpen van elektrische besturingen in E-plan, het specificeren en inkopen van benodigde materialen en de technische afstemming richting montage. Powerspex kan deze engineering zelfstandig leveren en waar nodig afstemmen met project engineering, software engineering, productie en specialistische expertises.',
-    image: { src: '/images/people-workshop.jpg', alt: 'Powerspex medewerkers in de eigen werkplaats' },
+    image: { src: '/images/people-workshop.jpg', alt: 'Powerspex-medewerker in een industriële installatie' },
   },
   capabilities: [
     { title: 'Elektrotechnisch ontwerp', description: 'Ontwerp van elektrische besturingen voor industriële automatiseringsomgevingen.' },
@@ -110,5 +112,62 @@ export const hardwareEngineering: ServiceDetailData = {
     title: 'Hardware Engineering | Powerspex',
     description: 'Elektrotechnische hardware engineering voor industriële besturingen, zelfstandig of in samenhang met andere technische disciplines.',
     openGraphImage: { src: '/images/project-engineering.jpg', alt: 'Hardware engineering bij Powerspex' },
+  },
+}
+
+export const production: ServiceDetailData = {
+  title: 'Productie',
+  slug: 'productie',
+  eyebrow: 'Realisatie & lifecycle',
+  shortSummary: 'Industriële paneel- en kastenbouw in de eigen werkplaats, als zelfstandige opdracht of binnen een groter Powerspex-traject.',
+  heroTitle: 'Industriële productie in eigen werkplaats',
+  heroIntro: 'Powerspex bouwt besturingspanelen en kasten in eigen beheer. Als zelfstandige productieopdracht of als onderdeel van een geïntegreerd engineering- en automatiseringstraject.',
+  heroImage: { src: '/images/people-workshop.jpg', alt: 'Powerspex-medewerker in een industriële installatie' },
+  intro: {
+    title: 'Eigen werkplaats. Eigen vakmensen. Grip op realisatie',
+    body: 'Hardware engineering gaat over ontwerpen en engineeren; Productie gaat over bouwen en realiseren. Powerspex kan een aangeleverd engineeringspakket zelfstandig omzetten in een gebouwd paneel of een kast. De paneelbouw wordt door Powerspex-vakmensen in de eigen werkplaats uitgevoerd. Is engineering vooraf nodig, dan kan die als aanvullende dienst worden betrokken.',
+    image: { src: '/images/service-inspectie.jpg', alt: 'Powerspex-specialist bij een industrieel besturingspaneel' },
+  },
+  capabilitiesEyebrow: 'Productie',
+  capabilitiesTitle: 'Wat we bouwen',
+  capabilities: [
+    { title: 'Besturingspanelen en -kasten', description: 'Paneel- en kastenbouw voor industriële besturingen op basis van de afgesproken technische opdracht.' },
+    { title: 'MCC-panelen', description: 'Bouw en levering van motor control center-panelen voor industriële installaties.' },
+    { title: 'PLC-panelen', description: 'Bouw en levering van panelen voor PLC-gebaseerde besturingen.' },
+    { title: 'Remote I/O-panelen', description: 'Paneelbouw voor remote I/O-toepassingen in het veld.' },
+    { title: 'Klemmenkasten', description: 'Bouw en levering van klemmenkasten voor industriële installaties.' },
+    { title: 'Werk- en drukknopkasten', description: 'Bouw en levering van werkschakelaars en drukknopkasten voor bediening in het veld.' },
+  ],
+  expertise: [{
+    title: 'Explosieveiligheid',
+    summary: 'Voor productie in explosiegevaarlijke omgevingen kan Powerspex de expertise Explosieveiligheid gericht betrekken. Dit is een specialistisch vakgebied naast de productieopdracht en staat los van Functional Safety.',
+    href: '/expertises/explosieveiligheid',
+  }],
+  relatedServices: [{
+    title: 'Engineering nodig vóór productie?',
+    summary: 'Heeft de opdracht nog een elektrotechnisch ontwerp of een uitgewerkt engineeringspakket nodig? Hardware Engineering kan aanvullend worden ingezet, maar is geen vereiste om Productie bij Powerspex af te nemen.',
+    href: '/wat-we-doen/hardware-engineering',
+  }],
+  standards: [],
+  process: [
+    { number: '01', title: 'Technische basis en opdracht', description: 'We bespreken wat gebouwd moet worden en welke technische informatie als basis beschikbaar is.' },
+    { number: '02', title: 'Voorbereiding', description: 'De productie wordt voorbereid op basis van de afgesproken scope en het beschikbare engineeringspakket.' },
+    { number: '03', title: 'Productie', description: 'Onze vakmensen bouwen het paneel of de kast in de eigen werkplaats.' },
+    { number: '04', title: 'Controle', description: 'Het gerealiseerde werk wordt gecontroleerd tegen de technische opdracht.' },
+    { number: '05', title: 'Oplevering', description: 'Het paneel of de kast wordt volgens de gemaakte afspraken opgeleverd.' },
+  ],
+  projects: [],
+  faq: [
+    { question: 'Heeft Powerspex een eigen werkplaats?', answer: 'Ja. Powerspex beschikt over een eigen werkplaats, waar eigen vakmensen de productie en paneelbouw uitvoeren.' },
+    { question: 'Kan Productie als zelfstandige opdracht worden uitgevoerd?', answer: 'Ja. Productie is een zelfstandige dienst. Powerspex kan een aangeleverd engineeringspakket in de eigen werkplaats realiseren, zonder dat ook andere Powerspex-diensten onderdeel van de opdracht hoeven te zijn.' },
+    { question: 'Moet Powerspex ook de Hardware Engineering uitvoeren?', answer: 'Nee. Hardware Engineering is optioneel. Als er al een bruikbaar engineeringspakket ligt, kan Powerspex de productie als zelfstandige opdracht uitvoeren. Indien nodig kan Hardware Engineering aanvullend worden ingezet.' },
+    { question: 'Welke producten kan Powerspex in eigen beheer bouwen?', answer: 'Powerspex bouwt onder meer besturingspanelen en -kasten, MCC- en PLC-panelen, remote I/O-panelen, klemmenkasten, werkschakelaars en drukknopkasten.' },
+    { question: 'Bouwt Powerspex explosieveilige panelen?', answer: 'Ja. Voor panelen voor explosiegevaarlijke omgevingen wordt de specialistische expertise Explosieveiligheid betrokken. De eisen en benodigde onderbouwing worden per opdracht beoordeeld.' },
+  ],
+  cta: { title: 'Een productie- of paneelbouwvraagstuk?', body: 'Bespreek wat er gebouwd moet worden, welke technische basis beschikbaar is en hoe Powerspex de realisatie kan verzorgen.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
+  seo: {
+    title: 'Productie en paneelbouw | Powerspex',
+    description: 'Industriële paneel- en kastenbouw door Powerspex in de eigen werkplaats, zelfstandig of als onderdeel van een groter traject.',
+    openGraphImage: { src: '/images/people-workshop.jpg', alt: 'Powerspex-medewerker in een industriële installatie' },
   },
 }

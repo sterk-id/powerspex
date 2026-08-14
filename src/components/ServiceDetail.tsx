@@ -3,14 +3,18 @@ import Link from 'next/link'
 import type { ServiceDetailData } from '@/data/services'
 import { FAQ } from './FAQ'
 
-function Picture({ src, alt, className }: { src?: string; alt: string; className?: string }) {
-  return src ? <Image src={src} alt={alt} fill sizes="(max-width: 768px) 100vw, 55vw" className={className} /> : <div className="image-fallback" aria-hidden="true"><span>PSX</span></div>
+function Picture({ src, alt, className, priority = false }: { src?: string; alt: string; className?: string; priority?: boolean }) {
+  return src ? <Image src={src} alt={alt} fill sizes="(max-width: 768px) 100vw, 55vw" className={className} loading={priority ? 'eager' : 'lazy'} /> : <div className="image-fallback" aria-hidden="true"><span>PSX</span></div>
+}
+
+function TitleDot({ title }: { title: string }) {
+  return /[.!?]$/.test(title) ? null : <span className="dot">.</span>
 }
 
 export function ServiceDetail({ service }: { service: ServiceDetailData }) {
   return <main id="main-content">
       <section className="service-hero">
-        <Picture src={service.heroImage.src} alt={service.heroImage.alt} />
+        <Picture src={service.heroImage.src} alt={service.heroImage.alt} priority />
         <div className="hero-shade" /><div className="hero-pattern" />
         <div className="container service-hero-content"><span className="eyebrow light">{service.eyebrow}</span><h1>{service.heroTitle}<span className="dot">.</span></h1><p>{service.heroIntro}</p></div>
       </section>
@@ -21,7 +25,7 @@ export function ServiceDetail({ service }: { service: ServiceDetailData }) {
       </div></section>}
 
       {service.capabilities.length > 0 && <section className="capabilities-section"><div className="container">
-        <div className="section-intro"><div><span className="eyebrow">Wat we doen</span><h2>Werkzaamheden<span className="dot">.</span></h2></div><p>{service.shortSummary}</p></div>
+        <div className="section-intro"><div><span className="eyebrow">{service.capabilitiesEyebrow || 'Wat we doen'}</span><h2>{service.capabilitiesTitle || 'Werkzaamheden'}<TitleDot title={service.capabilitiesTitle || 'Werkzaamheden'} /></h2></div><p>{service.shortSummary}</p></div>
         <div className="capability-grid">{service.capabilities.map((item, index) => <article key={item.title}><span>[{String(index + 1).padStart(2, '0')}]</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div>
       </div></section>}
 
@@ -30,7 +34,7 @@ export function ServiceDetail({ service }: { service: ServiceDetailData }) {
         <div><p>{item.summary}</p><Link className="pill-button light-pill" href={item.href}>Meer over {item.title} <span aria-hidden="true">→</span></Link></div>
       </div></section>)}
 
-      {service.relatedServices.length > 0 && <section className="related-services-section"><div className="container"><span className="eyebrow">Aansluitende diensten</span><div className="related-services-grid">{service.relatedServices.map((item) => <article key={item.href}><div><h2>{item.title}<span className="dot">.</span></h2><p>{item.summary}</p></div><Link className="text-link" href={item.href}>Meer over {item.title} <span aria-hidden="true">→</span></Link></article>)}</div></div></section>}
+      {service.relatedServices.length > 0 && <section className="related-services-section"><div className="container"><span className="eyebrow">Aansluitende diensten</span><div className="related-services-grid">{service.relatedServices.map((item) => <article key={item.href}><div><h2>{item.title}<TitleDot title={item.title} /></h2><p>{item.summary}</p></div><Link className="text-link" href={item.href}>Meer over {item.title} <span aria-hidden="true">→</span></Link></article>)}</div></div></section>}
 
       {service.standards.length > 0 && <section className="standards-section"><div className="container"><span className="eyebrow">Kwaliteit & zekerheid</span><h2>Certificeringen & standaarden<span className="dot">.</span></h2><div className="standards-grid">{service.standards.map((item) => <article key={item.name}><small>{item.type}</small><h3>{item.name}</h3>{item.description && <p>{item.description}</p>}</article>)}</div></div></section>}
 
@@ -40,6 +44,6 @@ export function ServiceDetail({ service }: { service: ServiceDetailData }) {
 
       {service.faq.length > 0 && <section className="faq-section"><div className="container faq-layout"><div><span className="eyebrow">Veelgestelde vragen</span><h2>FAQ<span className="dot">.</span></h2></div><FAQ items={service.faq} /></div></section>}
 
-      {service.cta && <section className="service-cta"><div className="container service-cta-inner"><div><span className="eyebrow">Maak contact</span><h2>{service.cta.title}<span className="dot">.</span></h2></div><div><p>{service.cta.body}</p><Link className="pill-button" href={service.cta.buttonHref}>{service.cta.buttonLabel} <span aria-hidden="true">↗</span></Link></div></div></section>}
+      {service.cta && <section className="service-cta"><div className="container service-cta-inner"><div><span className="eyebrow">Maak contact</span><h2>{service.cta.title}<TitleDot title={service.cta.title} /></h2></div><div><p>{service.cta.body}</p><Link className="pill-button" href={service.cta.buttonHref}>{service.cta.buttonLabel} <span aria-hidden="true">↗</span></Link></div></div></section>}
     </main>
 }

@@ -21,6 +21,8 @@ export const Services: CollectionConfig = {
     { name: 'heroTitle', label: 'Hero-titel', type: 'text' },
     { name: 'heroIntro', label: 'Hero-introductie', type: 'textarea' },
     { name: 'heroImage', label: 'Hero-afbeelding', type: 'upload', relationTo: 'media' },
+    { name: 'capabilitiesEyebrow', label: 'Bovenregel werkzaamheden', type: 'text', admin: { placeholder: 'Wat we doen', description: 'Laat leeg voor “Wat we doen”.' } },
+    { name: 'capabilitiesTitle', label: 'Titel werkzaamheden', type: 'text', admin: { placeholder: 'Werkzaamheden', description: 'Laat leeg voor “Werkzaamheden”.' } },
     {
       name: 'intro', label: 'Introductie', type: 'group', fields: [
         { name: 'title', label: 'Titel', type: 'text' },

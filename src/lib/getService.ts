@@ -1,7 +1,7 @@
 import config from '@payload-config'
 import { getPayload } from 'payload'
 import { cache } from 'react'
-import { hardwareEngineering, softwareEngineering, type ServiceDetailData } from '@/data/services'
+import { hardwareEngineering, production, softwareEngineering, type ServiceDetailData } from '@/data/services'
 import type { ImageData } from '@/data/homepage'
 
 type Row = Record<string, unknown>
@@ -30,6 +30,8 @@ function mapService(source: Row): ServiceDetailData {
     heroIntro: text(source.heroIntro, text(source.summary)),
     heroImage,
     intro: text(intro?.title) && text(intro?.body) ? { title: text(intro?.title), body: text(intro?.body), image: media(intro?.image) } : undefined,
+    capabilitiesEyebrow: text(source.capabilitiesEyebrow, 'Wat we doen'),
+    capabilitiesTitle: text(source.capabilitiesTitle, 'Werkzaamheden'),
     capabilities: list(source.capabilities).map((item) => ({ title: text(item.title), description: text(item.description) })).filter((item) => item.title && item.description),
     expertise: list(source.relatedExpertise).map((item) => ({ title: text(item.title), summary: text(item.summary), href: `/expertises/${text(item.slug)}` })).filter((item) => item.title && item.href !== '/expertises/'),
     relatedServices: list(source.relatedServices).map((item) => ({ title: text(item.title), summary: text(item.summary), href: `/wat-we-doen/${text(item.slug)}` })).filter((item) => item.title && item.href !== '/wat-we-doen/'),
@@ -43,7 +45,7 @@ function mapService(source: Row): ServiceDetailData {
 }
 
 function completeService(data: ServiceDetailData): ServiceDetailData {
-  const fallback = [softwareEngineering, hardwareEngineering].find((item) => item.slug === data.slug)
+  const fallback = [softwareEngineering, hardwareEngineering, production].find((item) => item.slug === data.slug)
   if (!fallback) return data
   return {
     ...data,
@@ -66,7 +68,7 @@ async function loadService(slug: string): Promise<ServiceDetailData | null> {
   } catch (error) {
     console.warn('Service CMS data is unavailable; checking the approved fallback.', error instanceof Error ? error.message : error)
   }
-  return [softwareEngineering, hardwareEngineering].find((service) => service.slug === slug) ?? null
+  return [softwareEngineering, hardwareEngineering, production].find((service) => service.slug === slug) ?? null
 }
 
 export const getService = cache(loadService)
