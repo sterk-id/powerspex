@@ -50,7 +50,7 @@ export const softwareEngineering: ServiceDetailData = {
   ],
   projects: [],
   faq: [
-    { question: 'Kan Software Engineering als zelfstandige opdracht worden uitgevoerd?', answer: 'Software Engineering kan als zelfstandige opdracht of als onderdeel van een breder automatiseringsproject worden ingezet. De passende aanpak hangt af van het vraagstuk en de bestaande installatie.' },
+    { question: 'Welke informatie helpt bij de start van een softwarevraagstuk?', answer: 'Informatie over het proces, de installatie, de bestaande situatie en de gewenste werking helpt om het vraagstuk helder te bespreken.' },
     { question: 'Hoe wordt cybersecurity meegenomen?', answer: 'Cybersecurity en OT-security kunnen vanaf het ontwerp worden meegenomen, afgestemd op de installatie en omgeving. Waar specialistische verdieping nodig is, wordt deze expertise gericht betrokken.' },
     { question: 'Werkt Powerspex ook met bestaande installaties?', answer: 'De uitgangssituatie van de bestaande installatie wordt eerst in beeld gebracht. Op basis daarvan wordt bepaald welke aanpak technisch en organisatorisch passend is.' },
   ],

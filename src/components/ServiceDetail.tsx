@@ -16,7 +16,7 @@ export function ServiceDetail({ service }: { service: ServiceDetailData }) {
       </section>
 
       {service.intro && <section className="service-intro"><div className="container service-intro-grid">
-        <div><span className="eyebrow">Software engineering</span><h2>{service.intro.title}<span className="dot">.</span></h2><p>{service.intro.body}</p></div>
+        <div><span className="eyebrow">{service.title}</span><h2>{service.intro.title}<span className="dot">.</span></h2><p>{service.intro.body}</p></div>
         {service.intro.image && <div className="service-intro-image"><Picture src={service.intro.image.src} alt={service.intro.image.alt} /></div>}
       </div></section>}
 
@@ -27,10 +27,10 @@ export function ServiceDetail({ service }: { service: ServiceDetailData }) {
 
       {service.expertise.map((item) => <section className="service-expertise" key={item.href}><div className="container expertise-feature">
         <div><span className="eyebrow light">Specialistische expertise</span><h2>{item.title}<span className="dot">.</span></h2></div>
-        <div><p>{item.summary}</p><Link className="pill-button light-pill" href={item.href}>Meer over Cybersecurity & OT-security <span aria-hidden="true">→</span></Link></div>
+        <div><p>{item.summary}</p><Link className="pill-button light-pill" href={item.href}>Meer over {item.title} <span aria-hidden="true">→</span></Link></div>
       </div></section>)}
 
-      {service.standards.length > 0 && <section className="standards-section"><div className="container"><span className="eyebrow">Gevalideerd</span><h2>Certificeringen & kwaliteit<span className="dot">.</span></h2><div className="standards-grid">{service.standards.map((item) => <article key={item.name}><small>{item.type}</small><h3>{item.name}</h3>{item.description && <p>{item.description}</p>}</article>)}</div></div></section>}
+      {service.standards.length > 0 && <section className="standards-section"><div className="container"><span className="eyebrow">Kwaliteit & zekerheid</span><h2>Certificeringen & standaarden<span className="dot">.</span></h2><div className="standards-grid">{service.standards.map((item) => <article key={item.name}><small>{item.type}</small><h3>{item.name}</h3>{item.description && <p>{item.description}</p>}</article>)}</div></div></section>}
 
       {service.process.length > 0 && <section className="process-section"><div className="container"><span className="eyebrow">Van vraagstuk naar uitvoering</span><h2>Werkwijze<span className="dot">.</span></h2><div className="process-list">{service.process.map((item) => <article key={`${item.number}-${item.title}`}><span>[{item.number}]</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></div></section>}
 
