@@ -4,6 +4,7 @@ export const Services: CollectionConfig = {
   slug: 'services',
   labels: { singular: 'Dienst', plural: 'Diensten' },
   admin: { useAsTitle: 'title', defaultColumns: ['title', 'group', 'updatedAt'] },
+  access: { read: () => true },
   versions: { drafts: true },
   fields: [
     { name: 'title', type: 'text', required: true },

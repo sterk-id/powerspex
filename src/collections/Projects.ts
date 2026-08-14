@@ -4,6 +4,7 @@ export const Projects: CollectionConfig = {
   slug: 'projects',
   labels: { singular: 'Project', plural: 'Projecten' },
   admin: { useAsTitle: 'title' },
+  access: { read: () => true },
   versions: { drafts: true },
   fields: [
     { name: 'title', type: 'text', required: true },
@@ -11,6 +12,7 @@ export const Projects: CollectionConfig = {
     { name: 'client', type: 'text' },
     { name: 'sector', type: 'text' },
     { name: 'year', type: 'number' },
+    { name: 'summary', type: 'textarea' },
     { name: 'featuredImage', type: 'upload', relationTo: 'media' },
     { name: 'services', type: 'relationship', relationTo: 'services', hasMany: true },
     { name: 'expertise', type: 'relationship', relationTo: 'expertise', hasMany: true },
