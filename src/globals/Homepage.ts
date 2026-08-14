@@ -31,6 +31,8 @@ export const Homepage: GlobalConfig = {
             { name: 'introEyebrow', label: 'Bovenregel', type: 'text' },
             { name: 'introTitle', label: 'Titel', type: 'text', required: true },
             { name: 'introBody', label: 'Tekst', type: 'textarea', required: true },
+            { name: 'introPrimaryImage', label: 'Detailfoto', type: 'upload', relationTo: 'media' },
+            { name: 'introSecondaryImage', label: 'Brede foto', type: 'upload', relationTo: 'media' },
           ],
         },
         {

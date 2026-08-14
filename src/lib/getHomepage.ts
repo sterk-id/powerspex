@@ -37,11 +37,18 @@ async function loadHomepageData(): Promise<HomepageData> {
         secondaryCta: { label: text(secondary?.label, homepage.hero.secondaryCta.label), href: text(secondary?.href, homepage.hero.secondaryCta.href) },
         image: media(source.heroImage, homepage.hero.image),
       },
-      intro: { eyebrow: text(source.introEyebrow, homepage.intro.eyebrow), title: text(source.introTitle, homepage.intro.title), body: text(source.introBody, homepage.intro.body) },
+      intro: {
+        eyebrow: text(source.introEyebrow, homepage.intro.eyebrow),
+        title: text(source.introTitle, homepage.intro.title),
+        body: text(source.introBody, homepage.intro.body),
+        primaryImage: media(source.introPrimaryImage, homepage.intro.primaryImage),
+        secondaryImage: media(source.introSecondaryImage, homepage.intro.secondaryImage),
+      },
       services: services.length ? services.map((item) => ({ title: text(item.title), description: text(item.summary), href: `/wat-we-doen/${text(item.slug)}`, image: media(item.heroImage, { alt: text(item.title) }) })) : homepage.services,
       expertise: expertise.length ? expertise.map((item) => ({ title: text(item.title), href: `/expertises/${text(item.slug)}` })) : homepage.expertise,
       impact: { eyebrow: text(source.impactEyebrow, homepage.impact.eyebrow), title: text(source.impactTitle, homepage.impact.title), body: text(source.impactBody, homepage.impact.body), stats: stats.map((item) => ({ value: text(item.value), label: text(item.label) })) },
-      projects: projects.map((item) => ({ title: text(item.title), meta: [text(item.sector), typeof item.year === 'number' ? String(item.year) : ''].filter(Boolean).join(' · '), href: `/projecten/${text(item.slug)}`, image: media(item.featuredImage, { alt: text(item.title) }) })),
+      projects: projects.length ? projects.map((item) => ({ title: text(item.title), meta: [text(item.sector), typeof item.year === 'number' ? String(item.year) : ''].filter(Boolean).join(' · '), href: `/projecten/${text(item.slug)}`, image: media(item.featuredImage, { alt: text(item.title) }) })) : homepage.projects,
+      news: homepage.news,
       contact: { title: text(source.contactTitle, homepage.contact.title), body: text(source.contactBody, homepage.contact.body) },
     }
   } catch (error) {

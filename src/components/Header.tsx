@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 const groups = [
@@ -42,7 +43,7 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="nav-shell">
-        <Link className="brand" href="/" aria-label="Powerspex homepage">POWER<span>SPEX</span></Link>
+        <Link className="brand" href="/" aria-label="Powerspex homepage"><Image src="/brand/powerspex-logo-white.png" alt="Powerspex" width={300} height={75} priority /></Link>
 
         <nav aria-label="Hoofdnavigatie" className="desktop-nav">
           <div className="mega-wrap" ref={megaRef}>
