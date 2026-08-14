@@ -73,7 +73,7 @@ export const hardwareEngineering: ServiceDetailData = {
   intro: {
     title: 'Van elektrotechnisch ontwerp naar uitvoerbare engineering',
     body: 'Hardware engineering omvat het ontwerpen van elektrische besturingen in E-plan, het specificeren en inkopen van benodigde materialen en de technische afstemming richting montage. Powerspex kan deze engineering zelfstandig leveren en waar nodig afstemmen met project engineering, software engineering, productie en specialistische expertises.',
-    image: { src: '/images/people-workshop.jpg', alt: 'Powerspex medewerkers in de eigen werkplaats' },
+    image: { src: '/images/people-workshop.jpg', alt: 'Powerspex-medewerker in een industriële installatie' },
   },
   capabilities: [
     { title: 'Elektrotechnisch ontwerp', description: 'Ontwerp van elektrische besturingen voor industriële automatiseringsomgevingen.' },
@@ -122,7 +122,7 @@ export const production: ServiceDetailData = {
   shortSummary: 'Industriële paneel- en kastenbouw in de eigen werkplaats, als zelfstandige opdracht of binnen een groter Powerspex-traject.',
   heroTitle: 'Industriële productie in eigen werkplaats',
   heroIntro: 'Powerspex bouwt besturingspanelen en kasten in eigen beheer. Als zelfstandige productieopdracht of als onderdeel van een geïntegreerd engineering- en automatiseringstraject.',
-  heroImage: { src: '/images/people-workshop.jpg', alt: 'Powerspex vakmensen aan het werk in de eigen werkplaats' },
+  heroImage: { src: '/images/people-workshop.jpg', alt: 'Powerspex-medewerker in een industriële installatie' },
   intro: {
     title: 'Eigen werkplaats. Eigen vakmensen. Grip op realisatie',
     body: 'Hardware engineering gaat over ontwerpen en engineeren; Productie gaat over bouwen en realiseren. Powerspex kan een aangeleverd engineeringspakket zelfstandig omzetten in een gebouwd paneel of een kast. De paneelbouw wordt door Powerspex-vakmensen in de eigen werkplaats uitgevoerd. Is engineering vooraf nodig, dan kan die als aanvullende dienst worden betrokken.',
@@ -168,6 +168,6 @@ export const production: ServiceDetailData = {
   seo: {
     title: 'Productie en paneelbouw | Powerspex',
     description: 'Industriële paneel- en kastenbouw door Powerspex in de eigen werkplaats, zelfstandig of als onderdeel van een groter traject.',
-    openGraphImage: { src: '/images/people-workshop.jpg', alt: 'Productie en paneelbouw in de Powerspex-werkplaats' },
+    openGraphImage: { src: '/images/people-workshop.jpg', alt: 'Powerspex-medewerker in een industriële installatie' },
   },
 }

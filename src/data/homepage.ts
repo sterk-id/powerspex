@@ -30,14 +30,14 @@ export const homepage: HomepageData = {
     title: 'Gedreven door mensen. Sterk in techniek.',
     body: 'Complexe industriële vraagstukken vragen om overzicht én specialistische diepgang. Powerspex brengt engineering, automatisering, productie en service samen en schakelt waar nodig eigen specialistische expertise in.',
     primaryImage: { src: '/images/people-detail.jpg', alt: 'Powerspex specialist aan het werk' },
-    secondaryImage: { src: '/images/people-workshop.jpg', alt: 'Powerspex medewerkers in de werkplaats' },
+    secondaryImage: { src: '/images/people-workshop.jpg', alt: 'Powerspex-medewerker in een industriële installatie' },
   },
   services: [
     { title: 'Project engineering', description: 'Van technisch ontwerp en projectbeheersing tot een uitvoerbaar industrieel project.', href: '/wat-we-doen/project-engineering', image: { src: '/images/project-engineering.jpg', alt: 'Project engineering bij Powerspex' } },
     { title: 'Procesautomatisering', description: 'Besturing en optimalisatie van industriële processen met grip op veiligheid en beschikbaarheid.', href: '/wat-we-doen/procesautomatisering', image: { src: '/images/procesautomatisering.jpg', alt: 'Procesautomatisering bij Powerspex' } },
     { title: 'Software engineering', description: 'Industriële software, PLC, SCADA en DCS met cybersecurity vanaf het ontwerp meegenomen.', href: '/wat-we-doen/software-engineering', image: { src: '/images/software-engineering.jpg', alt: 'Software engineering bij Powerspex' } },
     { title: 'Hardware engineering', description: 'Elektrotechnische engineering voor betrouwbare industriële installaties en besturingssystemen.', href: '/wat-we-doen/hardware-engineering', image: { src: '/images/project-engineering.jpg', alt: 'Hardware engineering bij Powerspex' } },
-    { title: 'Productie', description: 'Paneel- en systeemproductie in eigen werkplaats, als onderdeel van een project of zelfstandige opdracht.', href: '/wat-we-doen/productie', image: { src: '/images/people-workshop.jpg', alt: 'Productie in de Powerspex-werkplaats' } },
+    { title: 'Productie', description: 'Paneel- en systeemproductie in eigen werkplaats, als onderdeel van een project of zelfstandige opdracht.', href: '/wat-we-doen/productie', image: { src: '/images/people-workshop.jpg', alt: 'Powerspex-medewerker in een industriële installatie' } },
     { title: 'Service, onderhoud & inspectie', description: 'Onderhoud, storingen, inspecties en modificaties met eigen technische specialisten.', href: '/wat-we-doen/service-onderhoud-inspectie', image: { src: '/images/service-inspectie.jpg', alt: 'Service en inspectie door Powerspex' } },
   ],
   expertise: [
