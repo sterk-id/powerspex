@@ -49,13 +49,13 @@ export const homepage: HomepageData = {
   impact: {
     eyebrow: 'Bewezen in de praktijk',
     title: 'Onze impact',
-    body: 'Projecten laten zien hoe Powerspex verschillende disciplines samenbrengt. Gevalideerde impactcijfers kunnen hier later via het CMS worden gepubliceerd.',
+    body: 'Samen met onze opdrachtgevers brengen we richting in complexe industriële vraagstukken. Met technische expertise, ervaring en uitvoering realiseren we oplossingen die bijdragen aan veiligheid, beschikbaarheid en continuïteit.',
     stats: [],
   },
   projects: [
-    { title: 'Veolia – Bio-energiecentrale Industriepark Kleefse Waard', meta: 'Energie & utilities · 2020', image: { src: '/images/project-veolia.jpg', alt: 'Bio-energiecentrale Industriepark Kleefse Waard' }, href: '/projecten' },
-    { title: 'Vattenfall – Migratie en upgrade PCS 7 stadsverwarming', meta: 'Energie & utilities · 2021', image: { src: '/images/project-vattenfall.jpg', alt: 'Stadsverwarmingsinstallatie van Vattenfall' }, href: '/projecten' },
-    { title: 'Vernieuwing automatisering stadsverwarming Eindhoven', meta: 'Energie & utilities', image: { src: '/images/project-stadsverwarming.jpg', alt: 'Stadsverwarmingsinstallatie in Eindhoven' }, href: '/projecten' },
+    { title: 'Secundaire installatie 150kV – Velsen & IJmond', meta: 'Energie & utilities · 2020', image: { src: '/images/project-velsen-ijmond.jpg', alt: 'Secundaire 150kV-installatie in Velsen en IJmond' }, href: '/projecten/secundaire-installatie-150kv-velsen-ijmond' },
+    { title: 'Procesautomatisering WarmteStad Groningen', meta: 'Industrie & productie · 2021, 2023 & 2024', image: { src: '/images/project-warmtestad-groningen.jpg', alt: 'Procesinstallatie van WarmteStad Groningen' }, href: '/projecten/procesautomatisering-warmtestad-groningen' },
+    { title: 'Turn-key bio-energie installatie – Emmtec Green Steam BV', meta: 'Energie & utilities · 2023', image: { src: '/images/project-emmtec-green-steam.jpg', alt: 'Bio-energie-installatie van Emmtec Green Steam BV' }, href: '/projecten/turn-key-bio-energie-installatie-emmtec-green-steam-bv' },
   ],
   news: [],
   contact: {

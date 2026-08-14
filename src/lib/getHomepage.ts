@@ -19,7 +19,19 @@ async function loadHomepageData(): Promise<HomepageData> {
     const source = value as unknown as RecordValue
     const services = Array.isArray(source.featuredServices) ? source.featuredServices.map(record).filter(Boolean) as RecordValue[] : []
     const expertise = Array.isArray(source.featuredExpertise) ? source.featuredExpertise.map(record).filter(Boolean) as RecordValue[] : []
-    const projects = Array.isArray(source.featuredProjects) ? source.featuredProjects.map(record).filter(Boolean) as RecordValue[] : []
+    const selectedProjects = Array.isArray(source.featuredProjects) ? source.featuredProjects.map(record).filter(Boolean) as RecordValue[] : []
+    let projects = selectedProjects.slice(0, 5)
+    if (projects.length === 0) {
+      const featuredProjects = await payload.find({
+        collection: 'projects',
+        depth: 2,
+        draft: false,
+        limit: 5,
+        sort: 'featuredOrder',
+        where: { featured: { equals: true } },
+      })
+      projects = featuredProjects.docs.map(record).filter(Boolean) as RecordValue[]
+    }
     const stats = Array.isArray(source.stats) ? source.stats.map(record).filter(Boolean) as RecordValue[] : []
     const primary = record(source.primaryCta)
     const secondary = record(source.secondaryCta)
@@ -47,7 +59,12 @@ async function loadHomepageData(): Promise<HomepageData> {
       services: services.length ? services.map((item) => ({ title: text(item.title), description: text(item.summary), href: `/wat-we-doen/${text(item.slug)}`, image: media(item.heroImage, { alt: text(item.title) }) })) : homepage.services,
       expertise: expertise.length ? expertise.map((item) => ({ title: text(item.title), href: `/expertises/${text(item.slug)}` })) : homepage.expertise,
       impact: { eyebrow: text(source.impactEyebrow, homepage.impact.eyebrow), title: text(source.impactTitle, homepage.impact.title), body: text(source.impactBody, homepage.impact.body), stats: stats.map((item) => ({ value: text(item.value), label: text(item.label) })) },
-      projects: projects.length ? projects.map((item) => ({ title: text(item.title), meta: [text(item.sector), typeof item.year === 'number' ? String(item.year) : ''].filter(Boolean).join(' · '), href: `/projecten/${text(item.slug)}`, image: media(item.featuredImage, { alt: text(item.title) }) })) : homepage.projects,
+      projects: projects.length ? projects.map((item) => ({
+        title: text(item.title),
+        meta: [text(item.sector), text(item.period) || (typeof item.year === 'number' ? String(item.year) : '')].filter(Boolean).join(' · '),
+        href: `/projecten/${text(item.slug)}`,
+        image: media(item.featuredImage, { alt: text(item.title) }),
+      })) : homepage.projects,
       news: homepage.news,
       contact: { title: text(source.contactTitle, homepage.contact.title), body: text(source.contactBody, homepage.contact.body) },
     }

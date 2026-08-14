@@ -40,7 +40,15 @@ export const Homepage: GlobalConfig = {
           fields: [
             { name: 'featuredServices', label: 'Uitgelichte diensten', type: 'relationship', relationTo: 'services', hasMany: true, maxRows: 6 },
             { name: 'featuredExpertise', label: 'Uitgelichte expertises', type: 'relationship', relationTo: 'expertise', hasMany: true, maxRows: 4 },
-            { name: 'featuredProjects', label: 'Uitgelichte projecten', type: 'relationship', relationTo: 'projects', hasMany: true, maxRows: 3 },
+            {
+              name: 'featuredProjects',
+              label: 'Uitgelichte projecten',
+              type: 'relationship',
+              relationTo: 'projects',
+              hasMany: true,
+              maxRows: 5,
+              admin: { description: 'Selecteer en orden maximaal vijf goedgekeurde projecten voor de homepage.' },
+            },
           ],
         },
         {

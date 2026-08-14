@@ -52,7 +52,7 @@ export function Homepage({ data }: { data: HomepageData }) {
 
       <section className="impact-section">
         <div className="container impact-heading"><span className="eyebrow">Inzicht in wat prestaties echt drijft</span><div><h2>{data.impact.title}<span className="dot">.</span></h2><p>{data.impact.body}</p></div></div>
-        {data.impact.stats.length > 0 ? <div className="container stat-grid">{data.impact.stats.map((stat) => <div className="stat" key={stat.label}><span>{stat.label}</span><strong>{stat.value}</strong></div>)}</div> : <div className="container impact-ready"><span>Impact in cijfers</span><p>Deze component wordt zichtbaar zodra de cijfers inhoudelijk zijn gevalideerd.</p></div>}
+        {data.impact.stats.length > 0 && <div className="container stat-grid">{data.impact.stats.map((stat) => <div className="stat" key={stat.label}><span>{stat.label}</span><strong>{stat.value}</strong></div>)}</div>}
       </section>
 
       <section className="projects-section" id="projecten">
