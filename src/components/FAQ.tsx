@@ -10,7 +10,19 @@ export function FAQ({ items }: { items: FAQItem[] }) {
     const isOpen = openIndex === index
     const panelId = `faq-panel-${index}`
     return <div className="faq-item" key={item.question}>
-      <button className="faq-trigger" type="button" aria-expanded={isOpen} aria-controls={panelId} onClick={() => setOpenIndex(isOpen ? null : index)}>
+      <button
+        className="faq-trigger"
+        type="button"
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+        onClick={() => setOpenIndex(isOpen ? null : index)}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault()
+            setOpenIndex(isOpen ? null : index)
+          }
+        }}
+      >
         <span>[{String(index + 1).padStart(2, '0')}]</span><strong>{item.question}</strong><i aria-hidden="true">+</i>
       </button>
       <div id={panelId} hidden={!isOpen}><p>{item.answer}</p></div>

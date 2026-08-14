@@ -41,12 +41,25 @@ function mapService(source: Row): ServiceDetailData {
   }
 }
 
+function completeSoftwareEngineering(data: ServiceDetailData): ServiceDetailData {
+  if (data.slug !== softwareEngineering.slug) return data
+  return {
+    ...data,
+    intro: data.intro ?? softwareEngineering.intro,
+    capabilities: data.capabilities.length > 0 ? data.capabilities : softwareEngineering.capabilities,
+    expertise: data.expertise.length > 0 ? data.expertise : softwareEngineering.expertise,
+    process: data.process.length > 0 ? data.process : softwareEngineering.process,
+    faq: data.faq.length > 0 ? data.faq : softwareEngineering.faq,
+    cta: data.cta ?? softwareEngineering.cta,
+  }
+}
+
 async function loadService(slug: string): Promise<ServiceDetailData | null> {
   try {
     const payload = await getPayload({ config })
     const result = await payload.find({ collection: 'services', depth: 2, draft: false, limit: 1, where: { slug: { equals: slug } } })
     const source = row(result.docs[0])
-    if (source) return mapService(source)
+    if (source) return completeSoftwareEngineering(mapService(source))
   } catch (error) {
     console.warn('Service CMS data is unavailable; checking the approved fallback.', error instanceof Error ? error.message : error)
   }
