@@ -1,6 +1,7 @@
 export type ImageData = { src?: string; alt: string }
 export type LinkData = { label: string; href: string }
 export type HomepageData = {
+  seo: { title: string; description: string }
   hero: { eyebrow: string; title: string; intro: string; primaryCta: LinkData; secondaryCta: LinkData; image: ImageData }
   intro: { eyebrow: string; title: string; body: string }
   services: Array<{ title: string; description: string; href: string; image: ImageData }>
@@ -11,6 +12,10 @@ export type HomepageData = {
 }
 
 export const homepage: HomepageData = {
+  seo: {
+    title: 'Powerspex | Industriële automatisering',
+    description: 'Powerspex combineert engineering, industriële automatisering, productie, service en specialistische expertise.',
+  },
   hero: {
     eyebrow: 'Van analyse tot uitvoering, met zekerheid',
     title: 'Koers houden wanneer het complex wordt',

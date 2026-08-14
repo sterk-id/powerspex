@@ -1,5 +1,6 @@
 import config from '@payload-config'
 import { getPayload } from 'payload'
+import { cache } from 'react'
 import { homepage, type HomepageData, type ImageData } from '@/data/homepage'
 
 type RecordValue = Record<string, unknown>
@@ -11,7 +12,7 @@ const media = (value: unknown, fallback: ImageData): ImageData => {
   return item ? { src: text(item.url) || undefined, alt: text(item.alt, fallback.alt) } : fallback
 }
 
-export async function getHomepageData(): Promise<HomepageData> {
+async function loadHomepageData(): Promise<HomepageData> {
   try {
     const payload = await getPayload({ config })
     const value = await payload.findGlobal({ slug: 'homepage', depth: 2, draft: false })
@@ -24,6 +25,10 @@ export async function getHomepageData(): Promise<HomepageData> {
     const secondary = record(source.secondaryCta)
 
     return {
+      seo: {
+        title: text(source.metaTitle, homepage.seo.title),
+        description: text(source.metaDescription, homepage.seo.description),
+      },
       hero: {
         eyebrow: text(source.heroEyebrow, homepage.hero.eyebrow),
         title: text(source.heroTitle, homepage.hero.title),
@@ -44,3 +49,5 @@ export async function getHomepageData(): Promise<HomepageData> {
     return homepage
   }
 }
+
+export const getHomepageData = cache(loadHomepageData)

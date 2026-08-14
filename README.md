@@ -47,10 +47,10 @@ De nieuwe site is geen automatische conversie van Elementor. We migreren beteken
 
 ## Lokaal starten
 
-Vereisten: Node.js 20.9 of nieuwer. Frontend en Payload draaien in hetzelfde Next.js-proces. Lokaal gebruikt Payload standaard SQLite; productie gebruikt PostgreSQL.
+Vereisten: Node.js 20.9 of nieuwer. Frontend en Payload draaien in hetzelfde Next.js-proces. Lokale development kan bewust SQLite gebruiken; productie vereist PostgreSQL.
 
 1. Kopieer `.env.example` naar `.env.local`.
-2. Laat `DATABASE_URI` lokaal leeg voor SQLite, of vul een bereikbare PostgreSQL-database in.
+2. Gebruik lokaal expliciet `PAYLOAD_DATABASE=sqlite`, of vul `DATABASE_URI` in voor PostgreSQL.
 3. Genereer een unieke `PAYLOAD_SECRET` van minimaal 32 tekens.
 4. Installeer dependencies met `pnpm install`.
 5. Start met `pnpm dev` en open [http://localhost:3000](http://localhost:3000).
@@ -60,9 +60,12 @@ Zolang de Homepage-global nog niet is ingevuld, rendert de publieke homepage met
 
 ### Environment variables
 
-- `DATABASE_URI`: PostgreSQL connection string voor productie; leeg gebruikt lokaal `powerspex.db` (SQLite).
-- `PAYLOAD_SECRET`: geheime sleutel voor Payload-sessies; nooit committen.
-- `NEXT_PUBLIC_SERVER_URL`: canonieke publieke origin, lokaal standaard `http://localhost:3000`.
+- `PAYLOAD_DATABASE`: zet alleen bij lokale development/tests expliciet op `sqlite`. Wordt in productie niet geaccepteerd als vervanging voor PostgreSQL.
+- `DATABASE_URI`: PostgreSQL connection string; verplicht in productie.
+- `PAYLOAD_SECRET`: geheime sleutel voor Payload-sessies; verplicht in productie en nooit committen.
+- `NEXT_PUBLIC_SERVER_URL`: canonieke publieke origin; verplicht in productie en lokaal doorgaans `http://localhost:3000`.
+
+Bij `NODE_ENV=production` stopt de configuratie direct met een duidelijke fout als `PAYLOAD_SECRET`, `DATABASE_URI` of `NEXT_PUBLIC_SERVER_URL` ontbreekt. Er is in productie geen fallback-secret en geen SQLite-fallback. Voor lokale development blijven de voorbeeldwaarden uit `.env.example` direct bruikbaar.
 
 ## Scripts
 

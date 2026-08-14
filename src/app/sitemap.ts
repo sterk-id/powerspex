@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
+import { getSiteURL } from '@/lib/siteURL'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const origin = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+  const origin = getSiteURL()
   return [{ url: origin, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 }]
 }
