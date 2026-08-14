@@ -19,12 +19,22 @@ const isProduction = process.env.NODE_ENV === 'production'
 const payloadSecret = process.env.PAYLOAD_SECRET
 const databaseURI = process.env.DATABASE_URI
 const databaseMode = process.env.PAYLOAD_DATABASE
+const publicOrigin = process.env.NEXT_PUBLIC_SERVER_URL
+const isLocalOrigin = (() => {
+  try {
+    const hostname = publicOrigin ? new URL(publicOrigin).hostname : ''
+    return hostname === 'localhost' || hostname === '127.0.0.1'
+  } catch {
+    return false
+  }
+})()
+const isExplicitLocalSQLite = databaseMode === 'sqlite' && isLocalOrigin
 
 if (isProduction && !payloadSecret) {
   throw new Error('PAYLOAD_SECRET is required in production. Set a strong, unique secret before starting or building the application.')
 }
 
-if (isProduction && !databaseURI) {
+if (isProduction && !databaseURI && !isExplicitLocalSQLite) {
   throw new Error('DATABASE_URI is required in production. Powerspex production runtimes must use PostgreSQL.')
 }
 
