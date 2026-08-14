@@ -4,7 +4,7 @@ import type { ServiceDetailData } from '@/data/services'
 import { FAQ } from './FAQ'
 
 function Picture({ src, alt, className, priority = false }: { src?: string; alt: string; className?: string; priority?: boolean }) {
-  return src ? <Image src={src} alt={alt} fill sizes="(max-width: 768px) 100vw, 55vw" className={className} priority={priority} /> : <div className="image-fallback" aria-hidden="true"><span>PSX</span></div>
+  return src ? <Image src={src} alt={alt} fill sizes="(max-width: 768px) 100vw, 55vw" className={className} loading={priority ? 'eager' : 'lazy'} /> : <div className="image-fallback" aria-hidden="true"><span>PSX</span></div>
 }
 
 function TitleDot({ title }: { title: string }) {
