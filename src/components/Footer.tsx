@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="site-footer">
       <div className="container footer-main">
@@ -13,25 +15,27 @@ export function Footer() {
         </div>
         <div className="footer-column">
           <span className="footer-label">Navigatie</span>
-          <Link href="/wat-we-doen">Wat we doen</Link>
-          <Link href="/projecten">Projecten</Link>
-          <Link href="/over-powerspex">Over Powerspex</Link>
-          <Link href="/nieuws-kennis">Nieuws & kennis</Link>
+          <Link href="/#wat-we-doen">Wat we doen</Link>
+          <Link href="/#projecten">Projecten</Link>
+          <Link href="/#over-powerspex">Over Powerspex</Link>
+          <Link href="/#nieuws-kennis">Nieuws & kennis</Link>
         </div>
         <div className="footer-column">
           <span className="footer-label">Contact</span>
-          <Link href="/contact">Neem contact op</Link>
-          <Link href="https://werkenbijpowerspex.nl">Werken bij</Link>
+          <Link href="/#contact">Neem contact op</Link>
+          <Link href="mailto:mail@powerspex.nl">mail@powerspex.nl</Link>
+          <Link href="https://werkenbijpowerspex.nl/">Werken bij</Link>
         </div>
         <div className="footer-column">
           <span className="footer-label">Volg ons</span>
-          <Link href="https://www.linkedin.com/company/powerspex/">LinkedIn</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="https://www.linkedin.com/company/powerspex-instrumentation/">LinkedIn</Link>
+          <Link href="https://www.facebook.com/powerspex">Facebook</Link>
+          <Link href="https://www.instagram.com/powerspex/">Instagram</Link>
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>© 2026 Powerspex. Alle rechten voorbehouden.</span>
-        <div><Link href="/privacy">Privacy Policy</Link><Link href="/contact">Contact</Link></div>
+        <span>© {currentYear} Powerspex. Alle rechten voorbehouden.</span>
+        <div><Link href="https://powerspex.nl/privacybeleid/">Privacyverklaring</Link><Link href="/#contact">Contact</Link></div>
       </div>
     </footer>
   )

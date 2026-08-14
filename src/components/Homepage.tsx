@@ -24,7 +24,7 @@ export function Homepage({ data }: { data: HomepageData }) {
         </div>
       </section>
 
-      <section className="people-section">
+      <section className="people-section" id="over-powerspex">
         <div className="container people-heading"><span className="eyebrow">{data.intro.eyebrow}</span><h2>Gedreven door mensen<span className="dot">.</span></h2></div>
         <div className="container people-layout">
           <div className="people-images">

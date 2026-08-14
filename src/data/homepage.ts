@@ -57,7 +57,11 @@ export const homepage: HomepageData = {
     { title: 'Procesautomatisering WarmteStad Groningen', meta: 'Industrie & productie · 2021, 2023 & 2024', image: { src: '/images/project-warmtestad-groningen.jpg', alt: 'Procesinstallatie van WarmteStad Groningen' }, href: '/projecten/procesautomatisering-warmtestad-groningen' },
     { title: 'Turn-key bio-energie installatie – Emmtec Green Steam BV', meta: 'Energie & utilities · 2023', image: { src: '/images/project-emmtec-green-steam.jpg', alt: 'Bio-energie-installatie van Emmtec Green Steam BV' }, href: '/projecten/turn-key-bio-energie-installatie-emmtec-green-steam-bv' },
   ],
-  news: [],
+  news: [
+    { title: 'Aan de Knoppen: Norman Calmer', meta: '20 mei 2026', image: { alt: 'Aan de Knoppen: Norman Calmer' }, href: 'https://powerspex.nl/aan-de-knoppen-norman-calmer/' },
+    { title: 'Alexander Slag 12,5 jaar in dienst', meta: '9 april 2026', image: { alt: 'Alexander Slag 12,5 jaar in dienst' }, href: 'https://powerspex.nl/werkjubileum-alexander-slag/' },
+    { title: 'Team Powerspex finisht met toptijden in Halve van Hengelo', meta: '30 maart 2026', image: { alt: 'Team Powerspex tijdens de Halve van Hengelo' }, href: 'https://powerspex.nl/halvevanhengelo2026/' },
+  ],
   contact: {
     title: 'Een technisch vraagstuk dat om overzicht én diepgang vraagt?',
     body: 'Bespreek de uitdaging met Powerspex. We kijken eerst wat er technisch en organisatorisch echt nodig is.',

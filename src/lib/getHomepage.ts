@@ -11,6 +11,11 @@ const media = (value: unknown, fallback: ImageData): ImageData => {
   const item = record(value)
   return item ? { src: text(item.url) || undefined, alt: text(item.alt, fallback.alt) } : fallback
 }
+const date = (value: unknown) => {
+  if (typeof value !== 'string') return ''
+  const parsed = new Date(value)
+  return Number.isNaN(parsed.valueOf()) ? '' : new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' }).format(parsed)
+}
 
 async function loadHomepageData(): Promise<HomepageData> {
   try {
@@ -31,6 +36,19 @@ async function loadHomepageData(): Promise<HomepageData> {
         where: { featured: { equals: true } },
       })
       projects = featuredProjects.docs.map(record).filter(Boolean) as RecordValue[]
+    }
+    const selectedNews = Array.isArray(source.featuredNews) ? source.featuredNews.map(record).filter(Boolean) as RecordValue[] : []
+    let news = selectedNews.slice(0, 3)
+    if (news.length === 0) {
+      const featuredNews = await payload.find({
+        collection: 'news',
+        depth: 2,
+        draft: false,
+        limit: 3,
+        sort: 'featuredOrder',
+        where: { featured: { equals: true } },
+      })
+      news = featuredNews.docs.map(record).filter(Boolean) as RecordValue[]
     }
     const stats = Array.isArray(source.stats) ? source.stats.map(record).filter(Boolean) as RecordValue[] : []
     const primary = record(source.primaryCta)
@@ -65,7 +83,12 @@ async function loadHomepageData(): Promise<HomepageData> {
         href: `/projecten/${text(item.slug)}`,
         image: media(item.featuredImage, { alt: text(item.title) }),
       })) : homepage.projects,
-      news: homepage.news,
+      news: news.length ? news.map((item) => ({
+        title: text(item.title),
+        meta: date(item.publishedAt),
+        href: `/nieuws-kennis/${text(item.slug)}`,
+        image: media(item.featuredImage, { alt: text(item.title) }),
+      })) : homepage.news,
       contact: { title: text(source.contactTitle, homepage.contact.title), body: text(source.contactBody, homepage.contact.body) },
     }
   } catch (error) {

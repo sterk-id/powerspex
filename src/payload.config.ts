@@ -7,6 +7,7 @@ import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { Expertise } from './collections/Expertise'
 import { Media } from './collections/Media'
+import { News } from './collections/News'
 import { Projects } from './collections/Projects'
 import { Services } from './collections/Services'
 import { Users } from './collections/Users'
@@ -37,7 +38,7 @@ const database = databaseURI
 
 export default buildConfig({
   admin: { user: Users.slug, importMap: { baseDir: path.resolve(dirname) } },
-  collections: [Users, Media, Services, Expertise, Projects],
+  collections: [Users, Media, Services, Expertise, Projects, News],
   globals: [Homepage],
   editor: lexicalEditor(),
   secret: payloadSecret || 'local-development-only-secret',

@@ -49,6 +49,15 @@ export const Homepage: GlobalConfig = {
               maxRows: 5,
               admin: { description: 'Selecteer en orden maximaal vijf goedgekeurde projecten voor de homepage.' },
             },
+            {
+              name: 'featuredNews',
+              label: 'Uitgelicht nieuws',
+              type: 'relationship',
+              relationTo: 'news',
+              hasMany: true,
+              maxRows: 3,
+              admin: { description: 'Selecteer en orden maximaal drie gepubliceerde nieuwsitems voor de homepage.' },
+            },
           ],
         },
         {

@@ -153,8 +153,6 @@ h3 { font-size: var(--step-2); }
 
 .news-section { background: var(--psx-deep); color: var(--psx-white); clip-path: polygon(0 5%, 95% 5%, 100% 0, 100% 100%, 0 100%); }
 .news-heading { display: flex; justify-content: space-between; align-items: end; }
-.news-placeholder { min-height: 18rem; margin-top: 4rem; padding-top: 2rem; display: grid; grid-template-columns: .4fr 1fr; border-top: 1px solid rgb(255 255 255 / .25); color: rgb(255 255 255 / .72); }
-.news-placeholder p { max-width: 30rem; }
 .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 4rem; }
 .news-grid a { min-height: 20rem; padding: 2rem; border: 1px solid rgb(255 255 255 / .2); }
 .news-grid span { color: var(--psx-blue); }
@@ -165,10 +163,9 @@ h3 { font-size: var(--step-2); }
 .contact-copy { font-size: var(--step-1); }
 .contact-copy p:first-child { max-width: 26rem; font-size: var(--step-2); font-weight: 600; line-height: 1.15; }
 .contact-copy p:last-child { max-width: 35rem; color: var(--psx-muted); }
-.contact-form-preview { padding: 3rem; background: var(--psx-white); }
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.field-row span, .field-line span { display: block; padding: 1rem 0; border-bottom: 1px solid var(--psx-line); color: var(--psx-muted); }
-.field-line { margin: 1.5rem 0 3rem; }
+.contact-action { padding: 3rem; background: var(--psx-white); }
+.contact-action p { max-width: 36rem; margin: 0 0 2rem; color: var(--psx-muted); font-size: var(--step-1); }
+.contact-email { display: block; width: fit-content; margin-top: 1.5rem; color: var(--psx-navy); text-decoration: underline; text-underline-offset: .2em; }
 
 .site-footer { padding-top: 6rem; background: var(--psx-deep); color: var(--psx-white); }
 .footer-main { display: grid; grid-template-columns: 1.8fr repeat(3, 1fr); gap: 4rem; padding-bottom: 5rem; }
@@ -225,8 +222,7 @@ h3 { font-size: var(--step-2); }
   .project-card { display: block; margin: 0 0 4rem !important; }
   .news-section { clip-path: polygon(0 2%, 93% 2%, 100% 0, 100% 100%, 0 100%); }
   .news-heading { gap: 2rem; }
-  .news-placeholder { grid-template-columns: 1fr; gap: 1.5rem; }
-  .contact-form-preview { padding: 1.5rem; }
+  .contact-action { padding: 1.5rem; }
   .field-row { grid-template-columns: 1fr; gap: 0; }
   .footer-main { grid-template-columns: 1fr 1fr; gap: 3rem 1.5rem; }
   .footer-brand { grid-column: 1 / -1; }
