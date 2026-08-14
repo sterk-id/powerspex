@@ -9,5 +9,8 @@ public/media/*
 powerspex.db
 powerspex.db-shm
 powerspex.db-wal
+*.db
+*.db-shm
+*.db-wal
 .pnpm-store
 tsconfig.tsbuildinfo

@@ -19,6 +19,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 const payloadSecret = process.env.PAYLOAD_SECRET
 const databaseURI = process.env.DATABASE_URI
 const databaseMode = process.env.PAYLOAD_DATABASE
+const migrationsRoot = path.resolve(dirname, 'migrations')
 const publicOrigin = process.env.NEXT_PUBLIC_SERVER_URL
 const isLocalOrigin = (() => {
   try {
@@ -43,8 +44,16 @@ if (!databaseURI && databaseMode !== 'sqlite') {
 }
 
 const database = databaseURI
-  ? postgresAdapter({ pool: { connectionString: databaseURI } })
-  : sqliteAdapter({ client: { url: 'file:./powerspex.db' } })
+  ? postgresAdapter({
+      migrationDir: path.join(migrationsRoot, 'postgres'),
+      pool: { connectionString: databaseURI },
+      push: !isProduction,
+    })
+  : sqliteAdapter({
+      client: { url: process.env.SQLITE_DATABASE_URI || 'file:./powerspex.db' },
+      migrationDir: path.join(migrationsRoot, 'sqlite'),
+      push: false,
+    })
 
 export default buildConfig({
   admin: { user: Users.slug, importMap: { baseDir: path.resolve(dirname) } },

@@ -53,8 +53,11 @@ Vereisten: Node.js 20.9 of nieuwer. Frontend en Payload draaien in hetzelfde Nex
 2. Gebruik lokaal expliciet `PAYLOAD_DATABASE=sqlite`, of vul `DATABASE_URI` in voor PostgreSQL.
 3. Genereer een unieke `PAYLOAD_SECRET` van minimaal 32 tekens.
 4. Installeer dependencies met `pnpm install`.
-5. Start met `pnpm dev` en open [http://localhost:3000](http://localhost:3000).
-6. Open [http://localhost:3000/admin](http://localhost:3000/admin) om de eerste Payload-gebruiker aan te maken.
+5. Maak of actualiseer de lokale database met `pnpm db:migrate`.
+6. Start met `pnpm dev` en open [http://localhost:3000](http://localhost:3000).
+7. Open [http://localhost:3000/admin](http://localhost:3000/admin) om de eerste Payload-gebruiker aan te maken.
+
+Zie `docs/DATABASE-MIGRATIONS.md` voor schemawijzigingen, bestaande pre-migration SQLite-databases en het productieproces.
 
 Zolang de Homepage-global nog niet is ingevuld, rendert de publieke homepage met gecontroleerde fallback-content uit `src/data/homepage.ts`.
 
@@ -62,6 +65,7 @@ Zolang de Homepage-global nog niet is ingevuld, rendert de publieke homepage met
 
 - `PAYLOAD_DATABASE`: zet alleen bij lokale development/tests expliciet op `sqlite`. Wordt in productie niet geaccepteerd als vervanging voor PostgreSQL.
 - `DATABASE_URI`: PostgreSQL connection string; verplicht in productie.
+- `SQLITE_DATABASE_URI`: lokale SQLite-URL; standaard `file:./powerspex.db` en nooit voor productie.
 - `PAYLOAD_SECRET`: geheime sleutel voor Payload-sessies; verplicht in productie en nooit committen.
 - `NEXT_PUBLIC_SERVER_URL`: canonieke publieke origin; verplicht in productie en lokaal doorgaans `http://localhost:3000`.
 
@@ -75,6 +79,9 @@ Bij `NODE_ENV=production` stopt de configuratie direct met een duidelijke fout a
 - `pnpm lint`: voert ESLint uit.
 - `pnpm typecheck`: controleert TypeScript zonder output te schrijven.
 - `pnpm payload generate:types`: genereert Payload-types nadat de databaseconfiguratie beschikbaar is.
+- `pnpm db:migrate`: voert nog niet uitgevoerde migraties uit voor de geselecteerde adapter.
+- `pnpm db:migrate:status`: toont de migratiestatus.
+- `pnpm ci`: voert productiemigraties uit en bouwt daarna de applicatie; gebruik dit alleen met een gecontroleerde productie-`DATABASE_URI`.
 
 ## Contentbeheer
 

@@ -2,13 +2,17 @@
   "name": "powerspex",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "payload": "payload"
+    "payload": "payload",
+    "db:migrate": "payload migrate",
+    "db:migrate:status": "payload migrate:status",
+    "ci": "pnpm db:migrate && pnpm build"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.88.0",
