@@ -1,26 +1,44 @@
-export const homepage = {
+export type ImageData = { src?: string; alt: string }
+export type LinkData = { label: string; href: string }
+export type HomepageData = {
+  seo: { title: string; description: string }
+  hero: { eyebrow: string; title: string; intro: string; primaryCta: LinkData; secondaryCta: LinkData; image: ImageData }
+  intro: { eyebrow: string; title: string; body: string; primaryImage: ImageData; secondaryImage: ImageData }
+  services: Array<{ title: string; description: string; href: string; image: ImageData }>
+  expertise: Array<{ title: string; href: string }>
+  impact: { eyebrow: string; title: string; body: string; stats: Array<{ value: string; label: string }> }
+  projects: Array<{ title: string; meta: string; image: ImageData; href: string }>
+  news: Array<{ title: string; meta: string; image: ImageData; href: string }>
+  contact: { title: string; body: string }
+}
+
+export const homepage: HomepageData = {
+  seo: {
+    title: 'Powerspex | Industriële automatisering',
+    description: 'Powerspex combineert engineering, industriële automatisering, productie, service en specialistische expertise.',
+  },
   hero: {
     eyebrow: 'Van analyse tot uitvoering, met zekerheid',
     title: 'Koers houden wanneer het complex wordt',
-    intro:
-      'Powerspex helpt industriële organisaties om processen veilig, betrouwbaar en toekomstbestendig te automatiseren — van engineering tot productie, inbedrijfstelling en lifecycle support.',
+    intro: 'Powerspex helpt industriële organisaties om processen veilig, betrouwbaar en toekomstbestendig te automatiseren — van engineering tot productie, inbedrijfstelling en lifecycle support.',
     primaryCta: { label: 'Ontdek wat we doen', href: '#wat-we-doen' },
     secondaryCta: { label: 'Bekijk projecten', href: '#projecten' },
-    image: '/images/procesautomatisering.jpg',
+    image: { src: '/images/hero-powerspex.jpg', alt: 'Powerspex specialist bij een industriële installatie' },
   },
   intro: {
-    eyebrow: 'Toonaangevend partner in industriële automatisering',
+    eyebrow: 'Partner in industriële automatisering',
     title: 'Gedreven door mensen. Sterk in techniek.',
-    body:
-      'Complexe industriële vraagstukken vragen om overzicht én specialistische diepgang. Powerspex brengt engineering, automatisering, productie en service samen en schakelt waar nodig eigen specialistische expertise in.',
+    body: 'Complexe industriële vraagstukken vragen om overzicht én specialistische diepgang. Powerspex brengt engineering, automatisering, productie en service samen en schakelt waar nodig eigen specialistische expertise in.',
+    primaryImage: { src: '/images/people-detail.jpg', alt: 'Powerspex specialist aan het werk' },
+    secondaryImage: { src: '/images/people-workshop.jpg', alt: 'Powerspex medewerkers in de werkplaats' },
   },
   services: [
-    { title: 'Project engineering', description: 'Van technisch ontwerp en projectbeheersing tot een uitvoerbaar industrieel project.', href: '/wat-we-doen/project-engineering', image: '/images/project-engineering.jpg' },
-    { title: 'Procesautomatisering', description: 'Besturing en optimalisatie van industriële processen met grip op veiligheid en beschikbaarheid.', href: '/wat-we-doen/procesautomatisering', image: '/images/procesautomatisering.jpg' },
-    { title: 'Software engineering', description: 'Industriële software, PLC, SCADA en DCS met cybersecurity vanaf het ontwerp meegenomen.', href: '/wat-we-doen/software-engineering', image: '/images/software-engineering.jpg' },
-    { title: 'Hardware engineering', description: 'Elektrotechnische engineering voor betrouwbare industriële installaties en besturingssystemen.', href: '/wat-we-doen/hardware-engineering', image: '/images/project-engineering.jpg' },
-    { title: 'Productie', description: 'Paneel- en systeemproductie in eigen werkplaats, als onderdeel van een project of zelfstandige opdracht.', href: '/wat-we-doen/productie', image: '/images/service-inspectie.jpg' },
-    { title: 'Service, onderhoud & inspectie', description: 'Onderhoud, storingen, inspecties en modificaties met eigen technische specialisten.', href: '/wat-we-doen/service-onderhoud-inspectie', image: '/images/service-inspectie.jpg' },
+    { title: 'Project engineering', description: 'Van technisch ontwerp en projectbeheersing tot een uitvoerbaar industrieel project.', href: '/wat-we-doen/project-engineering', image: { src: '/images/project-engineering.jpg', alt: 'Project engineering bij Powerspex' } },
+    { title: 'Procesautomatisering', description: 'Besturing en optimalisatie van industriële processen met grip op veiligheid en beschikbaarheid.', href: '/wat-we-doen/procesautomatisering', image: { src: '/images/procesautomatisering.jpg', alt: 'Procesautomatisering bij Powerspex' } },
+    { title: 'Software engineering', description: 'Industriële software, PLC, SCADA en DCS met cybersecurity vanaf het ontwerp meegenomen.', href: '/wat-we-doen/software-engineering', image: { src: '/images/software-engineering.jpg', alt: 'Software engineering bij Powerspex' } },
+    { title: 'Hardware engineering', description: 'Elektrotechnische engineering voor betrouwbare industriële installaties en besturingssystemen.', href: '/wat-we-doen/hardware-engineering', image: { src: '/images/project-engineering.jpg', alt: 'Hardware engineering bij Powerspex' } },
+    { title: 'Productie', description: 'Paneel- en systeemproductie in eigen werkplaats, als onderdeel van een project of zelfstandige opdracht.', href: '/wat-we-doen/productie', image: { src: '/images/people-workshop.jpg', alt: 'Productie in de Powerspex-werkplaats' } },
+    { title: 'Service, onderhoud & inspectie', description: 'Onderhoud, storingen, inspecties en modificaties met eigen technische specialisten.', href: '/wat-we-doen/service-onderhoud-inspectie', image: { src: '/images/service-inspectie.jpg', alt: 'Service en inspectie door Powerspex' } },
   ],
   expertise: [
     { title: 'Cybersecurity & OT-security', href: '/expertises/cybersecurity-ot-security' },
@@ -29,18 +47,23 @@ export const homepage = {
     { title: 'Simulaties', href: '/expertises/simulaties' },
   ],
   impact: {
-    eyebrow: 'Onze impact',
-    title: 'Techniek die zich in de praktijk bewijst.',
-    body: 'De homepage moet uiteindelijk geen losse marketingclaims tonen, maar gevalideerde cijfers die onderbouwen wat Powerspex aankan.',
-    stats: [
-      { value: '25+', label: 'jaar ervaring' },
-      { value: '120+', label: 'technische professionals' },
-      { value: '3', label: 'vestigingen / locaties' },
-    ],
+    eyebrow: 'Bewezen in de praktijk',
+    title: 'Onze impact',
+    body: 'Samen met onze opdrachtgevers brengen we richting in complexe industriële vraagstukken. Met technische expertise, ervaring en uitvoering realiseren we oplossingen die bijdragen aan veiligheid, beschikbaarheid en continuïteit.',
+    stats: [],
   },
   projects: [
-    { title: 'Secundaire installatie 150kV – Velsen & IJmond', meta: 'Energie & utilities', image: '/images/project-velsen.jpg', href: '/projecten/secundaire-installatie-150kv-velsen-ijmond' },
-    { title: 'Procesautomatisering WarmteStad Groningen', meta: 'Industrie & productie', image: '/images/project-warmtestad.jpg', href: '/projecten/warmtestad-groningen' },
-    { title: 'Turn-key bio-energie installatie – Emmtec Green Steam BV', meta: 'Energie & utilities', image: '/images/project-emmtec.jpg', href: '/projecten/emmtec-green-steam' },
+    { title: 'Secundaire installatie 150kV – Velsen & IJmond', meta: 'Energie & utilities · 2020', image: { src: '/images/project-velsen-ijmond.jpg', alt: 'Secundaire 150kV-installatie in Velsen en IJmond' }, href: '/projecten/secundaire-installatie-150kv-velsen-ijmond' },
+    { title: 'Procesautomatisering WarmteStad Groningen', meta: 'Industrie & productie · 2021, 2023 & 2024', image: { src: '/images/project-warmtestad-groningen.jpg', alt: 'Procesinstallatie van WarmteStad Groningen' }, href: '/projecten/procesautomatisering-warmtestad-groningen' },
+    { title: 'Turn-key bio-energie installatie – Emmtec Green Steam BV', meta: 'Energie & utilities · 2023', image: { src: '/images/project-emmtec-green-steam.jpg', alt: 'Bio-energie-installatie van Emmtec Green Steam BV' }, href: '/projecten/turn-key-bio-energie-installatie-emmtec-green-steam-bv' },
   ],
+  news: [
+    { title: 'Aan de Knoppen: Norman Calmer', meta: '20 mei 2026', image: { alt: 'Aan de Knoppen: Norman Calmer' }, href: 'https://powerspex.nl/aan-de-knoppen-norman-calmer/' },
+    { title: 'Alexander Slag 12,5 jaar in dienst', meta: '9 april 2026', image: { alt: 'Alexander Slag 12,5 jaar in dienst' }, href: 'https://powerspex.nl/werkjubileum-alexander-slag/' },
+    { title: 'Team Powerspex finisht met toptijden in Halve van Hengelo', meta: '30 maart 2026', image: { alt: 'Team Powerspex tijdens de Halve van Hengelo' }, href: 'https://powerspex.nl/halvevanhengelo2026/' },
+  ],
+  contact: {
+    title: 'Een technisch vraagstuk dat om overzicht én diepgang vraagt?',
+    body: 'Bespreek de uitdaging met Powerspex. We kijken eerst wat er technisch en organisatorisch echt nodig is.',
+  },
 }

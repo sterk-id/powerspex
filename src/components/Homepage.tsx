@@ -1,70 +1,68 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { homepage } from '@/data/homepage'
+import { ContactSection } from '@/components/ContactSection'
+import { NewsSection } from '@/components/NewsSection'
+import type { HomepageData, ImageData } from '@/data/homepage'
 
-export function Homepage() {
+function Visual({ image, priority = false, sizes }: { image: ImageData; priority?: boolean; sizes: string }) {
+  if (!image.src) return <div className="image-fallback" role="img" aria-label={image.alt}><span aria-hidden="true">PSX</span></div>
+  return <Image src={image.src} alt={image.alt} fill priority={priority} sizes={sizes} />
+}
+
+export function Homepage({ data }: { data: HomepageData }) {
   return (
     <main>
       <section className="hero">
-        <Image src={homepage.hero.image} alt="Powerspex specialist in een industriële installatie" fill priority sizes="100vw" />
+        <Visual image={data.hero.image} priority sizes="100vw" />
         <div className="hero-shade" />
+        <div className="hero-pattern" />
         <div className="container hero-content">
-          <span className="eyebrow light">{homepage.hero.eyebrow}</span>
-          <h1>{homepage.hero.title}</h1>
-          <p>{homepage.hero.intro}</p>
-          <div className="actions">
-            <Link className="button light" href={homepage.hero.primaryCta.href}>{homepage.hero.primaryCta.label}</Link>
-            <Link className="text-link light" href={homepage.hero.secondaryCta.href}>{homepage.hero.secondaryCta.label} →</Link>
+          <span className="eyebrow light">{data.hero.eyebrow}</span>
+          <h1>{data.hero.title}</h1>
+          <p>{data.hero.intro}</p>
+          <div className="actions"><Link className="pill-button light-pill" href={data.hero.primaryCta.href}>{data.hero.primaryCta.label} <span aria-hidden="true">↗</span></Link><Link className="hero-link" href={data.hero.secondaryCta.href}>{data.hero.secondaryCta.label} <span aria-hidden="true">→</span></Link></div>
+        </div>
+      </section>
+
+      <section className="people-section" id="over-powerspex">
+        <div className="container people-heading"><span className="eyebrow">{data.intro.eyebrow}</span><h2>Gedreven door mensen<span className="dot">.</span></h2></div>
+        <div className="container people-layout">
+          <div className="people-images">
+            <div className="people-image-small"><Visual image={data.intro.primaryImage} sizes="25vw" /></div>
+            <div className="people-image-large"><Visual image={data.intro.secondaryImage} sizes="45vw" /></div>
+          </div>
+          <div className="people-copy">
+            <p className="people-lead">{data.intro.body}</p>
+            <div className="principle"><span>01.</span><div><h3>Prestatieverbetering</h3><p>Technische disciplines werken samen aan oplossingen die risico’s beheersen en resultaat opleveren.</p></div></div>
+            <div className="principle"><span>02.</span><div><h3>Maatwerk in uitvoering</h3><p>Van analyse en engineering tot productie, realisatie en ondersteuning gedurende de lifecycle.</p></div></div>
+            <Link className="inline-arrow" href="/over-powerspex">Meer over Powerspex <span aria-hidden="true">↗</span></Link>
           </div>
         </div>
       </section>
 
-      <section className="section intro-section">
-        <div className="container split">
-          <div><span className="eyebrow">{homepage.intro.eyebrow}</span><h2>{homepage.intro.title}</h2></div>
-          <div className="lead"><p>{homepage.intro.body}</p><Link className="text-link" href="/over-powerspex">Meer over Powerspex →</Link></div>
-        </div>
-      </section>
-
-      <section className="section services" id="wat-we-doen">
-        <div className="container section-heading">
-          <span className="eyebrow">Diensten</span>
-          <h2>Van ontwerp tot beheer.</h2>
-          <p>Powerspex combineert disciplines die afzonderlijk of als geïntegreerd project kunnen worden ingezet.</p>
-        </div>
-        <div className="container service-grid">
-          {homepage.services.map((service, index) => (
-            <Link className="service-card" href={service.href} key={service.title}>
-              <div className="service-image"><Image src={service.image} alt="" fill sizes="(max-width: 800px) 100vw, 33vw" /></div>
-              <div className="service-copy"><span>{String(index + 1).padStart(2, '0')}</span><h3>{service.title}</h3><p>{service.description}</p><strong>Meer weten →</strong></div>
-            </Link>
-          ))}
-        </div>
+      <section className="services-section" id="wat-we-doen">
+        <div className="container section-intro"><div><span className="eyebrow">Wat we doen</span><h2>Diensten<span className="dot">.</span></h2></div><p>Van ontwerp en automatisering tot productie, service en onderhoud: zes disciplines die afzonderlijk of geïntegreerd worden ingezet.</p></div>
+        <div className="container service-grid">{data.services.map((service, index) => <Link className="service-card" href={service.href} key={service.title}><div className="service-image"><Visual image={service.image} sizes="(max-width: 767px) 100vw, 33vw" /></div><div className="service-copy"><span className="card-number">[{String(index + 1).padStart(2, '0')}]</span><h3>{service.title}</h3><p>{service.description}</p><strong>Meer weten <span aria-hidden="true">↗</span></strong></div></Link>)}</div>
       </section>
 
       <section className="expertise-section">
-        <div className="container expertise-layout">
-          <div><span className="eyebrow light">Specialistische expertise</span><h2>Kennis voor de vraagstukken waar geen standaardantwoord volstaat.</h2></div>
-          <div className="expertise-list">
-            {homepage.expertise.map((item, index) => <Link key={item.href} href={item.href}><span>0{index + 1}</span>{item.title}<b>↗</b></Link>)}
-          </div>
-        </div>
+        <div className="container section-intro"><div><span className="eyebrow">Specialistische kennis</span><h2>Expertises<span className="dot">.</span></h2></div><p>Kennis voor industriële vraagstukken waar een standaardantwoord niet volstaat.</p></div>
+        <div className="container expertise-grid">{data.expertise.map((item, index) => <Link key={item.href} href={item.href}><span>[{String(index + 1).padStart(2, '0')}]</span><h3>{item.title}</h3><b aria-hidden="true">↗</b></Link>)}</div>
       </section>
 
-      <section className="section impact">
-        <div className="container split">
-          <div><span className="eyebrow">{homepage.impact.eyebrow}</span><h2>{homepage.impact.title}</h2></div>
-          <p className="lead">{homepage.impact.body}</p>
-        </div>
-        <div className="container stat-grid">{homepage.impact.stats.map((stat) => <div className="stat" key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div>
+      <section className="impact-section">
+        <div className="container impact-heading"><span className="eyebrow">Inzicht in wat prestaties echt drijft</span><div><h2>{data.impact.title}<span className="dot">.</span></h2><p>{data.impact.body}</p></div></div>
+        {data.impact.stats.length > 0 && <div className="container stat-grid">{data.impact.stats.map((stat) => <div className="stat" key={stat.label}><span>{stat.label}</span><strong>{stat.value}</strong></div>)}</div>}
       </section>
 
-      <section className="section projects" id="projecten">
-        <div className="container section-heading row"><div><span className="eyebrow">Bewijs uit de praktijk</span><h2>Projecten.</h2></div><Link className="text-link" href="/projecten">Bekijk alle projecten →</Link></div>
-        <div className="container project-grid">{homepage.projects.map((project) => <Link className="project-card" key={project.title} href={project.href}><div className="project-image"><Image src={project.image} alt="" fill sizes="(max-width: 800px) 100vw, 34vw" /></div><span>{project.meta}</span><h3>{project.title}</h3></Link>)}</div>
+      <section className="projects-section" id="projecten">
+        <div className="container section-intro"><div><span className="eyebrow">Onze technische expertise laten zien</span><h2>Projecten<span className="dot">.</span></h2></div><p>Werk waarin innovatieve engineering en praktische uitvoering samenkomen.</p></div>
+        <div className="container project-list">{data.projects.map((project, index) => <Link className="project-card" key={project.title} href={project.href}><div className="project-image"><Visual image={project.image} sizes="(max-width: 767px) 100vw, 38vw" /></div><div className="project-copy"><span>{project.meta}</span><div><b>[{String(index + 1).padStart(2, '0')}]</b><h3>{project.title}</h3></div></div></Link>)}</div>
+        <div className="container projects-action"><Link className="pill-button" href="/projecten">Bekijk alle projecten <span aria-hidden="true">↗</span></Link></div>
       </section>
 
-      <section className="contact-cta"><div className="container split"><div><span className="eyebrow light">Maak contact</span><h2>Een technisch vraagstuk dat om overzicht én diepgang vraagt?</h2></div><div><p>Bespreek de uitdaging met Powerspex. We kijken eerst wat er technisch en organisatorisch echt nodig is.</p><Link className="button light" href="/contact">Neem contact op</Link></div></div></section>
+      <NewsSection news={data.news} />
+      <ContactSection contact={data.contact} />
     </main>
   )
 }

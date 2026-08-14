@@ -44,3 +44,38 @@ De homepage wordt gebruikt om het design system, de navigatie, componenten en ee
 
 ## Belangrijk
 De nieuwe site is geen automatische conversie van Elementor. We migreren betekenisvolle content en media, maar bouwen de layout opnieuw met herbruikbare Powerspex-componenten.
+
+## Lokaal starten
+
+Vereisten: Node.js 20.9 of nieuwer. Frontend en Payload draaien in hetzelfde Next.js-proces. Lokale development kan bewust SQLite gebruiken; productie vereist PostgreSQL.
+
+1. Kopieer `.env.example` naar `.env.local`.
+2. Gebruik lokaal expliciet `PAYLOAD_DATABASE=sqlite`, of vul `DATABASE_URI` in voor PostgreSQL.
+3. Genereer een unieke `PAYLOAD_SECRET` van minimaal 32 tekens.
+4. Installeer dependencies met `pnpm install`.
+5. Start met `pnpm dev` en open [http://localhost:3000](http://localhost:3000).
+6. Open [http://localhost:3000/admin](http://localhost:3000/admin) om de eerste Payload-gebruiker aan te maken.
+
+Zolang de Homepage-global nog niet is ingevuld, rendert de publieke homepage met gecontroleerde fallback-content uit `src/data/homepage.ts`.
+
+### Environment variables
+
+- `PAYLOAD_DATABASE`: zet alleen bij lokale development/tests expliciet op `sqlite`. Wordt in productie niet geaccepteerd als vervanging voor PostgreSQL.
+- `DATABASE_URI`: PostgreSQL connection string; verplicht in productie.
+- `PAYLOAD_SECRET`: geheime sleutel voor Payload-sessies; verplicht in productie en nooit committen.
+- `NEXT_PUBLIC_SERVER_URL`: canonieke publieke origin; verplicht in productie en lokaal doorgaans `http://localhost:3000`.
+
+Bij `NODE_ENV=production` stopt de configuratie direct met een duidelijke fout als `PAYLOAD_SECRET`, `DATABASE_URI` of `NEXT_PUBLIC_SERVER_URL` ontbreekt. Er is in productie geen fallback-secret en geen SQLite-fallback. Voor lokale development blijven de voorbeeldwaarden uit `.env.example` direct bruikbaar.
+
+## Scripts
+
+- `pnpm dev`: start de ontwikkelserver.
+- `pnpm build`: maakt de productiebuild.
+- `pnpm start`: start de productiebuild.
+- `pnpm lint`: voert ESLint uit.
+- `pnpm typecheck`: controleert TypeScript zonder output te schrijven.
+- `pnpm payload generate:types`: genereert Payload-types nadat de databaseconfiguratie beschikbaar is.
+
+## Contentbeheer
+
+Payload bevat afzonderlijke collecties voor Diensten, Expertises, Projecten, Media en Gebruikers, plus de global Homepage. Publiceerbare inhoud gebruikt drafts/versions. De homepage gebruikt geselecteerde relaties; ontbrekende selecties en media hebben veilige fallbacks. Technische claims, cijfers, klantnamen en projectinhoud worden pas na menselijke goedkeuring gepubliceerd.
