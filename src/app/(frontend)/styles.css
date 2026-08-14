@@ -86,7 +86,7 @@ h3 { font-size: var(--step-2); }
 .service-hero-content { padding-top: 10rem; }
 .service-hero-content h1 { max-width: 11ch; }
 .service-hero-content p { max-width: 39rem; margin-top: 2.25rem; color: rgb(255 255 255 / .84); font-size: var(--step-1); }
-.service-intro, .capabilities-section, .standards-section, .process-section, .faq-section, .service-cta { padding-block: var(--space-2xl); }
+.service-intro, .capabilities-section, .related-services-section, .standards-section, .process-section, .faq-section, .service-cta { padding-block: var(--space-2xl); }
 .service-intro-grid { display: grid; grid-template-columns: 1fr .9fr; gap: clamp(3rem, 8vw, 9rem); align-items: center; }
 .service-intro-grid p { max-width: 42rem; margin-top: 2.5rem; color: var(--psx-muted); font-size: var(--step-1); }
 .service-intro-image { position: relative; min-height: 38rem; overflow: hidden; clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 10%); }
@@ -101,6 +101,12 @@ h3 { font-size: var(--step-2); }
 .expertise-feature { display: grid; grid-template-columns: 1fr .75fr; gap: clamp(3rem, 8vw, 9rem); align-items: start; }
 .expertise-feature p { color: rgb(255 255 255 / .72); font-size: var(--step-1); }
 .expertise-feature .pill-button { margin-top: 1.5rem; }
+.related-services-grid { border-top: 1px solid var(--psx-line); }
+.related-services-grid article { display: grid; grid-template-columns: 1fr .85fr; gap: clamp(2rem, 6vw, 7rem); align-items: end; padding-block: 2.5rem; border-bottom: 1px solid var(--psx-line); }
+.related-services-grid h2 { font-size: var(--step-2); }
+.related-services-grid p { max-width: 48rem; margin: 1.25rem 0 0; color: var(--psx-muted); font-size: var(--step-1); }
+.text-link { justify-self: end; padding-bottom: .4rem; border-bottom: 1px solid var(--psx-blue); color: var(--psx-navy); font-weight: 600; }
+.text-link:hover { color: var(--psx-blue); }
 .standards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
 .standards-grid article { padding: 2rem; background: var(--psx-mist); }
 .standards-grid small { color: var(--psx-blue); text-transform: uppercase; }
@@ -255,7 +261,8 @@ h3 { font-size: var(--step-2); }
   .people-layout, .section-intro, .contact-layout, .impact-heading > div { grid-template-columns: 1fr; gap: 2.5rem; }
   .service-hero { min-height: 43rem; }
   .service-hero-content { padding-top: 8rem; }
-  .service-intro-grid, .expertise-feature, .faq-layout, .service-cta-inner { grid-template-columns: 1fr; }
+  .service-intro-grid, .expertise-feature, .related-services-grid article, .faq-layout, .service-cta-inner { grid-template-columns: 1fr; }
+  .text-link { justify-self: start; }
   .service-intro-image { min-height: 25rem; }
   .capability-grid, .standards-grid { grid-template-columns: 1fr; }
   .capability-grid article, .capability-grid article:nth-child(3n) { min-height: 0; border-right: 0; }

@@ -11,6 +11,7 @@ export type ServiceDetailData = {
   intro?: { title: string; body: string; image?: ImageData }
   capabilities: Array<{ title: string; description: string }>
   expertise: Array<{ title: string; summary: string; href: string }>
+  relatedServices: Array<{ title: string; summary: string; href: string }>
   standards: Array<{ name: string; type: string; description: string }>
   process: Array<{ number: string; title: string; description: string }>
   projects: Array<{ title: string; meta: string; href: string; image: ImageData }>
@@ -41,6 +42,7 @@ export const softwareEngineering: ServiceDetailData = {
     { title: 'Testen & inbedrijfstelling', description: 'Software gecontroleerd testen en toepassen in de uiteindelijke installatie.' },
   ],
   expertise: [{ title: 'Cybersecurity & OT-security', summary: 'Digitale veiligheid is een belangrijk onderdeel van industriële automatisering. Powerspex kan cybersecurity en OT-security vanaf het ontwerp meenemen in software- en automatiseringsvraagstukken, afgestemd op de installatie en omgeving.', href: '/expertises/cybersecurity-ot-security' }],
+  relatedServices: [],
   standards: [],
   process: [
     { number: '01', title: 'Vraagstuk en omgeving', description: 'We brengen het proces, de installatie en de gewenste werking samen in beeld.' },
@@ -56,4 +58,57 @@ export const softwareEngineering: ServiceDetailData = {
   ],
   cta: { title: 'Softwarevraagstuk in een industriële omgeving?', body: 'Bespreek de installatie, het proces en de gewenste aanpak met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
   seo: { title: 'Software Engineering | Powerspex', description: 'Industriële Software Engineering voor besturing, visualisatie en integratie binnen procesautomatisering.' },
+}
+
+export const hardwareEngineering: ServiceDetailData = {
+  title: 'Hardware engineering',
+  slug: 'hardware-engineering',
+  eyebrow: 'Engineering & automatisering',
+  shortSummary: 'Elektrotechnische engineering voor betrouwbare industriële installaties en besturingssystemen.',
+  heroTitle: 'Hardware engineering voor industriële besturingen',
+  heroIntro: 'Powerspex ontwerpt elektrische besturingen voor industriële automatiseringsomgevingen. Als zelfstandige engineeringopdracht of in samenhang met andere technische disciplines.',
+  heroImage: { src: '/images/project-engineering.jpg', alt: 'Hardware engineering bij Powerspex' },
+  intro: {
+    title: 'Van elektrotechnisch ontwerp naar uitvoerbare engineering',
+    body: 'Hardware engineering omvat het ontwerpen van elektrische besturingen in E-plan, het specificeren en inkopen van benodigde materialen en de technische afstemming richting montage. Powerspex kan deze engineering zelfstandig leveren en waar nodig afstemmen met project engineering, software engineering, productie en specialistische expertises.',
+    image: { src: '/images/people-workshop.jpg', alt: 'Powerspex medewerkers in de eigen werkplaats' },
+  },
+  capabilities: [
+    { title: 'Elektrotechnisch ontwerp', description: 'Ontwerp van elektrische besturingen voor industriële automatiseringsomgevingen.' },
+    { title: 'E-plan engineering', description: 'Uitwerking van elektrische besturingen met E-plan.' },
+    { title: 'Materiaalspecificatie', description: 'Specificatie van de materialen die voor de ontworpen besturing nodig zijn.' },
+    { title: 'Inkoop', description: 'Inkoop van de benodigde materialen als onderdeel van de afgesproken opdracht.' },
+    { title: 'Technische afstemming', description: 'Afstemming met klanten en betrokken technische disciplines gedurende de engineering.' },
+    { title: 'Begeleiding richting realisatie', description: 'Afstemming en begeleiding van montage om het ontwerp uitvoerbaar over te dragen.' },
+  ],
+  expertise: [{
+    title: 'Functional Safety',
+    summary: 'Functional Safety richt zich op instrumentatiesystemen die een veiligheidsfunctie uitvoeren. Safety Instrumented Systems (SIS), veiligheidsfuncties, SIL en de toepassing van IEC 61508 en IEC 61511 vragen om specialistische kennis naast de hardware-engineeringopdracht.',
+    href: '/expertises/functional-safety',
+  }],
+  relatedServices: [{
+    title: 'Productie',
+    summary: 'Hardware engineering levert het ontwerp. Indien gewenst kan Powerspex dit in de eigen werkplaats doorvertalen naar productie; productie is geen verplicht onderdeel van de engineeringopdracht.',
+    href: '/wat-we-doen/productie',
+  }],
+  standards: [],
+  process: [
+    { number: '01', title: 'Vraagstuk en uitgangspunten', description: 'We brengen de industriële omgeving, de gewenste besturing en de benodigde technische afstemming in beeld.' },
+    { number: '02', title: 'Elektrotechnische engineering', description: 'De elektrische besturing en benodigde materialen worden uitgewerkt in E-plan.' },
+    { number: '03', title: 'Technische afstemming', description: 'De engineering wordt afgestemd met de klant en de disciplines die voor de opdracht relevant zijn.' },
+    { number: '04', title: 'Overdracht naar realisatie', description: 'Het ontwerp wordt uitvoerbaar overgedragen richting montage of productie, binnen of buiten Powerspex.' },
+  ],
+  projects: [],
+  faq: [
+    { question: 'Kan Powerspex Hardware Engineering als zelfstandige opdracht uitvoeren?', answer: 'Ja. Hardware engineering kan als zelfstandige engineeringopdracht worden uitgevoerd. Afhankelijk van het vraagstuk kan Powerspex ook andere technische disciplines of specialistische expertises betrekken.' },
+    { question: 'Is productie altijd onderdeel van Hardware Engineering?', answer: 'Nee. Hardware engineering betreft het ontwerp en de technische uitwerking. Productie is een afzonderlijke dienst. Indien gewenst kan het ontwerp wel worden doorvertaald naar productie in de eigen werkplaats van Powerspex.' },
+    { question: 'Wat is Functional Safety?', answer: 'Functional Safety richt zich op instrumentatiesystemen die een veiligheidsfunctie uitvoeren. Zulke systemen worden doorgaans Safety Instrumented Systems (SIS) genoemd. Begrippen als veiligheidsfuncties, SIL, IEC 61508 en IEC 61511 horen bij dit specialistische vakgebied.' },
+    { question: 'Wat is het verschil tussen Functional Safety en Explosieveiligheid?', answer: 'Functional Safety gaat over systemen die een veiligheidsfunctie uitvoeren. Explosieveiligheid richt zich op veiligheid in omgevingen waar een explosieve atmosfeer kan voorkomen. Het zijn verschillende specialistische vakgebieden en worden daarom afzonderlijk beoordeeld.' },
+  ],
+  cta: { title: 'Een hardware- of elektrotechnisch vraagstuk bespreken?', body: 'Bespreek de installatie, de engineeringopdracht en de gewenste samenwerking met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
+  seo: {
+    title: 'Hardware Engineering | Powerspex',
+    description: 'Elektrotechnische hardware engineering voor industriële besturingen, zelfstandig of in samenhang met andere technische disciplines.',
+    openGraphImage: { src: '/images/project-engineering.jpg', alt: 'Hardware engineering bij Powerspex' },
+  },
 }

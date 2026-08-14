@@ -35,6 +35,7 @@ export const Services: CollectionConfig = {
       ],
     },
     { name: 'relatedExpertise', label: 'Gerelateerde expertises', type: 'relationship', relationTo: 'expertise', hasMany: true },
+    { name: 'relatedServices', label: 'Gerelateerde diensten', type: 'relationship', relationTo: 'services', hasMany: true, admin: { description: 'Gebruik dit voor inhoudelijk relevante vervolgdiensten; dit maakt de huidige dienst niet afhankelijk van die dienst.' } },
     {
       name: 'standards', label: 'Certificeringen en standaarden', type: 'array', admin: { description: 'Alleen gevalideerde items worden publiek getoond.' }, fields: [
         { name: 'name', label: 'Naam', type: 'text', required: true },
