@@ -22,6 +22,54 @@ export type ServiceDetailData = {
   seo: { title: string; description: string; openGraphImage?: ImageData }
 }
 
+export const projectEngineering: ServiceDetailData = {
+  title: 'Project engineering',
+  slug: 'project-engineering',
+  eyebrow: 'Engineering & automatisering',
+  shortSummary: 'Van technisch vraagstuk naar een gestructureerd en uitvoerbaar industrieel project.',
+  heroTitle: 'Technische vraagstukken uitvoerbaar maken',
+  heroIntro: 'Powerspex structureert en werkt technische vraagstukken uit tot uitvoerbare industriële projecten, met samenhang tussen de betrokken disciplines en de uitvoering.',
+  heroImage: { src: '/images/project-engineering.jpg', alt: 'Twee Powerspex-medewerkers bespreken een technisch schema' },
+  intro: {
+    title: 'Overzicht over het hele technische project',
+    body: 'Project engineering richt zich op de integrale technische uitwerking en coördinatie van een industrieel project. Daarmee verschilt de dienst van Hardware Engineering en Software Engineering als afzonderlijke ontwerpdisciplines, en van Productie als fysieke realisatie.',
+    image: { src: '/images/people-detail.jpg', alt: 'Powerspex-medewerker werkt aan een technisch vraagstuk' },
+  },
+  capabilities: [
+    { title: 'Technisch vraagstuk structureren', description: 'De technische uitgangspunten, samenhang en gewenste uitvoering van het project helder maken.' },
+    { title: 'Technische uitwerking', description: 'Het vraagstuk uitwerken tot een technisch en uitvoerbaar industrieel project.' },
+    { title: 'Disciplines samenbrengen', description: 'De technische disciplines die voor het project nodig zijn inhoudelijk op elkaar afstemmen.' },
+    { title: 'Projectvoorbereiding', description: 'De technische basis voorbereiden die nodig is om het project gericht uit te voeren.' },
+    { title: 'Projectbeheersing', description: 'Overzicht houden op de technische samenhang en voortgang binnen de afgesproken projectscope.' },
+    { title: 'Begeleiding richting uitvoering', description: 'De technische uitwerking afstemmen en begeleiden richting de uitvoering van het project.' },
+  ],
+  expertise: [],
+  relatedServices: [
+    { title: 'Hardware engineering', summary: 'Elektrotechnische engineering kan als afzonderlijke discipline aansluiten op de integrale projectuitwerking.', href: '/wat-we-doen/hardware-engineering' },
+    { title: 'Software engineering', summary: 'Software en industriële besturing kunnen als afzonderlijke discipline binnen of naast het project worden uitgewerkt.', href: '/wat-we-doen/software-engineering' },
+    { title: 'Productie', summary: 'Wanneer fysieke realisatie onderdeel van de opdracht is, kan Productie als zelfstandige dienst aansluiten op de engineering.', href: '/wat-we-doen/productie' },
+  ],
+  standards: [],
+  process: [
+    { number: '01', title: 'Vraagstuk en uitgangspunten', description: 'We brengen het technische vraagstuk, de context en de gewenste uitvoering in beeld.' },
+    { number: '02', title: 'Structuur en samenhang', description: 'We bepalen welke technische disciplines en onderlinge afstemming voor het project nodig zijn.' },
+    { number: '03', title: 'Technische uitwerking', description: 'Het vraagstuk wordt uitgewerkt tot een uitvoerbare technische basis.' },
+    { number: '04', title: 'Afstemming richting uitvoering', description: 'De technische uitwerking wordt afgestemd met de partijen en disciplines die bij de uitvoering betrokken zijn.' },
+  ],
+  projects: [],
+  faq: [
+    { question: 'Kan Project Engineering zelfstandig worden ingezet?', answer: 'Ja. Project Engineering kan als zelfstandige opdracht worden ingezet om een technisch vraagstuk te structureren en uit te werken. Andere Powerspex-diensten zijn alleen aanvullend wanneer de opdracht daarom vraagt.' },
+    { question: 'Kan Powerspex meerdere technische disciplines combineren?', answer: 'Ja. Project Engineering richt zich juist op de samenhang en afstemming tussen de technische disciplines die voor het project nodig zijn.' },
+    { question: 'Kan Powerspex aansluiten op een bestaand project?', answer: 'Ja. De bestaande uitgangspunten, projectfase en beschikbare technische informatie worden eerst in beeld gebracht. Daarna wordt bepaald welke projectmatige engineering en afstemming nodig is.' },
+  ],
+  cta: { title: 'Een technisch project uitvoerbaar maken?', body: 'Bespreek het vraagstuk, de bestaande uitgangspunten en de gewenste uitvoering met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
+  seo: {
+    title: 'Project Engineering | Powerspex',
+    description: 'Integrale Project Engineering voor het structureren en uitwerken van technische vraagstukken tot uitvoerbare industriële projecten.',
+    openGraphImage: { src: '/images/project-engineering.jpg', alt: 'Twee Powerspex-medewerkers bespreken een technisch schema' },
+  },
+}
+
 export const softwareEngineering: ServiceDetailData = {
   title: 'Software engineering',
   slug: 'software-engineering',

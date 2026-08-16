@@ -1,7 +1,7 @@
 import config from '@payload-config'
 import { getPayload } from 'payload'
 import { cache } from 'react'
-import { hardwareEngineering, production, softwareEngineering, type ServiceDetailData } from '@/data/services'
+import { hardwareEngineering, production, projectEngineering, softwareEngineering, type ServiceDetailData } from '@/data/services'
 import type { ImageData } from '@/data/homepage'
 
 type Row = Record<string, unknown>
@@ -45,7 +45,7 @@ function mapService(source: Row): ServiceDetailData {
 }
 
 function completeService(data: ServiceDetailData): ServiceDetailData {
-  const fallback = [softwareEngineering, hardwareEngineering, production].find((item) => item.slug === data.slug)
+  const fallback = [projectEngineering, softwareEngineering, hardwareEngineering, production].find((item) => item.slug === data.slug)
   if (!fallback) return data
   return {
     ...data,
@@ -68,7 +68,7 @@ async function loadService(slug: string): Promise<ServiceDetailData | null> {
   } catch (error) {
     console.warn('Service CMS data is unavailable; checking the approved fallback.', error instanceof Error ? error.message : error)
   }
-  return [softwareEngineering, hardwareEngineering, production].find((service) => service.slug === slug) ?? null
+  return [projectEngineering, softwareEngineering, hardwareEngineering, production].find((service) => service.slug === slug) ?? null
 }
 
 export const getService = cache(loadService)
