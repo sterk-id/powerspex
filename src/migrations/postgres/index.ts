@@ -3,6 +3,7 @@ import * as migration_20260814_135459_add_related_services from './20260814_1354
 import * as migration_20260814_143735_add_service_capability_headings from './20260814_143735_add_service_capability_headings';
 import * as migration_20260816_185635_add_expertise_detail_fields from './20260816_185635_add_expertise_detail_fields';
 import * as migration_20260816_195933_add_project_detail_fields from './20260816_195933_add_project_detail_fields';
+import * as migration_20260816_211246_add_project_metadata from './20260816_211246_add_project_metadata';
 
 export const migrations = [
   {
@@ -28,6 +29,11 @@ export const migrations = [
   {
     up: migration_20260816_195933_add_project_detail_fields.up,
     down: migration_20260816_195933_add_project_detail_fields.down,
-    name: '20260816_195933_add_project_detail_fields'
+    name: '20260816_195933_add_project_detail_fields',
+  },
+  {
+    up: migration_20260816_211246_add_project_metadata.up,
+    down: migration_20260816_211246_add_project_metadata.down,
+    name: '20260816_211246_add_project_metadata'
   },
 ];
