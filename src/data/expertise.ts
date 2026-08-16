@@ -133,3 +133,43 @@ export const explosiveSafety: ExpertiseDetailData = {
     openGraphImage: { src: '/images/people-workshop.jpg', alt: 'Powerspex-medewerker in een industriële installatie' },
   },
 }
+
+export const simulations: ExpertiseDetailData = {
+  title: 'Simulaties',
+  slug: 'simulaties',
+  eyebrow: 'Specialistische expertise',
+  shortSummary: 'Dynamische simulaties, digitale modellen en trainingssimulatoren voor energie- en procesinstallaties met door Powerspex ontwikkelde PsxCad Simulation Software.',
+  heroTitle: 'Industriële processen doorgronden met simulaties',
+  heroIntro: 'Powerspex ontwikkelt en gebruikt PsxCad Simulation Software voor dynamische simulaties, digitale modellen en Operator Training Simulatoren voor energie- en procesinstallaties.',
+  heroImage: { src: '/images/software-engineering.jpg', alt: 'Powerspex-medewerker werkt aan industriële software' },
+  intro: {
+    title: 'Zelf ontwikkelde simulatiesoftware voor de industrie',
+    body: 'Met PsxCad bouwt Powerspex simulaties en simulatoren voor onder meer energiecentrales, warmtenetten, drinkwaterdistributie en elektrolyserinstallaties. Dezelfde software wordt door Powerspex zelf toegepast en is ook beschikbaar voor andere organisaties.',
+    image: { src: '/images/procesautomatisering.jpg', alt: 'Medewerker bij apparatuur in een industriële procesinstallatie' },
+  },
+  capabilitiesEyebrow: 'Simulaties',
+  capabilitiesTitle: 'Expertisegebieden',
+  capabilities: [
+    { title: 'Dynamische simulaties', description: 'Simulaties voor het ontwerpen en analyseren van energie- en procesinstallaties met PsxCad Simulation Software.' },
+    { title: 'Digital Twin Engineering', description: 'Digitale modellen waarmee industriële processen, systemen en producten kunnen worden gesimuleerd en geoptimaliseerd.' },
+    { title: 'Operator Training Simulatoren', description: 'Realistische virtuele omgevingen waarin operators kunnen trainen zonder de werkelijke installatie te belasten.' },
+  ],
+  relatedServices: [
+    { title: 'Software engineering', summary: 'PsxCad is door Powerspex ontwikkelde software voor het bouwen van dynamische simulaties en simulatoren.', href: '/wat-we-doen/software-engineering' },
+    { title: 'Procesautomatisering', summary: 'Simulaties en digitale modellen worden toegepast op industriële energie- en procesinstallaties.', href: '/wat-we-doen/procesautomatisering' },
+  ],
+  standards: [],
+  process: [],
+  projects: [],
+  faq: [
+    { question: 'Wat bedoelt Powerspex met simulaties?', answer: 'Powerspex bouwt met de zelf ontwikkelde PsxCad Simulation Software dynamische simulaties, digitale modellen en trainingssimulatoren voor energie- en procesinstallaties.' },
+    { question: 'Wat is een Operator Training Simulator?', answer: 'Een Operator Training Simulator biedt een realistische virtuele omgeving waarin operators praktijkscenario’s kunnen oefenen zonder de werkelijke installatie te belasten.' },
+    { question: 'Voor welke installaties gebruikt Powerspex simulaties?', answer: 'Powerspex noemt onder meer energiecentrales, warmtenetten, drinkwaterdistributie en elektrolyserinstallaties als toepassingen voor simulaties en simulatoren.' },
+  ],
+  cta: { title: 'Een proces of installatie simuleren?', body: 'Bespreek de installatie, het trainings- of analysevraagstuk en de gewenste toepassing met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
+  seo: {
+    title: 'Simulaties en PsxCad Simulation Software | Powerspex',
+    description: 'Dynamische simulaties, Digital Twin Engineering en Operator Training Simulatoren voor industriële energie- en procesinstallaties.',
+    openGraphImage: { src: '/images/software-engineering.jpg', alt: 'Powerspex-medewerker werkt aan industriële software' },
+  },
+}
