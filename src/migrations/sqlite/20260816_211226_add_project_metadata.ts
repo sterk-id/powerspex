@@ -2,51 +2,51 @@ import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-sqlite'
 
 export async function up({ db }: MigrateUpArgs): Promise<void> {
   await db.run(sql`CREATE TABLE \`projects_partners\` (
-  	\`_order\` integer NOT NULL,
-  	\`_parent_id\` integer NOT NULL,
-  	\`id\` text PRIMARY KEY NOT NULL,
-  	\`name\` text,
-  	\`role\` text,
-  	\`is_public\` integer DEFAULT false,
-  	FOREIGN KEY (\`_parent_id\`) REFERENCES \`projects\`(\`id\`) ON UPDATE no action ON DELETE cascade
+	\`_order\` integer NOT NULL,
+	\`_parent_id\` integer NOT NULL,
+	\`id\` text PRIMARY KEY NOT NULL,
+	\`name\` text,
+	\`role\` text,
+	\`is_public\` integer DEFAULT false,
+	FOREIGN KEY (\`_parent_id\`) REFERENCES \`projects\`(\`id\`) ON UPDATE no action ON DELETE cascade
   );
   `)
   await db.run(sql`CREATE INDEX \`projects_partners_order_idx\` ON \`projects_partners\` (\`_order\`);`)
   await db.run(sql`CREATE INDEX \`projects_partners_parent_id_idx\` ON \`projects_partners\` (\`_parent_id\`);`)
   await db.run(sql`CREATE TABLE \`projects_editorial_sources\` (
-  	\`_order\` integer NOT NULL,
-  	\`_parent_id\` integer NOT NULL,
-  	\`id\` text PRIMARY KEY NOT NULL,
-  	\`label\` text,
-  	\`url\` text,
-  	\`note\` text,
-  	FOREIGN KEY (\`_parent_id\`) REFERENCES \`projects\`(\`id\`) ON UPDATE no action ON DELETE cascade
+	\`_order\` integer NOT NULL,
+	\`_parent_id\` integer NOT NULL,
+	\`id\` text PRIMARY KEY NOT NULL,
+	\`label\` text,
+	\`url\` text,
+	\`note\` text,
+	FOREIGN KEY (\`_parent_id\`) REFERENCES \`projects\`(\`id\`) ON UPDATE no action ON DELETE cascade
   );
   `)
   await db.run(sql`CREATE INDEX \`projects_editorial_sources_order_idx\` ON \`projects_editorial_sources\` (\`_order\`);`)
   await db.run(sql`CREATE INDEX \`projects_editorial_sources_parent_id_idx\` ON \`projects_editorial_sources\` (\`_parent_id\`);`)
   await db.run(sql`CREATE TABLE \`_projects_v_version_partners\` (
-  	\`_order\` integer NOT NULL,
-  	\`_parent_id\` integer NOT NULL,
-  	\`id\` integer PRIMARY KEY NOT NULL,
-  	\`name\` text,
-  	\`role\` text,
-  	\`is_public\` integer DEFAULT false,
-  	\`_uuid\` text,
-  	FOREIGN KEY (\`_parent_id\`) REFERENCES \`_projects_v\`(\`id\`) ON UPDATE no action ON DELETE cascade
+	\`_order\` integer NOT NULL,
+	\`_parent_id\` integer NOT NULL,
+	\`id\` integer PRIMARY KEY NOT NULL,
+	\`name\` text,
+	\`role\` text,
+	\`is_public\` integer DEFAULT false,
+	\`_uuid\` text,
+	FOREIGN KEY (\`_parent_id\`) REFERENCES \`_projects_v\`(\`id\`) ON UPDATE no action ON DELETE cascade
   );
   `)
   await db.run(sql`CREATE INDEX \`_projects_v_version_partners_order_idx\` ON \`_projects_v_version_partners\` (\`_order\`);`)
   await db.run(sql`CREATE INDEX \`_projects_v_version_partners_parent_id_idx\` ON \`_projects_v_version_partners\` (\`_parent_id\`);`)
   await db.run(sql`CREATE TABLE \`_projects_v_version_editorial_sources\` (
-  	\`_order\` integer NOT NULL,
-  	\`_parent_id\` integer NOT NULL,
-  	\`id\` integer PRIMARY KEY NOT NULL,
-  	\`label\` text,
-  	\`url\` text,
-  	\`note\` text,
-  	\`_uuid\` text,
-  	FOREIGN KEY (\`_parent_id\`) REFERENCES \`_projects_v\`(\`id\`) ON UPDATE no action ON DELETE cascade
+	\`_order\` integer NOT NULL,
+	\`_parent_id\` integer NOT NULL,
+	\`id\` integer PRIMARY KEY NOT NULL,
+	\`label\` text,
+	\`url\` text,
+	\`note\` text,
+	\`_uuid\` text,
+	FOREIGN KEY (\`_parent_id\`) REFERENCES \`_projects_v\`(\`id\`) ON UPDATE no action ON DELETE cascade
   );
   `)
   await db.run(sql`CREATE INDEX \`_projects_v_version_editorial_sources_order_idx\` ON \`_projects_v_version_editorial_sources\` (\`_order\`);`)

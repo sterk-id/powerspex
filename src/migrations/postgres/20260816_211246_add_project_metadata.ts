@@ -5,43 +5,43 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
    CREATE TYPE "public"."enum_projects_editorial_media_status" AS ENUM('unknown', 'pending', 'approved', 'rejected');
   CREATE TYPE "public"."enum__projects_v_version_editorial_media_status" AS ENUM('unknown', 'pending', 'approved', 'rejected');
   CREATE TABLE "projects_partners" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"name" varchar,
-  	"role" varchar,
-  	"is_public" boolean DEFAULT false
+	"_order" integer NOT NULL,
+	"_parent_id" integer NOT NULL,
+	"id" varchar PRIMARY KEY NOT NULL,
+	"name" varchar,
+	"role" varchar,
+	"is_public" boolean DEFAULT false
   );
-  
+
   CREATE TABLE "projects_editorial_sources" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"label" varchar,
-  	"url" varchar,
-  	"note" varchar
+	"_order" integer NOT NULL,
+	"_parent_id" integer NOT NULL,
+	"id" varchar PRIMARY KEY NOT NULL,
+	"label" varchar,
+	"url" varchar,
+	"note" varchar
   );
-  
+
   CREATE TABLE "_projects_v_version_partners" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"name" varchar,
-  	"role" varchar,
-  	"is_public" boolean DEFAULT false,
-  	"_uuid" varchar
+	"_order" integer NOT NULL,
+	"_parent_id" integer NOT NULL,
+	"id" serial PRIMARY KEY NOT NULL,
+	"name" varchar,
+	"role" varchar,
+	"is_public" boolean DEFAULT false,
+	"_uuid" varchar
   );
-  
+
   CREATE TABLE "_projects_v_version_editorial_sources" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"label" varchar,
-  	"url" varchar,
-  	"note" varchar,
-  	"_uuid" varchar
+	"_order" integer NOT NULL,
+	"_parent_id" integer NOT NULL,
+	"id" serial PRIMARY KEY NOT NULL,
+	"label" varchar,
+	"url" varchar,
+	"note" varchar,
+	"_uuid" varchar
   );
-  
+
   ALTER TABLE "projects" ADD COLUMN "end_client" varchar;
   ALTER TABLE "projects" ADD COLUMN "end_client_is_public" boolean DEFAULT false;
   ALTER TABLE "projects" ADD COLUMN "location" varchar;
