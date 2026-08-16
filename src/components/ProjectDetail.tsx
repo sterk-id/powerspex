@@ -31,6 +31,7 @@ export function ProjectDetail({ project }: { project: ProjectDetailData }) {
     project.period ? { label: 'Periode', value: project.period } : undefined,
     project.summary ? { label: 'Scope', value: project.summary } : undefined,
   ].filter(Boolean) as Array<{ label: string; value: string }>
+  const hasMetadata = facts.length > 0 || project.disciplines.length > 0
 
   return <main id="main-content">
     <ProjectHeader image={project.image} />
@@ -47,10 +48,10 @@ export function ProjectDetail({ project }: { project: ProjectDetailData }) {
             {section.image?.src && <div className="project-story-image"><ProjectImage image={section.image} /></div>}
           </section>)}
         </div>
-        <aside className="project-meta" aria-label="Projectgegevens">
+        {hasMetadata && <aside className="project-meta" aria-label="Projectgegevens">
           {facts.length > 0 && <dl className="project-facts">{facts.map((fact) => <div key={fact.label}><dt>{fact.label}</dt><dd>{fact.value}</dd></div>)}</dl>}
-          {project.disciplines.length > 0 && <div className="project-meta-disciplines"><h2>Expertises &amp; disciplines</h2><ul>{project.disciplines.map((item) => <li key={item.href}><Link href={item.href}>{item.title}</Link></li>)}</ul></div>}
-        </aside>
+          {project.disciplines.length > 0 && <div className="project-meta-disciplines"><h2>Betrokken disciplines</h2><ul>{project.disciplines.map((item) => <li key={item.href}><Link href={item.href}>{item.title}</Link></li>)}</ul></div>}
+        </aside>}
       </div>
     </article>
 

@@ -38,7 +38,6 @@ export const warmtestadGroningen: ProjectDetailData = {
   summary: 'Engineering, levering en installatie van de complete procesautomatisering voor de WarmteStad Centrale Zernike en Zonnepark Dorkwerd.',
   client: 'WarmteStad Groningen',
   clientIsPublic: true,
-  sector: 'Industrie & productie',
   year: '2024',
   period: '2021, 2023 & 2024',
   image: { src: '/images/project-warmtestad-groningen.jpg', alt: 'Procesinstallatie van WarmteStad Groningen' },
