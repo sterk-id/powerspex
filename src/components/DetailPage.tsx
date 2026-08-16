@@ -11,6 +11,16 @@ function TitleDot({ title }: { title: string }) {
   return /[.!?]$/.test(title) ? null : <span className="dot">.</span>
 }
 
+function standardsTitle(standards: DetailPageData['standards']) {
+  const types = standards.map((item) => item.type.toLowerCase())
+  const hasStandards = types.some((type) => type.includes('standard') || type.includes('norm'))
+  const hasCertifications = types.some((type) => type.includes('certific'))
+
+  if (hasStandards && !hasCertifications) return 'Normen & standaarden'
+  if (hasCertifications && !hasStandards) return 'Certificeringen'
+  return 'Certificeringen & standaarden'
+}
+
 export function DetailPage({ detail, config = {} }: { detail: DetailPageData; config?: DetailPageConfig }) {
   return <main id="main-content">
     <section className="service-hero"><Picture src={detail.heroImage.src} alt={detail.heroImage.alt} priority /><div className="hero-shade" /><div className="hero-pattern" /><div className="container service-hero-content"><span className="eyebrow light">{detail.eyebrow}</span><h1>{detail.heroTitle}<span className="dot">.</span></h1><p>{detail.heroIntro}</p></div></section>
@@ -25,7 +35,7 @@ export function DetailPage({ detail, config = {} }: { detail: DetailPageData; co
 
     {detail.relatedLinks.length > 0 && <section className="related-services-section"><div className="container"><span className="eyebrow">{config.relatedLinksEyebrow || 'Aansluitende diensten'}</span><div className="related-services-grid">{detail.relatedLinks.map((item) => <article key={item.href}><div><h2>{item.title}<TitleDot title={item.title} /></h2><p>{item.summary}</p></div><Link className="text-link" href={item.href}>Meer over {item.title} <span aria-hidden="true">→</span></Link></article>)}</div></div></section>}
 
-    {detail.standards.length > 0 && <section className="standards-section"><div className="container"><span className="eyebrow">Kwaliteit & zekerheid</span><h2>Certificeringen & standaarden<span className="dot">.</span></h2><div className="standards-grid">{detail.standards.map((item) => <article key={item.name}><small>{item.type}</small><h3>{item.name}</h3>{item.description && <p>{item.description}</p>}</article>)}</div></div></section>}
+    {detail.standards.length > 0 && <section className="standards-section"><div className="container"><span className="eyebrow">Kwaliteit & zekerheid</span><h2>{standardsTitle(detail.standards)}<span className="dot">.</span></h2><div className="standards-grid">{detail.standards.map((item) => <article key={item.name}><small>{item.type}</small><h3>{item.name}</h3>{item.description && <p>{item.description}</p>}</article>)}</div></div></section>}
 
     {detail.process.length > 0 && <section className="process-section"><div className="container"><span className="eyebrow">Van vraagstuk naar uitvoering</span><h2>Werkwijze<span className="dot">.</span></h2><div className="process-list">{detail.process.map((item) => <article key={`${item.number}-${item.title}`}><span>[{item.number}]</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></div></section>}
 
