@@ -6,6 +6,8 @@ Een **dienst** is een opdracht die een klant rechtstreeks kan afnemen. Een **exp
 
 Alle expertisepagina's gebruiken de dynamische route `/expertises/[slug]`, de bestaande Payload-collection `expertise` en het gedeelde detailpresentatiepatroon. Er worden geen hardcoded routes per expertise gemaakt.
 
+`DetailPage` is de generieke presentatielaag met het neutrale datatype `DetailPageData`. `ServiceDetail` en `ExpertiseDetail` zijn dunne wrappers met ieder een eigen semantisch datatype. Zij vertalen hun relaties en alleen de inhoudelijk afwijkende sectielabels naar de gedeelde presentatie. Daardoor is Expertise niet afhankelijk van een Service-component en blijft de markup centraal onderhouden.
+
 ## CMS-model
 
 De kernvelden `title`, `slug`, `summary`, `heroImage`, `relatedServices` en `navigationOrder` blijven bestaan. Het volledige model bevat daarnaast:

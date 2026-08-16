@@ -1,6 +1,9 @@
 import type { ExpertiseDetailData } from '@/data/expertise'
-import { ServiceDetail } from './ServiceDetail'
+import { DetailPage } from './DetailPage'
 
 export function ExpertiseDetail({ expertise }: { expertise: ExpertiseDetailData }) {
-  return <ServiceDetail service={expertise} />
+  return <DetailPage
+    detail={{ ...expertise, featuredLinks: [], relatedLinks: expertise.relatedServices }}
+    config={{ relatedLinksEyebrow: 'Waar deze expertise wordt ingezet' }}
+  />
 }

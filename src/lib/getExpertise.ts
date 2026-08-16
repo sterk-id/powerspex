@@ -28,7 +28,6 @@ function mapExpertise(source: Row): ExpertiseDetailData {
     capabilitiesEyebrow: text(source.topicsEyebrow, title), capabilitiesTitle: text(source.topicsTitle, 'Expertisegebieden'),
     capabilities: list(source.topics).map((item) => ({ title: text(item.title), description: text(item.description) })).filter((item) => item.title && item.description),
     contentSections: list(source.contentSections).map((item) => ({ eyebrow: text(item.eyebrow), title: text(item.title), body: text(item.body), image: media(item.image), layout: item.layout === 'left' ? 'left' as const : 'right' as const, theme: item.theme === 'dark' ? 'dark' as const : item.theme === 'mist' ? 'mist' as const : 'light' as const })).filter((item) => item.title && item.body),
-    expertise: [], relatedServicesEyebrow: 'Waar deze expertise wordt ingezet',
     relatedServices: list(source.relatedServices).map((item) => ({ title: text(item.title), summary: text(item.summary), href: `/wat-we-doen/${text(item.slug)}` })).filter((item) => item.title && item.href !== '/wat-we-doen/'),
     standards: list(source.standards).filter((item) => item.validated === true).map((item) => ({ name: text(item.name), type: text(item.type), description: text(item.description) })).filter((item) => item.name),
     process: list(source.process).map((item, index) => ({ number: text(item.number, String(index + 1).padStart(2, '0')), title: text(item.title), description: text(item.description) })).filter((item) => item.title && item.description),

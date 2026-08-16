@@ -99,11 +99,14 @@ h3 { font-size: var(--step-2); }
 .service-intro-grid p { max-width: 42rem; margin-top: 2.5rem; color: var(--psx-muted); font-size: var(--step-1); }
 .service-intro-image { position: relative; min-height: 38rem; overflow: hidden; clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 10%); }
 .capabilities-section { background: var(--psx-mist); }
-.capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--psx-line); }
-.capability-grid article { min-height: 18rem; padding: 2rem; border-right: 1px solid var(--psx-line); border-bottom: 1px solid var(--psx-line); background: var(--psx-white); }
+.capability-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--psx-line); }
+.capability-grid article { min-width: 0; min-height: 18rem; padding: 2rem; border-right: 1px solid var(--psx-line); border-bottom: 1px solid var(--psx-line); background: var(--psx-white); }
 .capability-grid article:nth-child(3n) { border-right: 0; }
+.capability-grid[data-count='4'] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.capability-grid[data-count='4'] article:nth-child(3n) { border-right: 1px solid var(--psx-line); }
+.capability-grid[data-count='4'] article:nth-child(2n) { border-right: 0; }
 .capability-grid span, .process-list > article > span { color: var(--psx-blue); font-size: .8rem; font-weight: 600; }
-.capability-grid h3 { margin: 3rem 0 1rem; }
+.capability-grid h3 { margin: 3rem 0 1rem; overflow-wrap: anywhere; }
 .capability-grid p, .process-list p, .standards-grid p { color: var(--psx-muted); }
 .service-expertise { padding-block: var(--space-2xl); background: var(--psx-deep); color: var(--psx-white); }
 .expertise-feature { display: grid; grid-template-columns: 1fr .75fr; gap: clamp(3rem, 8vw, 9rem); align-items: start; }
@@ -274,7 +277,7 @@ h3 { font-size: var(--step-2); }
   .detail-content-image { min-height: 25rem; }
   .text-link { justify-self: start; }
   .service-intro-image { min-height: 25rem; }
-  .capability-grid, .standards-grid { grid-template-columns: 1fr; }
+  .capability-grid, .capability-grid[data-count='4'], .standards-grid { grid-template-columns: 1fr; }
   .capability-grid article, .capability-grid article:nth-child(3n) { min-height: 0; border-right: 0; }
   .process-list article { grid-template-columns: 3rem 1fr; }
   .process-list article p { grid-column: 2; }
