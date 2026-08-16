@@ -8,6 +8,14 @@ function ProjectImage({ image, priority = false }: { image: ImageData; priority?
   return <Image src={image.src} alt={image.alt} fill sizes="(max-width: 768px) 100vw, 55vw" priority={priority} />
 }
 
+function ProjectHeader({ image }: { image: ImageData }) {
+  return <div className={`project-header${image.src ? '' : ' without-image'}`}>
+    {image.src ? <Image src={image.src} alt={image.alt} fill sizes="100vw" priority /> : <div className="project-header-fallback" aria-hidden="true" />}
+    <div className="project-header-shade" />
+    <div className="hero-pattern" />
+  </div>
+}
+
 export function ProjectDetail({ project }: { project: ProjectDetailData }) {
   const facts = [
     project.client ? { label: 'Klant', value: project.client } : undefined,
@@ -17,7 +25,7 @@ export function ProjectDetail({ project }: { project: ProjectDetailData }) {
   ].filter(Boolean) as Array<{ label: string; value: string }>
 
   return <main id="main-content">
-    <div className="project-masthead"><div className="hero-pattern" /></div>
+    <ProjectHeader image={project.image} />
     <article className="project-case container">
       <h1>{project.title}</h1>
       <div className="project-case-grid">

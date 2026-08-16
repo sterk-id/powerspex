@@ -82,8 +82,12 @@ h3 { font-size: var(--step-2); }
 
 .hero { position: relative; min-height: 61.25rem; display: flex; align-items: center; isolation: isolate; overflow: hidden; background: var(--psx-deep); color: var(--psx-white); clip-path: polygon(0 0, 100% 0, 100% 96%, 5% 96%, 0 100%); }
 .service-hero { position: relative; min-height: 50rem; display: flex; align-items: center; isolation: isolate; overflow: hidden; background: var(--psx-deep); color: var(--psx-white); clip-path: polygon(0 0, 100% 0, 100% 94%, 7% 94%, 0 100%); }
-.project-masthead { position: relative; min-height: 29.5rem; overflow: hidden; background: linear-gradient(90deg, var(--psx-deep) 0%, #314c60 58%, #f8fafb 100%); clip-path: polygon(0 0, 100% 0, 100% 91%, 5.5% 91%, 0 100%); }
-.project-masthead .hero-pattern { opacity: .34; }
+.project-header { position: relative; min-height: 42rem; isolation: isolate; overflow: hidden; background: var(--psx-deep); clip-path: polygon(0 0, 100% 0, 100% 91%, 5.5% 91%, 0 100%); }
+.project-header > img { position: absolute; inset: 0; z-index: -3; object-fit: cover; object-position: center 52%; }
+.project-header-shade { position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, rgb(11 43 63 / .88) 0%, rgb(11 43 63 / .62) 34%, rgb(11 43 63 / .18) 72%, rgb(11 43 63 / .05) 100%); }
+.project-header .hero-pattern { z-index: -1; opacity: .26; }
+.project-header-fallback { position: absolute; inset: 0; z-index: -3; background: linear-gradient(110deg, var(--psx-deep), #314c60 70%, #587083); }
+.project-header.without-image .project-header-shade { background: linear-gradient(90deg, rgb(11 43 63 / .45), transparent); }
 .project-case.container { width: min(calc(100% - 3.75rem), var(--container)); }
 .project-case { padding-top: clamp(4.5rem, 5.85vw, 5.25rem); padding-bottom: var(--space-xl); }
 .project-case > h1 { max-width: none; margin-bottom: 2.8rem; color: var(--psx-blue); font-size: clamp(2.5rem, 3.5vw, 3.15rem); letter-spacing: -.035em; }
@@ -316,7 +320,9 @@ h3 { font-size: var(--step-2); }
   .service-hero-content { padding-top: 8rem; }
   .service-intro-grid, .detail-content-grid, .expertise-feature, .related-services-grid article, .faq-layout, .service-cta-inner { grid-template-columns: 1fr; }
   .project-overview-grid, .gallery-grid { grid-template-columns: 1fr; }
-  .project-masthead { min-height: 19rem; clip-path: polygon(0 0, 100% 0, 100% 94%, 9% 94%, 0 100%); }
+  .project-header { min-height: 26rem; clip-path: polygon(0 0, 100% 0, 100% 94%, 9% 94%, 0 100%); }
+  .project-header > img { object-position: center center; }
+  .project-header-shade { background: linear-gradient(90deg, rgb(11 43 63 / .82) 0%, rgb(11 43 63 / .38) 62%, rgb(11 43 63 / .12) 100%); }
   .project-case { padding-top: 3.5rem; }
   .project-case.container { width: calc(100% - 2.5rem); }
   .project-case > h1 { margin-bottom: 2.5rem; font-size: clamp(2rem, 9vw, 2.6rem); line-height: 1.05; overflow-wrap: anywhere; }
