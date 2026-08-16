@@ -70,7 +70,6 @@ export const warmtestadGroningen: ProjectDetailData = {
   ],
   disciplines: [{ title: 'Procesautomatisering', href: '/wat-we-doen/procesautomatisering', type: 'Dienst' }],
   gallery: [],
-  cta: { title: 'Een procesautomatiseringsvraagstuk bespreken?', body: 'Bespreek de installatie, het proces en de gewenste technische samenhang met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
   seo: {
     title: 'Procesautomatisering WarmteStad Groningen | Powerspex',
     description: 'Projectreferentie over de engineering, levering en realisatie van procesautomatisering voor WarmteStad Groningen.',
