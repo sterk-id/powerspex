@@ -2,6 +2,8 @@
 
 Status: bron- en contentinventarisatie. Dit document publiceert geen projecten, wijzigt geen productiecontent en legt geen nieuwe claims vast. WarmteStad Groningen is de afgeronde pilot en valt buiten de telling en batches.
 
+Telling: 8 kandidaatprojecten buiten WarmteStad Groningen; Batch A: 4, Batch B: 3 en Batch C: 1.
+
 ## 1. Gebruikte bronnen en werkwijze
 
 ### Repository
