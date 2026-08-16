@@ -2,6 +2,7 @@ import * as migration_20260814_135408_initial_schema from './20260814_135408_ini
 import * as migration_20260814_135422_add_related_services from './20260814_135422_add_related_services';
 import * as migration_20260814_143719_add_service_capability_headings from './20260814_143719_add_service_capability_headings';
 import * as migration_20260816_185623_add_expertise_detail_fields from './20260816_185623_add_expertise_detail_fields';
+import * as migration_20260816_195925_add_project_detail_fields from './20260816_195925_add_project_detail_fields';
 
 export const migrations = [
   {
@@ -22,6 +23,11 @@ export const migrations = [
   {
     up: migration_20260816_185623_add_expertise_detail_fields.up,
     down: migration_20260816_185623_add_expertise_detail_fields.down,
-    name: '20260816_185623_add_expertise_detail_fields'
+    name: '20260816_185623_add_expertise_detail_fields',
+  },
+  {
+    up: migration_20260816_195925_add_project_detail_fields.up,
+    down: migration_20260816_195925_add_project_detail_fields.down,
+    name: '20260816_195925_add_project_detail_fields'
   },
 ];
