@@ -29,12 +29,17 @@ export function ServiceDetail({ service }: { service: ServiceDetailData }) {
         <div className="capability-grid">{service.capabilities.map((item, index) => <article key={item.title}><span>[{String(index + 1).padStart(2, '0')}]</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div>
       </div></section>}
 
+      {service.contentSections?.map((section) => <section className={`detail-content-section ${section.theme}`} key={`${section.eyebrow}-${section.title}`}><div className={`container detail-content-grid ${section.layout}`}>
+        <div className="detail-content-copy">{section.eyebrow && <span className={`eyebrow ${section.theme === 'dark' ? 'light' : ''}`}>{section.eyebrow}</span>}<h2>{section.title}<TitleDot title={section.title} /></h2><p>{section.body}</p></div>
+        {section.image && <div className="detail-content-image"><Picture src={section.image.src} alt={section.image.alt} /></div>}
+      </div></section>)}
+
       {service.expertise.map((item) => <section className="service-expertise" key={item.href}><div className="container expertise-feature">
         <div><span className="eyebrow light">Specialistische expertise</span><h2>{item.title}<span className="dot">.</span></h2></div>
         <div><p>{item.summary}</p><Link className="pill-button light-pill" href={item.href}>Meer over {item.title} <span aria-hidden="true">→</span></Link></div>
       </div></section>)}
 
-      {service.relatedServices.length > 0 && <section className="related-services-section"><div className="container"><span className="eyebrow">Aansluitende diensten</span><div className="related-services-grid">{service.relatedServices.map((item) => <article key={item.href}><div><h2>{item.title}<TitleDot title={item.title} /></h2><p>{item.summary}</p></div><Link className="text-link" href={item.href}>Meer over {item.title} <span aria-hidden="true">→</span></Link></article>)}</div></div></section>}
+      {service.relatedServices.length > 0 && <section className="related-services-section"><div className="container"><span className="eyebrow">{service.relatedServicesEyebrow || 'Aansluitende diensten'}</span><div className="related-services-grid">{service.relatedServices.map((item) => <article key={item.href}><div><h2>{item.title}<TitleDot title={item.title} /></h2><p>{item.summary}</p></div><Link className="text-link" href={item.href}>Meer over {item.title} <span aria-hidden="true">→</span></Link></article>)}</div></div></section>}
 
       {service.standards.length > 0 && <section className="standards-section"><div className="container"><span className="eyebrow">Kwaliteit & zekerheid</span><h2>Certificeringen & standaarden<span className="dot">.</span></h2><div className="standards-grid">{service.standards.map((item) => <article key={item.name}><small>{item.type}</small><h3>{item.name}</h3>{item.description && <p>{item.description}</p>}</article>)}</div></div></section>}
 

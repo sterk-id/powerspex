@@ -12,8 +12,10 @@ export type ServiceDetailData = {
   capabilitiesEyebrow?: string
   capabilitiesTitle?: string
   capabilities: Array<{ title: string; description: string }>
+  contentSections?: Array<{ eyebrow: string; title: string; body: string; image?: ImageData; layout: 'left' | 'right'; theme: 'light' | 'mist' | 'dark' }>
   expertise: Array<{ title: string; summary: string; href: string }>
   relatedServices: Array<{ title: string; summary: string; href: string }>
+  relatedServicesEyebrow?: string
   standards: Array<{ name: string; type: string; description: string }>
   process: Array<{ number: string; title: string; description: string }>
   projects: Array<{ title: string; meta: string; href: string; image: ImageData }>
