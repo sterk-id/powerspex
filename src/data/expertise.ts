@@ -40,3 +40,49 @@ export const cybersecurityOTSecurity: ExpertiseDetailData = {
   cta: { title: 'Een cybersecurityvraagstuk in een industriële omgeving?', body: 'Bespreek de automatiseringsomgeving, de technische context en het digitale veiligheidsvraagstuk met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
   seo: { title: 'Cybersecurity & OT-security | Powerspex', description: 'Specialistische cybersecurity en OT-security voor industriële automatiseringsomgevingen, in samenhang met software, besturing en procesautomatisering.', openGraphImage: { src: '/images/software-engineering.jpg', alt: 'Powerspex-medewerker werkt aan industriële besturingssoftware' } },
 }
+
+export const functionalSafety: ExpertiseDetailData = {
+  title: 'Functional Safety',
+  slug: 'functional-safety',
+  eyebrow: 'Specialistische expertise',
+  shortSummary: 'Functionele veiligheid voor instrumentatiesystemen die een veiligheidsfunctie uitvoeren binnen industriële processen.',
+  heroTitle: 'Veiligheidsfuncties als onderdeel van industriële automatisering',
+  heroIntro: 'Powerspex ontwerpt en bouwt veiligheidssystemen voor industriële processen. Functional Safety brengt de veiligheidsfunctie, het instrumentatiesysteem en de technische realisatie in samenhang.',
+  heroImage: { src: '/images/service-inspectie.jpg', alt: 'Powerspex-specialist bij een industrieel besturingspaneel' },
+  intro: {
+    title: 'Een eigen discipline naast de besturing',
+    body: 'Een veiligheidsfunctie bewaakt de grenzen van toegestane procescondities. Het instrumentatiesysteem dat zo’n functie uitvoert, wordt aangeduid als een Safety Instrumented System (SIS). Powerspex behandelt deze systemen als een specialistisch vakgebied naast de reguliere besturing en hardware-engineering.',
+    image: { src: '/images/project-engineering.jpg', alt: 'Twee Powerspex-medewerkers bespreken een technisch schema' },
+  },
+  capabilitiesEyebrow: 'Functional Safety',
+  capabilitiesTitle: 'Expertisegebieden',
+  capabilities: [
+    { title: 'Veiligheidsfuncties', description: 'Instrumentatiefuncties die de grenzen van toegestane procescondities bewaken.' },
+    { title: 'Safety Instrumented Systems', description: 'Ontwerp en constructie van instrumentatiesystemen die een veiligheidsfunctie uitvoeren.' },
+    { title: 'Functional Safety Management', description: 'Processen, systemen en organisatorische procedures voor het ontwerpen en bouwen van een veiligheidssysteem.' },
+    { title: 'Realisatie van veiligheidssystemen', description: 'Planmatig ontwerpen, bouwen, verifiëren en valideren van een veiligheidssysteem binnen de afgesproken scope.' },
+  ],
+  relatedServices: [{
+    title: 'Hardware engineering',
+    summary: 'Functional Safety kan specialistisch aansluiten op het elektrotechnisch ontwerp van industriële besturingen en veiligheidssystemen.',
+    href: '/wat-we-doen/hardware-engineering',
+  }],
+  standards: [
+    { name: 'IEC 61508', type: 'Norm / standaard', description: 'Powerspex heeft de processen voor het ontwerp en de constructie van veiligheidssystemen op deze standaard ingericht.' },
+    { name: 'IEC 61511', type: 'Norm / standaard', description: 'Deze van IEC 61508 afgeleide standaard is specifiek van toepassing binnen de procesindustrie.' },
+  ],
+  process: [],
+  projects: [],
+  faq: [
+    { question: 'Wat is Functional Safety?', answer: 'Functional Safety betreft instrumentatiesystemen die bedoeld zijn om een veiligheidsfunctie uit te voeren. Een veiligheidsfunctie bewaakt de grenzen van toegestane procescondities.' },
+    { question: 'Wat is een Safety Instrumented System?', answer: 'Een Safety Instrumented System, afgekort SIS, is een instrumentatiesysteem dat is bedoeld om een veiligheidsfunctie uit te voeren.' },
+    { question: 'Wat betekent SIL binnen Functional Safety?', answer: 'SIL staat voor Safety Integrity Level. Het is een begrip binnen Functional Safety dat samenhangt met de eisen aan de betrouwbaarheid en faalkans van een veiligheidsfunctie. Welke eisen gelden, wordt per veiligheidsfunctie bepaald.' },
+    { question: 'Wat is het verschil tussen Functional Safety en Explosieveiligheid?', answer: 'Functional Safety richt zich op systemen die een veiligheidsfunctie uitvoeren. Explosieveiligheid richt zich op veiligheid in omgevingen waar een explosieve atmosfeer kan voorkomen. Het zijn verschillende veiligheidsdisciplines.' },
+  ],
+  cta: { title: 'Een vraagstuk rond functionele veiligheid?', body: 'Bespreek de veiligheidsfunctie, het industriële proces en de technische context met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
+  seo: {
+    title: 'Functional Safety | Powerspex',
+    description: 'Functional Safety voor industriële processen: veiligheidsfuncties, Safety Instrumented Systems en de realisatie van veiligheidssystemen.',
+    openGraphImage: { src: '/images/service-inspectie.jpg', alt: 'Powerspex-specialist bij een industrieel besturingspaneel' },
+  },
+}
