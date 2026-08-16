@@ -16,11 +16,19 @@ function ProjectHeader({ image }: { image: ImageData }) {
   </div>
 }
 
+function assetKey(src?: string) {
+  return src?.split(/[?#]/, 1)[0].replace(/\/$/, '') ?? ''
+}
+
 export function ProjectDetail({ project }: { project: ProjectDetailData }) {
+  const headerAsset = assetKey(project.image.src)
+  const leadGalleryItem = project.gallery.find((item) => assetKey(item.image.src) !== headerAsset)
+  const gallery = project.gallery.filter((item) => item !== leadGalleryItem && assetKey(item.image.src) !== headerAsset)
   const facts = [
     project.client ? { label: 'Klant', value: project.client } : undefined,
     project.sector ? { label: 'Sector', value: project.sector } : undefined,
-    project.period || project.year ? { label: 'Jaar', value: project.period || project.year || '' } : undefined,
+    project.year ? { label: 'Realisatie', value: project.year } : undefined,
+    project.period ? { label: 'Periode', value: project.period } : undefined,
     project.summary ? { label: 'Scope', value: project.summary } : undefined,
   ].filter(Boolean) as Array<{ label: string; value: string }>
 
@@ -28,8 +36,8 @@ export function ProjectDetail({ project }: { project: ProjectDetailData }) {
     <ProjectHeader image={project.image} />
     <article className="project-case container">
       <h1>{project.title}</h1>
-      <div className="project-case-grid">
-        <figure className="project-lead-image"><ProjectImage image={project.image} priority /></figure>
+      <div className={`project-case-grid${leadGalleryItem ? '' : ' without-lead-image'}`}>
+        {leadGalleryItem && <figure className="project-lead-image"><ProjectImage image={leadGalleryItem.image} /></figure>}
         <div className="project-story">
           {project.contentSections.map((section) => <section className={`project-story-section ${section.theme}`} key={`${section.eyebrow}-${section.title}`}>
             <div className={`project-story-copy ${section.layout}`}>
@@ -46,7 +54,7 @@ export function ProjectDetail({ project }: { project: ProjectDetailData }) {
       </div>
     </article>
 
-    {project.gallery.length > 0 && <section className="project-gallery"><div className="container"><span className="eyebrow">Projectbeelden</span><h2>In de praktijk<span className="dot">.</span></h2><div className="gallery-grid">{project.gallery.map((item, index) => <figure key={`${item.image.src}-${index}`}><div><ProjectImage image={item.image} /></div>{item.caption && <figcaption>{item.caption}</figcaption>}</figure>)}</div></div></section>}
+    {gallery.length > 0 && <section className="project-gallery"><div className="container"><span className="eyebrow">Projectbeelden</span><h2>In de praktijk<span className="dot">.</span></h2><div className="gallery-grid">{gallery.map((item, index) => <figure key={`${item.image.src}-${index}`}><div><ProjectImage image={item.image} /></div>{item.caption && <figcaption>{item.caption}</figcaption>}</figure>)}</div></div></section>}
 
     {project.cta && <section className="service-cta project-cta"><div className="container service-cta-inner"><div><span className="eyebrow">Maak contact</span><h2>{project.cta.title}<span className="dot">.</span></h2></div><div><p>{project.cta.body}</p><Link className="pill-button" href={project.cta.buttonHref}>{project.cta.buttonLabel} <span aria-hidden="true">↗</span></Link></div></div></section>}
   </main>
