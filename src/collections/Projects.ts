@@ -13,6 +13,7 @@ export const Projects: CollectionConfig = {
       name: 'client',
       label: 'Opdrachtgever',
       type: 'text',
+      access: { read: ({ req, siblingData }) => Boolean(req.user) || siblingData?.clientIsPublic === true },
       admin: { description: 'Alleen invullen als de opdrachtgever openbaar en inhoudelijk goedgekeurd is.' },
     },
     {
@@ -25,6 +26,7 @@ export const Projects: CollectionConfig = {
       name: 'endClient',
       label: 'Eindklant',
       type: 'text',
+      access: { read: ({ req, siblingData }) => Boolean(req.user) || siblingData?.endClientIsPublic === true },
       admin: { description: 'Alleen invullen vanuit een gevalideerde bron; nooit afleiden uit de opdrachtgever.' },
     },
     {
@@ -38,6 +40,7 @@ export const Projects: CollectionConfig = {
       name: 'location',
       label: 'Projectlocatie',
       type: 'text',
+      access: { read: ({ req, siblingData }) => Boolean(req.user) || siblingData?.locationIsPublic === true },
       admin: { description: 'Alleen invullen vanuit een gevalideerde bron; nooit afleiden uit klant, sector, titel of adres.' },
     },
     {
@@ -54,8 +57,8 @@ export const Projects: CollectionConfig = {
       type: 'array',
       admin: { description: 'Voeg alleen bronbare namen en rollen toe. Elk item heeft een eigen publicatiekeuze.' },
       fields: [
-        { name: 'name', label: 'Naam', type: 'text', required: true },
-        { name: 'role', label: 'Rol', type: 'text' },
+        { name: 'name', label: 'Naam', type: 'text', required: true, access: { read: ({ req, siblingData }) => Boolean(req.user) || siblingData?.isPublic === true } },
+        { name: 'role', label: 'Rol', type: 'text', access: { read: ({ req, siblingData }) => Boolean(req.user) || siblingData?.isPublic === true } },
         { name: 'isPublic', label: 'Mag openbaar worden getoond', type: 'checkbox', defaultValue: false },
       ],
     },

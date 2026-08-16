@@ -45,6 +45,8 @@ Het detailtemplate voegt generieke presentatievelden toe:
 
 Samenwerkingspartijen worden als naam, optionele rol en publicatievlag vastgelegd. Alleen items met `isPublic=true` verschijnen compact in de projectmetadata. Er is bewust geen aparte partnercollection.
 
+De namen van opdrachtgever, eindklant en niet-openbare partners en de projectlocatie hebben daarnaast field-level read access. Een unauthenticated Payload-response retourneert deze waarden dus niet wanneer hun publicatievlag uitstaat. Alle publieke projectkaarten en projectpagina's gebruiken dezelfde veilige mapper; Payload Local API omzeilt access-control standaard, maar geen publieke route retourneert het onbewerkte projectdocument.
+
 Editors mogen klantnamen, klantlogo's of herleidbare klantinformatie alleen opnemen als de publicatiestatus en bron expliciet zijn goedgekeurd. Gebruik nooit een klantlogo zonder goedgekeurd mediarecord.
 
 De groep `editorial` is uitsluitend intern en registreert bronlinks/notities, de controledatum, inhoudelijke goedkeuring, beeldrechtenstatus en een optionele beeldcredit. Field-level read access sluit deze groep uit van publieke API-responses; de frontendmapper leest of exposeert deze data bovendien nergens. Er worden geen persoonlijke goedkeurders opgeslagen.

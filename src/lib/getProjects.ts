@@ -8,7 +8,8 @@ type Row = Record<string, unknown>
 const row = (value: unknown): Row | undefined => typeof value === 'object' && value !== null ? value as Row : undefined
 const text = (value: unknown, fallback = '') => typeof value === 'string' && value.trim() ? value.trim() : fallback
 const list = (value: unknown): Row[] => Array.isArray(value) ? value.map(row).filter(Boolean) as Row[] : []
-const contains = (value: string, needle: string) => Boolean(needle) && value.toLocaleLowerCase('nl-NL').includes(needle.toLocaleLowerCase('nl-NL'))
+const escapePattern = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+const contains = (value: string, needle: string) => Boolean(needle) && new RegExp(`(?<![\\p{L}\\p{N}])${escapePattern(needle)}(?![\\p{L}\\p{N}])`, 'iu').test(value)
 const publicText = (value: unknown, restrictedTerms: string[], fallback = '') => {
   const result = text(value, fallback)
   return restrictedTerms.some((term) => contains(result, term)) ? '' : result
@@ -21,7 +22,7 @@ const media = (value: unknown, fallback: ImageData, restrictedTerms: string[]): 
   return { src: src || undefined, alt }
 }
 
-function mapProject(source: Row): ProjectDetailData {
+export function mapProject(source: Row): ProjectDetailData {
   const client = text(source.client)
   const clientIsPublic = source.clientIsPublic === true
   const endClient = text(source.endClient)
@@ -92,6 +93,10 @@ function mapProject(source: Row): ProjectDetailData {
       openGraphImage: row(seo?.openGraphImage) ? media(seo?.openGraphImage, image, restrictedTerms) : image,
     },
   }
+}
+
+export function mapPublicProjectSummary(source: unknown): ProjectSummaryData {
+  return mapProject(row(source) ?? {})
 }
 
 function completeProject(data: ProjectDetailData): ProjectDetailData {
