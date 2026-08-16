@@ -70,6 +70,64 @@ export const projectEngineering: ServiceDetailData = {
   },
 }
 
+export const processAutomation: ServiceDetailData = {
+  title: 'Procesautomatisering',
+  slug: 'procesautomatisering',
+  eyebrow: 'Engineering & automatisering',
+  shortSummary: 'Automatisering en optimalisatie van industriële processen, met samenhang tussen proces, besturing en technische disciplines.',
+  heroTitle: 'Grip op industriële processen',
+  heroIntro: 'Powerspex automatiseert en optimaliseert industriële processen door het proces, de besturing en de technische omgeving als één samenhangend vraagstuk te benaderen.',
+  heroImage: { src: '/images/procesautomatisering.jpg', alt: 'Medewerker bij apparatuur in een industriële procesinstallatie' },
+  intro: {
+    title: 'Het proces staat centraal',
+    body: 'Procesautomatisering gaat over het bredere automatiseringsvraagstuk rond een industriële installatie. Software Engineering is de softwarematige discipline daarbinnen; Procesautomatisering brengt die besturing samen met het proces, de hardware en de uitvoering.',
+    image: { src: '/images/software-engineering.jpg', alt: 'Powerspex-medewerker werkt aan industriële besturingssoftware' },
+  },
+  capabilities: [
+    { title: 'Proces en besturing', description: 'De gewenste procesvoering vertalen naar een samenhangend automatiseringsvraagstuk.' },
+    { title: 'Industriële besturing', description: 'Besturing voor het bewaken en ondersteunen van industriële processen.' },
+    { title: 'Procesoptimalisatie', description: 'De automatisering gericht uitwerken rond de gewenste werking van het industriële proces.' },
+    { title: 'Technische integratie', description: 'Proces, besturing, visualisatie en de technische omgeving van de installatie op elkaar afstemmen.' },
+    { title: 'Testen', description: 'De werking van de automatisering gecontroleerd toetsen voordat deze in de installatie wordt toegepast.' },
+    { title: 'Inbedrijfstelling', description: 'De automatisering samen met de industriële installatie in werking brengen.' },
+  ],
+  expertise: [{
+    title: 'Cybersecurity & OT-security',
+    summary: 'Digitale veiligheid kan vanaf het ontwerp worden meegenomen in industriële automatiseringsvraagstukken, afgestemd op de installatie en de OT-omgeving.',
+    href: '/expertises/cybersecurity-ot-security',
+  }],
+  relatedServices: [
+    { title: 'Project engineering', summary: 'Project Engineering kan de integrale technische uitwerking en coördinatie rond het automatiseringsvraagstuk verzorgen.', href: '/wat-we-doen/project-engineering' },
+    { title: 'Software engineering', summary: 'Software Engineering werkt de softwarematige besturing en visualisatie binnen de procesautomatisering uit.', href: '/wat-we-doen/software-engineering' },
+    { title: 'Hardware engineering', summary: 'Hardware Engineering verzorgt de elektrotechnische ontwerpdiscipline voor industriële besturingen.', href: '/wat-we-doen/hardware-engineering' },
+  ],
+  standards: [],
+  process: [
+    { number: '01', title: 'Proces en uitgangssituatie', description: 'We brengen het industriële proces, de installatie en de gewenste werking in beeld.' },
+    { number: '02', title: 'Automatiseringsvraagstuk', description: 'De benodigde besturing, technische samenhang en betrokken disciplines worden uitgewerkt.' },
+    { number: '03', title: 'Engineering en integratie', description: 'Proces, besturing en technische omgeving worden als samenhangende oplossing uitgewerkt.' },
+    { number: '04', title: 'Testen en inbedrijfstelling', description: 'De werking wordt gecontroleerd en de automatisering wordt samen met de installatie in bedrijf gesteld.' },
+  ],
+  projects: [{
+    title: 'Procesautomatisering WarmteStad Groningen',
+    meta: 'Industrie & productie · 2021, 2023 & 2024',
+    href: '/projecten/procesautomatisering-warmtestad-groningen',
+    image: { src: '/images/project-warmtestad-groningen.jpg', alt: 'Procesinstallatie van WarmteStad Groningen' },
+  }],
+  faq: [
+    { question: 'Wat is het verschil tussen Procesautomatisering en Software Engineering?', answer: 'Procesautomatisering richt zich op het bredere automatiseringsvraagstuk rond het industriële proces. Software Engineering is de softwarematige discipline voor onder meer besturing, visualisatie en integratie daarbinnen.' },
+    { question: 'Kan Procesautomatisering zelfstandig worden afgenomen?', answer: 'Ja. Procesautomatisering is een zelfstandige dienst. Welke technische disciplines binnen de opdracht nodig zijn, wordt bepaald vanuit het proces en de bestaande installatie.' },
+    { question: 'Werkt Powerspex ook met een bestaande installatie?', answer: 'Ja. De bestaande proces- en installatiesituatie wordt eerst in beeld gebracht. Op basis daarvan wordt bepaald welke automatisering, integratie en aanpak passend zijn.' },
+    { question: 'Hoe wordt cybersecurity meegenomen?', answer: 'Cybersecurity en OT-security kunnen vanaf het ontwerp worden meegenomen, afgestemd op de installatie en de industriële omgeving.' },
+  ],
+  cta: { title: 'Een industrieel proces automatiseren of optimaliseren?', body: 'Bespreek het proces, de bestaande installatie en de gewenste werking met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
+  seo: {
+    title: 'Procesautomatisering | Powerspex',
+    description: 'Procesautomatisering voor industriële processen, met samenhang tussen proces, besturing, technische integratie en inbedrijfstelling.',
+    openGraphImage: { src: '/images/procesautomatisering.jpg', alt: 'Medewerker bij apparatuur in een industriële procesinstallatie' },
+  },
+}
+
 export const softwareEngineering: ServiceDetailData = {
   title: 'Software engineering',
   slug: 'software-engineering',
