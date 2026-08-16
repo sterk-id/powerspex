@@ -277,3 +277,54 @@ export const production: ServiceDetailData = {
     openGraphImage: { src: '/images/people-workshop.jpg', alt: 'Powerspex-medewerker in een industriële installatie' },
   },
 }
+
+export const serviceMaintenanceInspection: ServiceDetailData = {
+  title: 'Service, onderhoud & inspectie',
+  slug: 'service-onderhoud-inspectie',
+  eyebrow: 'Realisatie & lifecycle',
+  shortSummary: 'Ondersteuning van industriële installaties met service, onderhoud, inspecties en modificaties op locatie.',
+  heroTitle: 'Ondersteuning gedurende de operationele lifecycle',
+  heroIntro: 'Powerspex ondersteunt industriële installaties met service, onderhoud, inspecties en modificaties, uitgevoerd door technische medewerkers die ook op locatie werken.',
+  heroImage: { src: '/images/service-inspectie.jpg', alt: 'Medewerker controleert een industriële besturingskast met technische documentatie' },
+  intro: {
+    title: 'Eigen buitendienst voor werkzaamheden op locatie',
+    body: 'Powerspex beschikt over eigen buitendienstmedewerkers voor werkzaamheden op locatie. Daarmee kan Powerspex industriële installaties ook tijdens de operationele lifecycle ondersteunen. Service, onderhoud en inspectie zijn als zelfstandige dienst af te nemen; andere technische disciplines worden alleen betrokken wanneer het vraagstuk daarom vraagt.',
+    image: { src: '/images/procesautomatisering.jpg', alt: 'Medewerker op locatie in een industriële procesinstallatie' },
+  },
+  capabilitiesEyebrow: 'Operationele lifecycle',
+  capabilitiesTitle: 'Service, onderhoud en werkzaamheden op locatie',
+  capabilities: [
+    { title: 'Service', description: 'Technische ondersteuning voor industriële installaties gedurende de operationele lifecycle.' },
+    { title: 'Onderhoud', description: 'Onderhoudswerkzaamheden aan industriële installaties op locatie.' },
+    { title: 'Inspecties', description: 'Inspectiewerkzaamheden aan industriële installaties binnen de afgesproken opdracht.' },
+    { title: 'Storingen', description: 'Technische ondersteuning bij storingen aan industriële installaties.' },
+    { title: 'Modificaties', description: 'Technische wijzigingen aan bestaande industriële installaties.' },
+    { title: 'Werkzaamheden op locatie', description: 'Eigen buitendienstmedewerkers voeren werkzaamheden uit bij industriële installaties op locatie.' },
+  ],
+  expertise: [],
+  relatedServices: [
+    { title: 'Hardware engineering', summary: 'Wanneer een modificatie elektrotechnische uitwerking vraagt, kan Hardware Engineering als afzonderlijke discipline aansluiten.', href: '/wat-we-doen/hardware-engineering' },
+    { title: 'Software engineering', summary: 'Software Engineering kan aansluiten wanneer werkzaamheden aan de industriële besturing of visualisatie nodig zijn.', href: '/wat-we-doen/software-engineering' },
+    { title: 'Productie', summary: 'Productie kan als afzonderlijke dienst aansluiten wanneer een paneel of kast gerealiseerd moet worden.', href: '/wat-we-doen/productie' },
+  ],
+  standards: [],
+  process: [
+    { number: '01', title: 'Installatie en vraagstuk', description: 'We brengen de bestaande installatie, de situatie op locatie en de gevraagde ondersteuning in beeld.' },
+    { number: '02', title: 'Scope en voorbereiding', description: 'De werkzaamheden en benodigde technische afstemming worden binnen de opdracht bepaald.' },
+    { number: '03', title: 'Werkzaamheden op locatie', description: 'Eigen buitendienstmedewerkers voeren de afgesproken werkzaamheden aan de installatie uit.' },
+    { number: '04', title: 'Technische afronding', description: 'De uitgevoerde werkzaamheden worden binnen de afgesproken opdracht afgerond.' },
+  ],
+  projects: [],
+  faq: [
+    { question: 'Beschikt Powerspex over eigen buitendienstmedewerkers?', answer: 'Ja. Powerspex beschikt over eigen buitendienstmedewerkers voor werkzaamheden op locatie bij industriële installaties.' },
+    { question: 'Kan Service en onderhoud zelfstandig worden afgenomen?', answer: 'Ja. Service en onderhoud zijn als zelfstandige dienst af te nemen. Andere Powerspex-diensten worden alleen betrokken wanneer de opdracht daarom vraagt.' },
+    { question: 'Werkt Powerspex ook aan bestaande installaties?', answer: 'Ja. Service, onderhoud, inspecties en modificaties richten zich op ondersteuning van industriële installaties gedurende de operationele lifecycle.' },
+    { question: 'Welke inspecties voert Powerspex uit?', answer: 'Powerspex voert inspectiewerkzaamheden aan industriële installaties uit. Specifieke inspectietypen zijn in de beschikbare, goedgekeurde content nog niet nader vastgelegd en worden daarom hier niet genoemd.' },
+  ],
+  cta: { title: 'Ondersteuning nodig bij een industriële installatie?', body: 'Bespreek de installatie, de situatie op locatie en de benodigde service, onderhouds- of inspectiewerkzaamheden met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
+  seo: {
+    title: 'Service, onderhoud & inspectie | Powerspex',
+    description: 'Service, onderhoud, inspecties en modificaties aan industriële installaties door eigen buitendienstmedewerkers van Powerspex.',
+    openGraphImage: { src: '/images/service-inspectie.jpg', alt: 'Medewerker controleert een industriële besturingskast met technische documentatie' },
+  },
+}
