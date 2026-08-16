@@ -281,6 +281,8 @@ WarmteStad (`project-warmtestad-groningen.jpg`) is al als pilot afgehandeld en s
 
 ## 6. Generieke CMS-gaps
 
+Technische status: de vier hieronder beschreven structuren zijn in stap 10 generiek aan het Projects-model toegevoegd. De inhoudelijke vragen, bronvalidatie en Batch A/B/C-indeling blijven ongewijzigd; deze technische oplossing maakt geen enkel project automatisch publiceerbaar.
+
 Het huidige Projects-model is voldoende voor een minimale titel, opdrachtgever, jaar/periode, scope, relaties, contentsecties, beeld, CTA en SEO. Voor de gevonden portefeuille ontbreken vier generieke, herhaaldelijk relevante structuren:
 
 1. **Eindklant naast opdrachtgever** — zes openbare referenties onderscheiden `Klantnaam` en `Eindklant`. Eén `client`-veld verliest die betekenis of dwingt namen in vrije tekst. Nodig als optioneel tweede naamveld met eigen publicatiegoedkeuring.

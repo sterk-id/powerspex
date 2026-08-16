@@ -20,6 +20,13 @@ De bestaande velden behouden hun betekenis:
 - `featured` en `featuredOrder`;
 - relaties `services` en `expertise`.
 
+Projectmetadata onderscheidt daarnaast expliciet:
+
+- `client` als opdrachtgever en optioneel `endClient` als eindklant, elk met een eigen publicatievlag;
+- een optionele, gevalideerde `location` met eigen publicatievlag;
+- optionele `partners`, waarbij ieder item afzonderlijk voor publicatie wordt vrijgegeven;
+- de interne groep `editorial` voor bronnen, controledatum, inhoudelijke goedkeuring en beeldrechtenstatus.
+
 Het detailtemplate voegt generieke presentatievelden toe:
 
 - `heroEyebrow`, `heroTitle`, `heroIntro`;
@@ -32,11 +39,23 @@ Het detailtemplate voegt generieke presentatievelden toe:
 
 `clientIsPublic=true` is een harde voorwaarde voor publieke weergave van `client`. Bij `false` gebruikt de frontend de klantnaam niet in projectmetadata, hero, SEO, Open Graph-alttekst of kaartweergave. Tekstvelden die de ingevulde klantnaam bevatten worden bij een niet-openbare klant niet gerenderd; de publieke titel valt zo nodig terug op een neutrale sectoromschrijving.
 
+`endClient` is een afzonderlijke eindklant en wordt nooit uit de opdrachtgever afgeleid. De eindklant verschijnt uitsluitend wanneer het veld gevuld is én `endClientIsPublic=true`. Opdrachtgever en eindklant hebben dus onafhankelijke publicatiebesluiten.
+
+`location` is een gecontroleerd tekstveld, geen adres- of mapsysteem. Een redacteur vult het uitsluitend vanuit een gevalideerde bron in; de waarde wordt nooit afgeleid uit klant, sector, titel of adres en verschijnt alleen bij `locationIsPublic=true`.
+
+Samenwerkingspartijen worden als naam, optionele rol en publicatievlag vastgelegd. Alleen items met `isPublic=true` verschijnen compact in de projectmetadata. Er is bewust geen aparte partnercollection.
+
 Editors mogen klantnamen, klantlogo's of herleidbare klantinformatie alleen opnemen als de publicatiestatus en bron expliciet zijn goedgekeurd. Gebruik nooit een klantlogo zonder goedgekeurd mediarecord.
+
+De groep `editorial` is uitsluitend intern en registreert bronlinks/notities, de controledatum, inhoudelijke goedkeuring, beeldrechtenstatus en een optionele beeldcredit. Field-level read access sluit deze groep uit van publieke API-responses; de frontendmapper leest of exposeert deze data bovendien nergens. Er worden geen persoonlijke goedkeurders opgeslagen.
+
+Beeldrechtenstatus gebruikt `unknown`, `pending`, `approved` of `rejected`. Alleen `approved` betekent dat beeldgebruik inhoudelijk is vrijgegeven; de status publiceert nooit automatisch media of een projectrecord.
 
 ## Overzicht en detail
 
 Het overzicht gebruikt titel, beeld, sector, jaar/periode en alleen bij openbare toestemming de opdrachtgever. Het detail toont uitsluitend beschikbare feiten; lege metadata, relaties, galerieën en CTA's leveren geen leeg blok op.
+
+Gebruik `year` / **Realisatie** voor één formeel realisatie- of eindjaar wanneer dat letterlijk bronbaar is. Gebruik `period` / **Periode** voor een vrije maar brongetrouwe projectperiode, bijvoorbeeld `2021, 2023 & 2024`, `2022/2023`, `Sinds 2006` of `Al jaren`. Zet een periode nooit kunstmatig om naar één jaartal.
 
 ## Contentsecties
 
