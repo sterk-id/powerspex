@@ -39,9 +39,7 @@ export const projectEngineering: ServiceDetailData = {
     { title: 'Technisch vraagstuk structureren', description: 'De technische uitgangspunten, samenhang en gewenste uitvoering van het project helder maken.' },
     { title: 'Technische uitwerking', description: 'Het vraagstuk uitwerken tot een technisch en uitvoerbaar industrieel project.' },
     { title: 'Disciplines samenbrengen', description: 'De technische disciplines die voor het project nodig zijn inhoudelijk op elkaar afstemmen.' },
-    { title: 'Projectvoorbereiding', description: 'De technische basis voorbereiden die nodig is om het project gericht uit te voeren.' },
-    { title: 'Projectbeheersing', description: 'Overzicht houden op de technische samenhang en voortgang binnen de afgesproken projectscope.' },
-    { title: 'Begeleiding richting uitvoering', description: 'De technische uitwerking afstemmen en begeleiden richting de uitvoering van het project.' },
+    { title: 'Projectbeheersing', description: 'Overzicht houden op de technische samenhang binnen het industriële project.' },
   ],
   expertise: [],
   relatedServices: [
@@ -54,13 +52,11 @@ export const projectEngineering: ServiceDetailData = {
     { number: '01', title: 'Vraagstuk en uitgangspunten', description: 'We brengen het technische vraagstuk, de context en de gewenste uitvoering in beeld.' },
     { number: '02', title: 'Structuur en samenhang', description: 'We bepalen welke technische disciplines en onderlinge afstemming voor het project nodig zijn.' },
     { number: '03', title: 'Technische uitwerking', description: 'Het vraagstuk wordt uitgewerkt tot een uitvoerbare technische basis.' },
-    { number: '04', title: 'Afstemming richting uitvoering', description: 'De technische uitwerking wordt afgestemd met de partijen en disciplines die bij de uitvoering betrokken zijn.' },
   ],
   projects: [],
   faq: [
-    { question: 'Kan Project Engineering zelfstandig worden ingezet?', answer: 'Ja. Project Engineering kan als zelfstandige opdracht worden ingezet om een technisch vraagstuk te structureren en uit te werken. Andere Powerspex-diensten zijn alleen aanvullend wanneer de opdracht daarom vraagt.' },
     { question: 'Kan Powerspex meerdere technische disciplines combineren?', answer: 'Ja. Project Engineering richt zich juist op de samenhang en afstemming tussen de technische disciplines die voor het project nodig zijn.' },
-    { question: 'Kan Powerspex aansluiten op een bestaand project?', answer: 'Ja. De bestaande uitgangspunten, projectfase en beschikbare technische informatie worden eerst in beeld gebracht. Daarna wordt bepaald welke projectmatige engineering en afstemming nodig is.' },
+    { question: 'Wat is het verschil met Hardware en Software Engineering?', answer: 'Project Engineering richt zich op de integrale technische uitwerking en coördinatie van het project. Hardware Engineering en Software Engineering zijn afzonderlijke ontwerpdisciplines daarbinnen.' },
   ],
   cta: { title: 'Een technisch project uitvoerbaar maken?', body: 'Bespreek het vraagstuk, de bestaande uitgangspunten en de gewenste uitvoering met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
   seo: {
@@ -116,11 +112,9 @@ export const processAutomation: ServiceDetailData = {
   }],
   faq: [
     { question: 'Wat is het verschil tussen Procesautomatisering en Software Engineering?', answer: 'Procesautomatisering richt zich op het bredere automatiseringsvraagstuk rond het industriële proces. Software Engineering is de softwarematige discipline voor onder meer besturing, visualisatie en integratie daarbinnen.' },
-    { question: 'Kan Procesautomatisering zelfstandig worden afgenomen?', answer: 'Ja. Procesautomatisering is een zelfstandige dienst. Welke technische disciplines binnen de opdracht nodig zijn, wordt bepaald vanuit het proces en de bestaande installatie.' },
-    { question: 'Werkt Powerspex ook met een bestaande installatie?', answer: 'Ja. De bestaande proces- en installatiesituatie wordt eerst in beeld gebracht. Op basis daarvan wordt bepaald welke automatisering, integratie en aanpak passend zijn.' },
     { question: 'Hoe wordt cybersecurity meegenomen?', answer: 'Cybersecurity en OT-security kunnen vanaf het ontwerp worden meegenomen, afgestemd op de installatie en de industriële omgeving.' },
   ],
-  cta: { title: 'Een industrieel proces automatiseren of optimaliseren?', body: 'Bespreek het proces, de bestaande installatie en de gewenste werking met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
+  cta: { title: 'Een industrieel proces automatiseren of optimaliseren?', body: 'Bespreek het proces, de technische omgeving en de gewenste werking met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
   seo: {
     title: 'Procesautomatisering | Powerspex',
     description: 'Procesautomatisering voor industriële processen, met samenhang tussen proces, besturing, technische integratie en inbedrijfstelling.',
@@ -288,7 +282,7 @@ export const serviceMaintenanceInspection: ServiceDetailData = {
   heroImage: { src: '/images/service-inspectie.jpg', alt: 'Medewerker controleert een industriële besturingskast met technische documentatie' },
   intro: {
     title: 'Eigen buitendienst voor werkzaamheden op locatie',
-    body: 'Powerspex beschikt over eigen buitendienstmedewerkers voor werkzaamheden op locatie. Daarmee kan Powerspex industriële installaties ook tijdens de operationele lifecycle ondersteunen. Service, onderhoud en inspectie zijn als zelfstandige dienst af te nemen; andere technische disciplines worden alleen betrokken wanneer het vraagstuk daarom vraagt.',
+    body: 'Powerspex beschikt over eigen buitendienstmedewerkers voor werkzaamheden op locatie. Daarmee kan Powerspex industriële installaties ook tijdens de operationele lifecycle ondersteunen met service, onderhoud en inspecties.',
     image: { src: '/images/procesautomatisering.jpg', alt: 'Medewerker op locatie in een industriële procesinstallatie' },
   },
   capabilitiesEyebrow: 'Operationele lifecycle',
@@ -317,9 +311,7 @@ export const serviceMaintenanceInspection: ServiceDetailData = {
   projects: [],
   faq: [
     { question: 'Beschikt Powerspex over eigen buitendienstmedewerkers?', answer: 'Ja. Powerspex beschikt over eigen buitendienstmedewerkers voor werkzaamheden op locatie bij industriële installaties.' },
-    { question: 'Kan Service en onderhoud zelfstandig worden afgenomen?', answer: 'Ja. Service en onderhoud zijn als zelfstandige dienst af te nemen. Andere Powerspex-diensten worden alleen betrokken wanneer de opdracht daarom vraagt.' },
     { question: 'Werkt Powerspex ook aan bestaande installaties?', answer: 'Ja. Service, onderhoud, inspecties en modificaties richten zich op ondersteuning van industriële installaties gedurende de operationele lifecycle.' },
-    { question: 'Welke inspecties voert Powerspex uit?', answer: 'Powerspex voert inspectiewerkzaamheden aan industriële installaties uit. Specifieke inspectietypen zijn in de beschikbare, goedgekeurde content nog niet nader vastgelegd en worden daarom hier niet genoemd.' },
   ],
   cta: { title: 'Ondersteuning nodig bij een industriële installatie?', body: 'Bespreek de installatie, de situatie op locatie en de benodigde service, onderhouds- of inspectiewerkzaamheden met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
   seo: {
