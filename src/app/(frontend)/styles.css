@@ -102,11 +102,13 @@ h3 { font-size: var(--step-2); }
 .project-meta { position: sticky; grid-area: meta; top: 2rem; padding-left: 1.9rem; border-left: 1px solid var(--psx-line); }
 .project-facts { margin: 0; }
 .project-facts div { padding: 0 0 1.6rem; margin-bottom: 1.6rem; border-bottom: 1px solid var(--psx-line); }
-.project-facts dt, .project-meta-disciplines h2 { margin-bottom: .25rem; color: #777; font-size: .9rem; font-weight: 400; text-transform: none; }
+.project-facts dt, .project-meta-partners h2, .project-meta-disciplines h2 { margin-bottom: .25rem; color: #777; font-size: .9rem; font-weight: 400; text-transform: none; }
 .project-facts dd { margin: 0; color: var(--psx-navy); font-size: 1.05rem; font-weight: 600; line-height: 1.4; }
-.project-meta-disciplines h2 { letter-spacing: 0; line-height: 1.4; }
-.project-meta-disciplines ul { margin: .65rem 0 0; padding-left: 1.1rem; }
-.project-meta-disciplines li { margin-bottom: .5rem; color: var(--psx-navy); font-weight: 600; }
+.project-meta-partners { padding-bottom: 1.6rem; margin-bottom: 1.6rem; border-bottom: 1px solid var(--psx-line); }
+.project-meta-partners h2, .project-meta-disciplines h2 { letter-spacing: 0; line-height: 1.4; }
+.project-meta-partners ul, .project-meta-disciplines ul { margin: .65rem 0 0; padding-left: 1.1rem; }
+.project-meta-partners li, .project-meta-disciplines li { margin-bottom: .5rem; color: var(--psx-navy); font-weight: 600; }
+.project-meta-partners span { color: var(--psx-muted); font-weight: 400; }
 .project-meta-disciplines a:hover { color: var(--psx-blue); }
 .overview-hero { position: relative; min-height: 38rem; display: flex; align-items: center; isolation: isolate; overflow: hidden; background: var(--psx-deep); color: var(--psx-white); clip-path: polygon(0 0, 100% 0, 100% 92%, 7% 92%, 0 100%); }
 .overview-hero-content { padding-top: 8rem; }

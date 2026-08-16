@@ -26,12 +26,14 @@ export function ProjectDetail({ project }: { project: ProjectDetailData }) {
   const gallery = project.gallery.filter((item) => item !== leadGalleryItem && assetKey(item.image.src) !== headerAsset)
   const facts = [
     project.client ? { label: 'Klant', value: project.client } : undefined,
+    project.endClient ? { label: 'Eindklant', value: project.endClient } : undefined,
     project.sector ? { label: 'Sector', value: project.sector } : undefined,
+    project.location ? { label: 'Locatie', value: project.location } : undefined,
     project.year ? { label: 'Realisatie', value: project.year } : undefined,
     project.period ? { label: 'Periode', value: project.period } : undefined,
     project.summary ? { label: 'Scope', value: project.summary } : undefined,
   ].filter(Boolean) as Array<{ label: string; value: string }>
-  const hasMetadata = facts.length > 0 || project.disciplines.length > 0
+  const hasMetadata = facts.length > 0 || project.partners.length > 0 || project.disciplines.length > 0
 
   return <main id="main-content">
     <ProjectHeader image={project.image} />
@@ -50,6 +52,7 @@ export function ProjectDetail({ project }: { project: ProjectDetailData }) {
         </div>
         {hasMetadata && <aside className="project-meta" aria-label="Projectgegevens">
           {facts.length > 0 && <dl className="project-facts">{facts.map((fact) => <div key={fact.label}><dt>{fact.label}</dt><dd>{fact.value}</dd></div>)}</dl>}
+          {project.partners.length > 0 && <div className="project-meta-partners"><h2>Samenwerking</h2><ul>{project.partners.map((partner) => <li key={`${partner.name}-${partner.role ?? ''}`}>{partner.name}{partner.role && <span> — {partner.role}</span>}</li>)}</ul></div>}
           {project.disciplines.length > 0 && <div className="project-meta-disciplines"><h2>Betrokken disciplines</h2><ul>{project.disciplines.map((item) => <li key={item.href}><Link href={item.href}>{item.title}</Link></li>)}</ul></div>}
         </aside>}
       </div>
