@@ -56,7 +56,19 @@ async function loadExpertise(slug: string): Promise<ExpertiseDetailData | null> 
     const payload = await getPayload({ config })
     const result = await payload.find({ collection: 'expertise', depth: 2, draft: false, limit: 1, where: { slug: { equals: slug } } })
     const source = row(result.docs[0])
-    if (source) return completeExpertise(mapExpertise(source))
+    if (source) {
+      const data = completeExpertise(mapExpertise(source))
+      if (data.projects.length === 0 && (typeof source.id === 'number' || typeof source.id === 'string')) {
+        const projects = await payload.find({ collection: 'projects', depth: 2, draft: false, limit: 6, where: { expertise: { contains: source.id } } })
+        data.projects = projects.docs.map(row).filter(Boolean).map((item) => ({
+          title: text(item?.title),
+          meta: [text(item?.sector), text(item?.period) || (typeof item?.year === 'number' ? String(item.year) : '')].filter(Boolean).join(' · '),
+          href: `/projecten/${text(item?.slug)}`,
+          image: media(item?.featuredImage, { alt: text(item?.title) }) ?? { alt: text(item?.title) },
+        })).filter((item) => item.title && item.href !== '/projecten/')
+      }
+      return data
+    }
   } catch (error) {
     console.warn('Expertise CMS data is unavailable; checking the approved fallback.', error instanceof Error ? error.message : error)
   }

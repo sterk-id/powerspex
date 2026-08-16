@@ -65,7 +65,19 @@ async function loadService(slug: string): Promise<ServiceDetailData | null> {
     const payload = await getPayload({ config })
     const result = await payload.find({ collection: 'services', depth: 2, draft: false, limit: 1, where: { slug: { equals: slug } } })
     const source = row(result.docs[0])
-    if (source) return completeService(mapService(source))
+    if (source) {
+      const data = completeService(mapService(source))
+      if (data.projects.length === 0 && (typeof source.id === 'number' || typeof source.id === 'string')) {
+        const projects = await payload.find({ collection: 'projects', depth: 2, draft: false, limit: 6, where: { services: { contains: source.id } } })
+        data.projects = projects.docs.map(row).filter(Boolean).map((item) => ({
+          title: text(item?.title),
+          meta: [text(item?.sector), text(item?.period) || (typeof item?.year === 'number' ? String(item.year) : '')].filter(Boolean).join(' · '),
+          href: `/projecten/${text(item?.slug)}`,
+          image: media(item?.featuredImage, { alt: text(item?.title) }) ?? { alt: text(item?.title) },
+        })).filter((item) => item.title && item.href !== '/projecten/')
+      }
+      return data
+    }
   } catch (error) {
     console.warn('Service CMS data is unavailable; checking the approved fallback.', error instanceof Error ? error.message : error)
   }
