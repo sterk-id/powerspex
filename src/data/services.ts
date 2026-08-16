@@ -1,25 +1,8 @@
-import type { ImageData } from './homepage'
+import type { DetailContentData } from './detailPage'
 
-export type ServiceDetailData = {
-  title: string
-  slug: string
-  eyebrow: string
-  shortSummary: string
-  heroTitle: string
-  heroIntro: string
-  heroImage: ImageData
-  intro?: { title: string; body: string; image?: ImageData }
-  capabilitiesEyebrow?: string
-  capabilitiesTitle?: string
-  capabilities: Array<{ title: string; description: string }>
+export interface ServiceDetailData extends DetailContentData {
   expertise: Array<{ title: string; summary: string; href: string }>
   relatedServices: Array<{ title: string; summary: string; href: string }>
-  standards: Array<{ name: string; type: string; description: string }>
-  process: Array<{ number: string; title: string; description: string }>
-  projects: Array<{ title: string; meta: string; href: string; image: ImageData }>
-  faq: Array<{ question: string; answer: string }>
-  cta?: { title: string; body: string; buttonLabel: string; buttonHref: string }
-  seo: { title: string; description: string; openGraphImage?: ImageData }
 }
 
 export const projectEngineering: ServiceDetailData = {
