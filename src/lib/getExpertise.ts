@@ -1,7 +1,7 @@
 import config from '@payload-config'
 import { getPayload } from 'payload'
 import { cache } from 'react'
-import { cybersecurityOTSecurity, type ExpertiseDetailData } from '@/data/expertise'
+import { cybersecurityOTSecurity, explosiveSafety, functionalSafety, simulations, type ExpertiseDetailData } from '@/data/expertise'
 import type { ImageData } from '@/data/homepage'
 
 type Row = Record<string, unknown>
@@ -39,8 +39,16 @@ function mapExpertise(source: Row): ExpertiseDetailData {
 }
 
 function completeExpertise(data: ExpertiseDetailData): ExpertiseDetailData {
-  if (data.slug !== cybersecurityOTSecurity.slug) return data
-  return { ...data, intro: data.intro ?? cybersecurityOTSecurity.intro, capabilities: data.capabilities.length ? data.capabilities : cybersecurityOTSecurity.capabilities, relatedServices: data.relatedServices.length ? data.relatedServices : cybersecurityOTSecurity.relatedServices, faq: data.faq.length ? data.faq : cybersecurityOTSecurity.faq, cta: data.cta ?? cybersecurityOTSecurity.cta }
+  const fallback = approvedExpertise[data.slug]
+  if (!fallback) return data
+  return { ...data, intro: data.intro ?? fallback.intro, capabilities: data.capabilities.length ? data.capabilities : fallback.capabilities, relatedServices: data.relatedServices.length ? data.relatedServices : fallback.relatedServices, faq: data.faq.length ? data.faq : fallback.faq, cta: data.cta ?? fallback.cta }
+}
+
+const approvedExpertise: Record<string, ExpertiseDetailData> = {
+  [cybersecurityOTSecurity.slug]: cybersecurityOTSecurity,
+  [functionalSafety.slug]: functionalSafety,
+  [explosiveSafety.slug]: explosiveSafety,
+  [simulations.slug]: simulations,
 }
 
 async function loadExpertise(slug: string): Promise<ExpertiseDetailData | null> {
@@ -52,7 +60,7 @@ async function loadExpertise(slug: string): Promise<ExpertiseDetailData | null> 
   } catch (error) {
     console.warn('Expertise CMS data is unavailable; checking the approved fallback.', error instanceof Error ? error.message : error)
   }
-  return slug === cybersecurityOTSecurity.slug ? cybersecurityOTSecurity : null
+  return approvedExpertise[slug] ?? null
 }
 
 export const getExpertise = cache(loadExpertise)

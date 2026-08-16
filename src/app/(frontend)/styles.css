@@ -119,6 +119,7 @@ h3 { font-size: var(--step-2); }
 .text-link { justify-self: end; padding-bottom: .4rem; border-bottom: 1px solid var(--psx-blue); color: var(--psx-navy); font-weight: 600; }
 .text-link:hover { color: var(--psx-blue); }
 .standards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
+.related-services-section + .standards-section, .standards-section + .faq-section { padding-top: var(--space-xl); }
 .standards-grid article { padding: 2rem; background: var(--psx-mist); }
 .standards-grid small { color: var(--psx-blue); text-transform: uppercase; }
 .standards-grid h3 { margin: 2rem 0 1rem; }
