@@ -1,7 +1,7 @@
 import config from '@payload-config'
 import { getPayload } from 'payload'
 import { cache } from 'react'
-import { cybersecurityOTSecurity, functionalSafety, type ExpertiseDetailData } from '@/data/expertise'
+import { cybersecurityOTSecurity, explosiveSafety, functionalSafety, type ExpertiseDetailData } from '@/data/expertise'
 import type { ImageData } from '@/data/homepage'
 
 type Row = Record<string, unknown>
@@ -47,6 +47,7 @@ function completeExpertise(data: ExpertiseDetailData): ExpertiseDetailData {
 const approvedExpertise: Record<string, ExpertiseDetailData> = {
   [cybersecurityOTSecurity.slug]: cybersecurityOTSecurity,
   [functionalSafety.slug]: functionalSafety,
+  [explosiveSafety.slug]: explosiveSafety,
 }
 
 async function loadExpertise(slug: string): Promise<ExpertiseDetailData | null> {

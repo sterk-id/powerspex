@@ -86,3 +86,50 @@ export const functionalSafety: ExpertiseDetailData = {
     openGraphImage: { src: '/images/service-inspectie.jpg', alt: 'Powerspex-specialist bij een industrieel besturingspaneel' },
   },
 }
+
+export const explosiveSafety: ExpertiseDetailData = {
+  title: 'Explosieveiligheid',
+  slug: 'explosieveiligheid',
+  eyebrow: 'Specialistische expertise',
+  shortSummary: 'Specialistische kennis voor elektrische installaties, behuizingen en werkzaamheden in explosiegevaarlijke industriële omgevingen.',
+  heroTitle: 'Techniek voor explosiegevaarlijke omgevingen',
+  heroIntro: 'Powerspex zet kennis van explosieveiligheid in bij het ontwerpen, realiseren en inspecteren van elektrische installaties en panelen voor omgevingen waar een explosieve atmosfeer kan voorkomen.',
+  heroImage: { src: '/images/people-workshop.jpg', alt: 'Powerspex-medewerker in een industriële installatie' },
+  intro: {
+    title: 'Explosieveiligheid van ontwerp tot praktijk',
+    body: 'Explosieveiligheid is een afzonderlijk specialistisch vakgebied. Powerspex past deze kennis toe bij elektrische installaties en bij het ontwikkelen en produceren van explosieveilige behuizingen en panelen. De eisen en benodigde onderbouwing worden per opdracht beoordeeld.',
+    image: { src: '/images/service-inspectie.jpg', alt: 'Powerspex-specialist controleert een industrieel besturingspaneel' },
+  },
+  capabilitiesEyebrow: 'Explosieveiligheid',
+  capabilitiesTitle: 'Expertisegebieden',
+  capabilities: [
+    { title: 'Elektrische installaties', description: 'Ontwerpen en realiseren van elektrische installaties voor explosiegevaarlijke omgevingen volgens de toepasselijke ATEX-richtlijnen.' },
+    { title: 'Explosieveilige behuizingen', description: 'Ontwikkelen en produceren van explosieveilige behuizingen en panelen voor industriële toepassingen.' },
+    { title: 'Materialen en componenten', description: 'Toepassen van explosieveilige materialen en componenten binnen industriële paneelbouw.' },
+    { title: 'Inspecties', description: 'Inspectiewerkzaamheden aan technische installaties in explosiegevaarlijke omgevingen door specialisten van Powerspex.' },
+  ],
+  relatedServices: [
+    { title: 'Productie', summary: 'In de eigen werkplaats bouwt Powerspex onder meer panelen en behuizingen voor explosiegevaarlijke omgevingen.', href: '/wat-we-doen/productie' },
+    { title: 'Hardware engineering', summary: 'ATEX-kennis kan worden ingezet bij het elektrotechnisch ontwerp van installaties en besturingen voor explosiegevaarlijke omgevingen.', href: '/wat-we-doen/hardware-engineering' },
+    { title: 'Service, onderhoud & inspectie', summary: 'Specialisten zetten kennis van explosieveiligheid in bij inspecties van technische installaties op locatie.', href: '/wat-we-doen/service-onderhoud-inspectie' },
+  ],
+  standards: [{
+    name: 'DEKRA 15ATEXQ0061, issue 4',
+    type: 'Bedrijfs- of procescertificering',
+    description: 'DEKRA Certification B.V. bevestigt voor Powerspex Instrumentation B.V. in Hengelo een productie-kwaliteitssysteem conform Annex IV en VII van Richtlijn 2014/34/EU, voor apparatuur, beveiligingssystemen of componenten binnen de certificaatscope. Geldig van 5 oktober 2024 tot 5 oktober 2027.',
+  }],
+  process: [],
+  projects: [],
+  faq: [
+    { question: 'Wat is explosieveiligheid?', answer: 'Explosieveiligheid richt zich op veilig ontwerpen, realiseren en werken in omgevingen waar een explosieve atmosfeer kan voorkomen. De concrete eisen hangen af van de installatie en de opdracht.' },
+    { question: 'Wat betekent ATEX in een industriële omgeving?', answer: 'ATEX heeft betrekking op apparatuur en werkzaamheden in omgevingen waar explosiegevaar kan bestaan. Powerspex past ATEX-kennis toe bij onder meer elektrische installaties, paneelbouw en inspecties.' },
+    { question: 'Bouwt Powerspex explosieveilige panelen?', answer: 'Ja. Powerspex ontwikkelt en produceert explosieveilige behuizingen en panelen voor industriële toepassingen. De eisen, scope en benodigde onderbouwing worden per opdracht bepaald.' },
+    { question: 'Wat is het verschil tussen Explosieveiligheid en Functional Safety?', answer: 'Explosieveiligheid richt zich op omgevingen waar een explosieve atmosfeer kan voorkomen. Functional Safety richt zich op systemen die een veiligheidsfunctie uitvoeren. Het zijn verschillende veiligheidsdisciplines.' },
+  ],
+  cta: { title: 'Een vraagstuk in een explosiegevaarlijke omgeving?', body: 'Bespreek de installatie, de omgeving en de benodigde technische scope met Powerspex.', buttonLabel: 'Neem contact op', buttonHref: 'mailto:mail@powerspex.nl' },
+  seo: {
+    title: 'Explosieveiligheid | Powerspex',
+    description: 'Explosieveiligheid voor elektrische installaties, explosieveilige behuizingen, paneelbouw en inspecties in industriële omgevingen.',
+    openGraphImage: { src: '/images/people-workshop.jpg', alt: 'Powerspex-medewerker in een industriële installatie' },
+  },
+}
