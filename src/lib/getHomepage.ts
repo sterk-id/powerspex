@@ -2,6 +2,7 @@ import config from '@payload-config'
 import { getPayload } from 'payload'
 import { cache } from 'react'
 import { homepage, type HomepageData, type ImageData } from '@/data/homepage'
+import { mapPublicProjectSummary } from '@/lib/getProjects'
 
 type RecordValue = Record<string, unknown>
 
@@ -77,12 +78,12 @@ async function loadHomepageData(): Promise<HomepageData> {
       services: services.length ? services.map((item) => ({ title: text(item.title), description: text(item.summary), href: `/wat-we-doen/${text(item.slug)}`, image: media(item.heroImage, { alt: text(item.title) }) })) : homepage.services,
       expertise: expertise.length ? expertise.map((item) => ({ title: text(item.title), href: `/expertises/${text(item.slug)}` })) : homepage.expertise,
       impact: { eyebrow: text(source.impactEyebrow, homepage.impact.eyebrow), title: text(source.impactTitle, homepage.impact.title), body: text(source.impactBody, homepage.impact.body), stats: stats.map((item) => ({ value: text(item.value), label: text(item.label) })) },
-      projects: projects.length ? projects.map((item) => ({
-        title: text(item.title),
-        meta: [text(item.sector), text(item.period) || (typeof item.year === 'number' ? String(item.year) : '')].filter(Boolean).join(' · '),
-        href: `/projecten/${text(item.slug)}`,
-        image: media(item.featuredImage, { alt: text(item.title) }),
-      })) : homepage.projects,
+      projects: projects.length ? projects.map(mapPublicProjectSummary).map((item) => ({
+        title: item.title,
+        meta: [item.sector, item.period || item.year].filter(Boolean).join(' · '),
+        href: `/projecten/${item.slug}`,
+        image: item.image,
+      })).filter((item) => item.title && item.href !== '/projecten/') : homepage.projects,
       news: news.length ? news.map((item) => ({
         title: text(item.title),
         meta: date(item.publishedAt),

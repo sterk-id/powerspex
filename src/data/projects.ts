@@ -22,6 +22,9 @@ export type ProjectSummaryData = {
 
 export type ProjectDetailData = ProjectSummaryData & {
   clientIsPublic: boolean
+  endClient?: string
+  location?: string
+  partners: Array<{ name: string; role?: string }>
   heroEyebrow: string
   heroTitle: string
   heroIntro: string
@@ -38,6 +41,7 @@ export const warmtestadGroningen: ProjectDetailData = {
   summary: 'Engineering, levering en installatie van de complete procesautomatisering voor de WarmteStad Centrale Zernike en Zonnepark Dorkwerd.',
   client: 'WarmteStad Groningen',
   clientIsPublic: true,
+  partners: [],
   year: '2024',
   period: '2021, 2023 & 2024',
   image: { src: '/images/project-warmtestad-groningen.jpg', alt: 'Procesinstallatie van WarmteStad Groningen' },

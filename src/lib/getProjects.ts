@@ -8,31 +8,43 @@ type Row = Record<string, unknown>
 const row = (value: unknown): Row | undefined => typeof value === 'object' && value !== null ? value as Row : undefined
 const text = (value: unknown, fallback = '') => typeof value === 'string' && value.trim() ? value.trim() : fallback
 const list = (value: unknown): Row[] => Array.isArray(value) ? value.map(row).filter(Boolean) as Row[] : []
-const contains = (value: string, needle: string) => Boolean(needle) && value.toLocaleLowerCase('nl-NL').includes(needle.toLocaleLowerCase('nl-NL'))
-const publicText = (value: unknown, client: string, clientIsPublic: boolean, fallback = '') => {
+const escapePattern = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+const contains = (value: string, needle: string) => Boolean(needle) && new RegExp(`(?<![\\p{L}\\p{N}])${escapePattern(needle)}(?![\\p{L}\\p{N}])`, 'iu').test(value)
+const publicText = (value: unknown, restrictedTerms: string[], fallback = '') => {
   const result = text(value, fallback)
-  return !clientIsPublic && contains(result, client) ? '' : result
+  return restrictedTerms.some((term) => contains(result, term)) ? '' : result
 }
-const media = (value: unknown, fallback: ImageData, client: string, clientIsPublic: boolean): ImageData => {
+const media = (value: unknown, fallback: ImageData, restrictedTerms: string[]): ImageData => {
   const item = row(value)
   const src = text(item?.url, fallback.src)
   const rawAlt = text(item?.alt, fallback.alt)
-  const alt = !clientIsPublic && contains(rawAlt, client) ? fallback.alt : rawAlt
+  const alt = restrictedTerms.some((term) => contains(rawAlt, term)) ? fallback.alt : rawAlt
   return { src: src || undefined, alt }
 }
 
-function mapProject(source: Row): ProjectDetailData {
+export function mapProject(source: Row): ProjectDetailData {
   const client = text(source.client)
   const clientIsPublic = source.clientIsPublic === true
+  const endClient = text(source.endClient)
+  const endClientIsPublic = source.endClientIsPublic === true
+  const location = text(source.location)
+  const locationIsPublic = source.locationIsPublic === true
+  const partners = list(source.partners)
+  const restrictedTerms = [
+    !clientIsPublic ? client : '',
+    !endClientIsPublic ? endClient : '',
+    !locationIsPublic ? location : '',
+    ...partners.filter((item) => item.isPublic !== true).map((item) => text(item.name)),
+  ].filter(Boolean)
   const internalTitle = text(source.title)
-  const neutralTitle = publicText(internalTitle, client, clientIsPublic) || text(source.sector, 'Industrieel project')
+  const neutralTitle = publicText(internalTitle, restrictedTerms) || text(source.sector, 'Industrieel project')
   const fallbackImage = { alt: `Projectbeeld ${neutralTitle}` }
-  const image = media(source.featuredImage, fallbackImage, client, clientIsPublic)
+  const image = media(source.featuredImage, fallbackImage, restrictedTerms)
   const cta = row(source.cta)
   const seo = row(source.seo)
-  const period = publicText(source.period, client, clientIsPublic)
+  const period = publicText(source.period, restrictedTerms)
   const year = typeof source.year === 'number' ? String(source.year) : ''
-  const summary = publicText(source.summary, client, clientIsPublic)
+  const summary = publicText(source.summary, restrictedTerms)
 
   return {
     title: neutralTitle,
@@ -40,18 +52,24 @@ function mapProject(source: Row): ProjectDetailData {
     summary,
     client: clientIsPublic ? client || undefined : undefined,
     clientIsPublic,
-    sector: publicText(source.sector, client, clientIsPublic) || undefined,
+    endClient: endClientIsPublic ? endClient || undefined : undefined,
+    location: locationIsPublic ? location || undefined : undefined,
+    partners: partners.filter((item) => item.isPublic === true && text(item.name)).map((item) => ({
+      name: text(item.name),
+      role: text(item.role) || undefined,
+    })),
+    sector: publicText(source.sector, restrictedTerms) || undefined,
     year: year || undefined,
     period: period || undefined,
     image,
-    heroEyebrow: publicText(source.heroEyebrow, client, clientIsPublic, 'Project'),
-    heroTitle: publicText(source.heroTitle, client, clientIsPublic, neutralTitle) || neutralTitle,
-    heroIntro: publicText(source.heroIntro, client, clientIsPublic, summary),
+    heroEyebrow: publicText(source.heroEyebrow, restrictedTerms, 'Project'),
+    heroTitle: publicText(source.heroTitle, restrictedTerms, neutralTitle) || neutralTitle,
+    heroIntro: publicText(source.heroIntro, restrictedTerms, summary),
     contentSections: list(source.contentSections).map((item) => ({
-      eyebrow: publicText(item.eyebrow, client, clientIsPublic) || undefined,
-      title: publicText(item.title, client, clientIsPublic),
-      body: publicText(item.body, client, clientIsPublic),
-      image: row(item.image) ? media(item.image, { alt: `Projectbeeld ${neutralTitle}` }, client, clientIsPublic) : undefined,
+      eyebrow: publicText(item.eyebrow, restrictedTerms) || undefined,
+      title: publicText(item.title, restrictedTerms),
+      body: publicText(item.body, restrictedTerms),
+      image: row(item.image) ? media(item.image, { alt: `Projectbeeld ${neutralTitle}` }, restrictedTerms) : undefined,
       layout: item.layout === 'left' ? 'left' as const : 'right' as const,
       theme: item.theme === 'dark' ? 'dark' as const : item.theme === 'mist' ? 'mist' as const : 'light' as const,
     })).filter((item) => item.title && item.body),
@@ -60,21 +78,25 @@ function mapProject(source: Row): ProjectDetailData {
       ...list(source.expertise).map((item) => ({ title: text(item.title), href: `/expertises/${text(item.slug)}`, type: 'Expertise' as const })),
     ].filter((item) => item.title && !item.href.endsWith('/')),
     gallery: list(source.gallery).map((item) => ({
-      image: media(item.image, { alt: `Projectbeeld ${neutralTitle}` }, client, clientIsPublic),
-      caption: publicText(item.caption, client, clientIsPublic) || undefined,
+      image: media(item.image, { alt: `Projectbeeld ${neutralTitle}` }, restrictedTerms),
+      caption: publicText(item.caption, restrictedTerms) || undefined,
     })).filter((item) => item.image.src),
-    cta: publicText(cta?.title, client, clientIsPublic) && text(cta?.buttonLabel) && text(cta?.buttonHref) ? {
-      title: publicText(cta?.title, client, clientIsPublic),
-      body: publicText(cta?.body, client, clientIsPublic),
+    cta: publicText(cta?.title, restrictedTerms) && text(cta?.buttonLabel) && text(cta?.buttonHref) ? {
+      title: publicText(cta?.title, restrictedTerms),
+      body: publicText(cta?.body, restrictedTerms),
       buttonLabel: text(cta?.buttonLabel),
       buttonHref: text(cta?.buttonHref),
     } : undefined,
     seo: {
-      title: publicText(seo?.metaTitle, client, clientIsPublic, `${neutralTitle} | Powerspex`) || `${neutralTitle} | Powerspex`,
-      description: publicText(seo?.metaDescription, client, clientIsPublic, summary),
-      openGraphImage: row(seo?.openGraphImage) ? media(seo?.openGraphImage, image, client, clientIsPublic) : image,
+      title: publicText(seo?.metaTitle, restrictedTerms, `${neutralTitle} | Powerspex`) || `${neutralTitle} | Powerspex`,
+      description: publicText(seo?.metaDescription, restrictedTerms, summary),
+      openGraphImage: row(seo?.openGraphImage) ? media(seo?.openGraphImage, image, restrictedTerms) : image,
     },
   }
+}
+
+export function mapPublicProjectSummary(source: unknown): ProjectSummaryData {
+  return mapProject(row(source) ?? {})
 }
 
 function completeProject(data: ProjectDetailData): ProjectDetailData {

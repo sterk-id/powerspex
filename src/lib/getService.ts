@@ -3,6 +3,7 @@ import { getPayload } from 'payload'
 import { cache } from 'react'
 import { hardwareEngineering, processAutomation, production, projectEngineering, serviceMaintenanceInspection, softwareEngineering, type ServiceDetailData } from '@/data/services'
 import type { ImageData } from '@/data/homepage'
+import { mapPublicProjectSummary } from '@/lib/getProjects'
 
 type Row = Record<string, unknown>
 const row = (value: unknown): Row | undefined => typeof value === 'object' && value !== null ? value as Row : undefined
@@ -38,7 +39,7 @@ function mapService(source: Row): ServiceDetailData {
     relatedServices: list(source.relatedServices).map((item) => ({ title: text(item.title), summary: text(item.summary), href: `/wat-we-doen/${text(item.slug)}` })).filter((item) => item.title && item.href !== '/wat-we-doen/'),
     standards: list(source.standards).filter((item) => item.validated === true).map((item) => ({ name: text(item.name), type: text(item.type), description: text(item.description) })).filter((item) => item.name),
     process: list(source.process).map((item, index) => ({ number: text(item.number, String(index + 1).padStart(2, '0')), title: text(item.title), description: text(item.description) })).filter((item) => item.title && item.description),
-    projects: list(source.relatedProjects).map((item) => ({ title: text(item.title), meta: [text(item.sector), text(item.period) || (typeof item.year === 'number' ? String(item.year) : '')].filter(Boolean).join(' · '), href: `/projecten/${text(item.slug)}`, image: media(item.featuredImage, { alt: text(item.title) }) ?? { alt: text(item.title) } })).filter((item) => item.title && item.href !== '/projecten/'),
+    projects: list(source.relatedProjects).map(mapPublicProjectSummary).map((item) => ({ title: item.title, meta: [item.sector, item.period || item.year].filter(Boolean).join(' · '), href: `/projecten/${item.slug}`, image: item.image })).filter((item) => item.title && item.href !== '/projecten/'),
     faq: list(source.faq).map((item) => ({ question: text(item.question), answer: text(item.answer) })).filter((item) => item.question && item.answer),
     cta: text(cta?.title) && text(cta?.buttonLabel) && text(cta?.buttonHref) ? { title: text(cta?.title), body: text(cta?.body), buttonLabel: text(cta?.buttonLabel), buttonHref: text(cta?.buttonHref) } : undefined,
     seo: { title: text(seo?.metaTitle, `${title} | Powerspex`), description: text(seo?.metaDescription, text(source.summary)), openGraphImage: media(seo?.openGraphImage) },
@@ -69,11 +70,8 @@ async function loadService(slug: string): Promise<ServiceDetailData | null> {
       const data = completeService(mapService(source))
       if (data.projects.length === 0 && (typeof source.id === 'number' || typeof source.id === 'string')) {
         const projects = await payload.find({ collection: 'projects', depth: 2, draft: false, limit: 6, where: { services: { contains: source.id } } })
-        data.projects = projects.docs.map(row).filter(Boolean).map((item) => ({
-          title: text(item?.title),
-          meta: [text(item?.sector), text(item?.period) || (typeof item?.year === 'number' ? String(item.year) : '')].filter(Boolean).join(' · '),
-          href: `/projecten/${text(item?.slug)}`,
-          image: media(item?.featuredImage, { alt: text(item?.title) }) ?? { alt: text(item?.title) },
+        data.projects = projects.docs.map(mapPublicProjectSummary).map((item) => ({
+          title: item.title, meta: [item.sector, item.period || item.year].filter(Boolean).join(' · '), href: `/projecten/${item.slug}`, image: item.image,
         })).filter((item) => item.title && item.href !== '/projecten/')
       }
       return data
