@@ -25,16 +25,17 @@ async function loadHomepageData(): Promise<HomepageData> {
     const source = value as unknown as RecordValue
     const services = Array.isArray(source.featuredServices) ? source.featuredServices.map(record).filter(Boolean) as RecordValue[] : []
     const expertise = Array.isArray(source.featuredExpertise) ? source.featuredExpertise.map(record).filter(Boolean) as RecordValue[] : []
-    const selectedProjects = Array.isArray(source.featuredProjects) ? source.featuredProjects.map(record).filter(Boolean) as RecordValue[] : []
+    const selectedProjects = Array.isArray(source.featuredProjects) ? source.featuredProjects.map(record).filter((item) => item?._status === 'published') as RecordValue[] : []
     let projects = selectedProjects.slice(0, 5)
     if (projects.length === 0) {
       const featuredProjects = await payload.find({
         collection: 'projects',
         depth: 2,
         draft: false,
+        overrideAccess: false,
         limit: 5,
         sort: 'featuredOrder',
-        where: { featured: { equals: true } },
+        where: { and: [{ featured: { equals: true } }, { _status: { equals: 'published' } }] },
       })
       projects = featuredProjects.docs.map(record).filter(Boolean) as RecordValue[]
     }

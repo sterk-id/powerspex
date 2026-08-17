@@ -115,7 +115,10 @@ function completeProject(data: ProjectDetailData): ProjectDetailData {
 async function loadProject(slug: string): Promise<ProjectDetailData | null> {
   try {
     const payload = await getPayload({ config })
-    const result = await payload.find({ collection: 'projects', depth: 2, draft: false, limit: 1, where: { slug: { equals: slug } } })
+    const result = await payload.find({
+      collection: 'projects', depth: 2, draft: false, limit: 1, overrideAccess: false,
+      where: { and: [{ slug: { equals: slug } }, { _status: { equals: 'published' } }] },
+    })
     const source = row(result.docs[0])
     if (source) return completeProject(mapProject(source))
   } catch (error) {
@@ -127,7 +130,10 @@ async function loadProject(slug: string): Promise<ProjectDetailData | null> {
 async function loadProjects(): Promise<ProjectSummaryData[]> {
   try {
     const payload = await getPayload({ config })
-    const result = await payload.find({ collection: 'projects', depth: 2, draft: false, limit: 100, sort: '-year' })
+    const result = await payload.find({
+      collection: 'projects', depth: 2, draft: false, limit: 100, sort: '-year', overrideAccess: false,
+      where: { _status: { equals: 'published' } },
+    })
     const projects = result.docs.map(row).filter(Boolean).map((item) => mapProject(item as Row))
     if (projects.length) return projects
   } catch (error) {

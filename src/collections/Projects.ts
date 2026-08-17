@@ -4,7 +4,7 @@ export const Projects: CollectionConfig = {
   slug: 'projects',
   labels: { singular: 'Project', plural: 'Projecten' },
   admin: { useAsTitle: 'title', defaultColumns: ['title', 'sector', 'year', 'featured', '_status', 'updatedAt'] },
-  access: { read: () => true },
+  access: { read: ({ req }) => req.user ? true : { _status: { equals: 'published' } } },
   versions: { drafts: true },
   fields: [
     { name: 'title', type: 'text', required: true },
