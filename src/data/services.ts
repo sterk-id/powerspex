@@ -89,7 +89,7 @@ export const processAutomation: ServiceDetailData = {
   ],
   projects: [{
     title: 'Procesautomatisering WarmteStad Groningen',
-    meta: 'Industrie & productie · 2021, 2023 & 2024',
+    meta: 'Duurzame energie / Warmtenetten · 2021, 2023 & 2024',
     href: '/projecten/procesautomatisering-warmtestad-groningen',
     image: { src: '/images/project-warmtestad-groningen.jpg', alt: 'Procesinstallatie van WarmteStad Groningen' },
   }],
