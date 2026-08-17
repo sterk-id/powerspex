@@ -62,6 +62,7 @@ Projectdefinities onder `src/content-migrations/projects` zijn de reproduceerbar
 - houdt de publicatiestatus expliciet op draft;
 - overschrijft geen gepubliceerd of inhoudelijk goedgekeurd project;
 - lost service- en expertiserelaties op via slugs, nooit via database-ID's;
+- borgt benodigde canonical service-masterrecords idempotent voordat projectrelaties worden opgelost;
 - verifieert media met een vastgelegde SHA-256-checksum en hergebruikt een bestaand Media-record op bestandsnaam;
 - kan veilig opnieuw worden uitgevoerd en meldt ontbrekende masterrecords zonder nepdata aan te maken.
 

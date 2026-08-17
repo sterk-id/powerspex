@@ -4,6 +4,7 @@ import path from 'node:path'
 import type { Payload } from 'payload'
 import { projectContentMigrations } from './projects'
 import type { ProjectContentMigration, ProjectMediaSource } from './projects/types'
+import { ensureServiceMasters } from './serviceMasters'
 
 type Row = Record<string, unknown>
 
@@ -119,17 +120,18 @@ async function migrateProject(payload: Payload, migration: ProjectContentMigrati
   }
 
   if (project._status === 'published') throw new Error(`Refusing to overwrite published project ${migration.slug}`)
-  if (project.editorial?.contentApproved === true) throw new Error(`Refusing to overwrite content-approved draft ${migration.slug}`)
   if (isEqual(project, desired)) {
     return { slug: migration.slug, action: 'unchanged', missingServices: services.missing, missingExpertise: expertise.missing, media: media.action }
   }
+  if (project.editorial?.contentApproved === true) throw new Error(`Refusing to overwrite content-approved draft ${migration.slug}`)
 
   await payload.update({ collection: 'projects', id: project.id, draft: true, overrideAccess: true, data: desired })
   return { slug: migration.slug, action: 'updated', missingServices: services.missing, missingExpertise: expertise.missing, media: media.action }
 }
 
 export async function runProjectContentMigrations(payload: Payload) {
+  const serviceMasters = await ensureServiceMasters(payload)
   const results: ProjectContentMigrationResult[] = []
   for (const migration of projectContentMigrations) results.push(await migrateProject(payload, migration))
-  return results
+  return { serviceMasters, projects: results }
 }

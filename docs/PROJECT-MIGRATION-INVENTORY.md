@@ -80,11 +80,11 @@ Een exacte match bewijst identiteit, niet zelfstandig gebruiksrecht of credit. M
 ### Velsen & IJmond — migratiestatus
 
 - Payload-status: reproduceerbaar draft via `pnpm content:migrate:projects`; niet publiek en niet uitgelicht;
-- contentgoedkeuring: nog niet verleend;
+- contentgoedkeuring: verleend na volledige field-by-field broncontrole; project blijft draft;
 - media: `project_10.jpg` is byte-identiek aan `public/images/project-velsen-ijmond.jpg` (1500 × 1000); de dev-pagina bevat geen alt-tekst of credit;
 - mediarechtenstatus: in afwachting, omdat bestandsidentiteit geen zelfstandig bewijs van gebruiksrecht of rechthebbende is;
 - overige beelden: `project_single-1.jpg` en `project_single-2.jpg` zijn gedeelde templatebeelden en niet als Velsen-projectspecifiek gevalideerd; daarom niet gemigreerd;
-- relaties: Hardware engineering en Productie sluiten inhoudelijk aan op ontwerpen en paneelbouw. De import lost deze relaties op via slugs, maar laat ze leeg en rapporteert ze zolang hun gepubliceerde Payload-masterrecords ontbreken. Er is geen expertise afgeleid.
+- relaties: Hardware engineering en Productie zijn via hun canonical slugs gekoppeld. Hun bestaande Powerspex-masterrecords worden generiek en idempotent opgebouwd zonder de canonical dienstinhoud te wijzigen. Er is geen expertise gekoppeld.
 
 #### Bronvergelijking dev → Payload
 
@@ -102,7 +102,7 @@ Een exacte match bewijst identiteit, niet zelfstandig gebruiksrecht of credit. M
 | Opdracht aan Powerspex | MATCH | Volledige broncopy overgenomen. |
 | Aanpak & oplossing | MATCH | Volledige broncopy overgenomen; opsomming alleen typografisch genormaliseerd. |
 | Resultaat | MATCH | Volledige broncopy overgenomen; opsomming alleen typografisch genormaliseerd. |
-| Diensten | MENSELIJKE BESLISSING NODIG | Hardware engineering en Productie zijn inhoudelijk aantoonbare kandidaten, maar hun Payload-masterrecords ontbreken. |
+| Diensten | MATCH | Hardware engineering en Productie zijn bevestigd op basis van engineering en paneelbouw en via canonical slugs gekoppeld. |
 | Expertises | MATCH | Geen formele expertise uit de bron afgeleid. |
 | SEO-titel | MATCH | Dev-paginatitel overgenomen. |
 | SEO-description | NIET AANWEZIG IN BRON | De dev-metadata bevat een niet-projectspecifieke Engelstalige templateplaceholder; veld blijft leeg. De frontend gebruikt de brongetrouwe scope als veilige fallback. |
