@@ -21,14 +21,14 @@ function mapService(source: Row): ServiceDetailData {
   const cta = row(source.cta)
   const seo = row(source.seo)
   const title = text(source.title)
-  const heroImage = media(source.heroImage, { alt: title }) ?? { alt: title }
+  const heroImage = media(source.heroImage) ?? { alt: title }
   return {
     title,
     slug: text(source.slug),
-    eyebrow: text(source.eyebrow, 'Dienst'),
+    eyebrow: text(source.eyebrow),
     shortSummary: text(source.summary),
-    heroTitle: text(source.heroTitle, title),
-    heroIntro: text(source.heroIntro, text(source.summary)),
+    heroTitle: text(source.heroTitle),
+    heroIntro: text(source.heroIntro),
     heroImage,
     intro: text(intro?.title) && text(intro?.body) ? { title: text(intro?.title), body: text(intro?.body), image: media(intro?.image) } : undefined,
     capabilitiesEyebrow: text(source.capabilitiesEyebrow, 'Wat we doen'),
@@ -42,7 +42,7 @@ function mapService(source: Row): ServiceDetailData {
     projects: list(source.relatedProjects).filter((item) => item._status === 'published').map(mapPublicProjectSummary).map((item) => ({ title: item.title, meta: [item.sector, item.period || item.year].filter(Boolean).join(' · '), href: `/projecten/${item.slug}`, image: item.image })).filter((item) => item.title && item.href !== '/projecten/'),
     faq: list(source.faq).map((item) => ({ question: text(item.question), answer: text(item.answer) })).filter((item) => item.question && item.answer),
     cta: text(cta?.title) && text(cta?.buttonLabel) && text(cta?.buttonHref) ? { title: text(cta?.title), body: text(cta?.body), buttonLabel: text(cta?.buttonLabel), buttonHref: text(cta?.buttonHref) } : undefined,
-    seo: { title: text(seo?.metaTitle, `${title} | Powerspex`), description: text(seo?.metaDescription, text(source.summary)), openGraphImage: media(seo?.openGraphImage) },
+    seo: { title: text(seo?.metaTitle), description: text(seo?.metaDescription), openGraphImage: media(seo?.openGraphImage) },
   }
 }
 
@@ -51,6 +51,11 @@ function completeService(data: ServiceDetailData): ServiceDetailData {
   if (!fallback) return data
   return {
     ...data,
+    eyebrow: data.eyebrow || fallback.eyebrow,
+    shortSummary: data.shortSummary || fallback.shortSummary,
+    heroTitle: data.heroTitle || fallback.heroTitle,
+    heroIntro: data.heroIntro || fallback.heroIntro,
+    heroImage: data.heroImage.src ? data.heroImage : fallback.heroImage,
     intro: data.intro ?? fallback.intro,
     capabilities: data.capabilities.length > 0 ? data.capabilities : fallback.capabilities,
     expertise: data.expertise.length > 0 ? data.expertise : fallback.expertise,
@@ -58,6 +63,11 @@ function completeService(data: ServiceDetailData): ServiceDetailData {
     process: data.process.length > 0 ? data.process : fallback.process,
     faq: data.faq.length > 0 ? data.faq : fallback.faq,
     cta: data.cta ?? fallback.cta,
+    seo: {
+      title: data.seo.title || fallback.seo.title,
+      description: data.seo.description || fallback.seo.description,
+      openGraphImage: data.seo.openGraphImage ?? fallback.seo.openGraphImage,
+    },
   }
 }
 

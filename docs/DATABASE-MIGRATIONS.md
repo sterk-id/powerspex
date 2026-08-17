@@ -52,7 +52,21 @@ Payload-migraties zijn de bron van waarheid. Gebruik development push niet om ee
 
 Productie vereist `NODE_ENV=production`, een sterke `PAYLOAD_SECRET`, de canonieke `NEXT_PUBLIC_SERVER_URL` en een PostgreSQL-`DATABASE_URI`. SQLite wordt niet als productiealternatief geaccepteerd.
 
-De deploymentpipeline gebruikt `pnpm ci`, dat eerst `pnpm db:migrate` uitvoert en pas daarna `pnpm build`. Als een migratie faalt, moet de deployment stoppen. Start geen nieuwe applicatieversie tegen een achterlopend schema en laat productie niet afhangen van automatische schema-push.
+De deploymentpipeline gebruikt `pnpm ci`. Deze voert eerst `pnpm db:migrate` uit, daarna de idempotente project-contentmigratie met `pnpm content:migrate:projects` en pas daarna `pnpm build`. Als een schema- of contentmigratie faalt, moet de deployment stoppen. Start geen nieuwe applicatieversie tegen een achterlopend schema en laat productie niet afhangen van automatische schema-push.
+
+## Projectcontent
+
+Projectdefinities onder `src/content-migrations/projects` zijn de reproduceerbare bron voor gecontroleerde CMS-imports. De runner:
+
+- zoekt projecten op unieke slug en maakt geen duplicaten;
+- houdt de publicatiestatus expliciet op draft;
+- overschrijft geen gepubliceerd of inhoudelijk goedgekeurd project;
+- lost service- en expertiserelaties op via slugs, nooit via database-ID's;
+- borgt benodigde canonical service-masterrecords idempotent voordat projectrelaties worden opgelost;
+- verifieert media met een vastgelegde SHA-256-checksum en hergebruikt een bestaand Media-record op bestandsnaam;
+- kan veilig opnieuw worden uitgevoerd en meldt ontbrekende masterrecords zonder nepdata aan te maken.
+
+Gebruik lokaal `pnpm content:migrate:projects` nadat de schema-migraties zijn uitgevoerd. Mediarechten en contentgoedkeuring blijven redactionele beslissingen; de import publiceert niets automatisch.
 
 Voer vóór iedere productiemigratie een door restore geteste databaseback-up of provider snapshot uit. Controleer daarna `pnpm db:migrate:status`, applicatielogs en kernroutes. De gegenereerde `down`-functie ondersteunt technische rollback van de laatste batch, maar een rollback die kolommen of tabellen verwijdert kan data verliezen. Herstel in zo'n geval bij voorkeur de databaseback-up samen met de vorige applicatieversie. Test zowel voorwaartse migratie als rollback vooraf in staging.
 
