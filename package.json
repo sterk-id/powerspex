@@ -12,7 +12,8 @@
     "payload": "payload",
     "db:migrate": "payload migrate",
     "db:migrate:status": "payload migrate:status",
-    "ci": "pnpm db:migrate && pnpm build"
+    "content:migrate:projects": "payload run scripts/migrate-project-content.mts",
+    "ci": "pnpm db:migrate && pnpm content:migrate:projects && pnpm build"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.88.0",

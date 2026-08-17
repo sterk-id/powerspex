@@ -6,7 +6,7 @@ export const Media: CollectionConfig = {
   admin: { useAsTitle: 'alt' },
   access: { read: () => true },
   upload: {
-    staticDir: 'public/media',
+    staticDir: process.env.PAYLOAD_MEDIA_DIR || 'public/media',
     imageSizes: [
       { name: 'card', width: 800, height: 560, position: 'centre' },
       { name: 'hero', width: 1920, height: 1080, position: 'centre' },

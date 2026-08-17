@@ -81,6 +81,7 @@ Bij `NODE_ENV=production` stopt de configuratie direct met een duidelijke fout a
 - `pnpm payload generate:types`: genereert Payload-types nadat de databaseconfiguratie beschikbaar is.
 - `pnpm db:migrate`: voert nog niet uitgevoerde migraties uit voor de geselecteerde adapter.
 - `pnpm db:migrate:status`: toont de migratiestatus.
+- `pnpm content:migrate:projects`: importeert de Git-versiebeheerde projectdefinities idempotent als expliciete Payload-drafts.
 - `pnpm ci`: voert productiemigraties uit en bouwt daarna de applicatie; gebruik dit alleen met een gecontroleerde productie-`DATABASE_URI`.
 
 ## Contentbeheer

@@ -79,12 +79,33 @@ Een exacte match bewijst identiteit, niet zelfstandig gebruiksrecht of credit. M
 
 ### Velsen & IJmond — migratiestatus
 
-- Payload-status: draft; niet publiek en niet uitgelicht;
+- Payload-status: reproduceerbaar draft via `pnpm content:migrate:projects`; niet publiek en niet uitgelicht;
 - contentgoedkeuring: nog niet verleend;
 - media: `project_10.jpg` is byte-identiek aan `public/images/project-velsen-ijmond.jpg` (1500 × 1000); de dev-pagina bevat geen alt-tekst of credit;
 - mediarechtenstatus: in afwachting, omdat bestandsidentiteit geen zelfstandig bewijs van gebruiksrecht of rechthebbende is;
 - overige beelden: `project_single-1.jpg` en `project_single-2.jpg` zijn gedeelde templatebeelden en niet als Velsen-projectspecifiek gevalideerd; daarom niet gemigreerd;
-- relaties: Hardware engineering en Productie sluiten inhoudelijk aan op ontwerpen en paneelbouw, maar zijn niet gekoppeld zolang hun Payload-masterrecords lokaal ontbreken. Er is geen expertise afgeleid.
+- relaties: Hardware engineering en Productie sluiten inhoudelijk aan op ontwerpen en paneelbouw. De import lost deze relaties op via slugs, maar laat ze leeg en rapporteert ze zolang hun gepubliceerde Payload-masterrecords ontbreken. Er is geen expertise afgeleid.
+
+#### Bronvergelijking dev → Payload
+
+| Veld | Beoordeling | Toelichting |
+| --- | --- | --- |
+| Titel | MATCH | Letterlijk overgenomen. |
+| Opdrachtgever | MATCH | Qirion; de bron beschrijft Qirion als uitvoerende opdrachtgever. |
+| Eindklant | MATCH | Vattenfall; de bron vermeldt dat Qirion in opdracht van Vattenfall werkte. |
+| Sector | MATCH | `Energie / Hoogspanning`. |
+| Locatie | MATCH | `Velsen & IJmond`. |
+| Jaar | MATCH | 2020. |
+| Periode | NIET AANWEZIG IN BRON | Leeg gelaten. |
+| Scope | MATCH | `Engineering, paneelbouw, site works, testing & inbedrijfstelling`. |
+| Casus | MATCH | Volledige broncopy overgenomen. |
+| Opdracht aan Powerspex | MATCH | Volledige broncopy overgenomen. |
+| Aanpak & oplossing | MATCH | Volledige broncopy overgenomen; opsomming alleen typografisch genormaliseerd. |
+| Resultaat | MATCH | Volledige broncopy overgenomen; opsomming alleen typografisch genormaliseerd. |
+| Diensten | MENSELIJKE BESLISSING NODIG | Hardware engineering en Productie zijn inhoudelijk aantoonbare kandidaten, maar hun Payload-masterrecords ontbreken. |
+| Expertises | MATCH | Geen formele expertise uit de bron afgeleid. |
+| SEO-titel | MATCH | Dev-paginatitel overgenomen. |
+| SEO-description | NIET AANWEZIG IN BRON | De dev-metadata bevat een niet-projectspecifieke Engelstalige templateplaceholder; veld blijft leeg. De frontend gebruikt de brongetrouwe scope als veilige fallback. |
 
 ## 6. Relaties en CMS-aandachtspunten
 
