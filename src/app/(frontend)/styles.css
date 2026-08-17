@@ -98,7 +98,7 @@ h3 { font-size: var(--step-2); }
 .project-story { grid-area: story; }
 .project-story-section { padding: 0 0 clamp(3.5rem, 6vw, 5.5rem); background: transparent; color: inherit; }
 .project-story-section h2 { color: var(--psx-blue); font-size: clamp(2rem, 3vw, 2.55rem); letter-spacing: -.025em; }
-.project-story-section p { max-width: 63rem; margin: 1rem 0 0; color: #555; font-size: 1.1rem; line-height: 1.55; }
+.project-story-section p { max-width: 63rem; margin: 1rem 0 0; color: #555; font-size: 1.1rem; line-height: 1.55; white-space: pre-line; }
 .project-story-image { position: relative; min-height: 30rem; margin-top: 2rem; overflow: hidden; border-radius: .65rem; }
 .project-meta { position: sticky; grid-area: meta; top: 2rem; padding-left: 1.9rem; border-left: 1px solid var(--psx-line); }
 .project-facts { margin: 0; }
