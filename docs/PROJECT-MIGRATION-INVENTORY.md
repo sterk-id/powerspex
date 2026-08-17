@@ -20,7 +20,7 @@ Daarnaast zijn lokale implementatiebronnen vergeleken: Payload Projects, `src/da
 | Veolia – Bio-energiecentrale Industriepark Kleefse Waard | https://powerspex.nl/dev/psx2026/projects/veolia-bio-energiecentrale-industriepark-kleefse-waard/ | Nee | **NOG MIGREREN** | Niet aanwezig. Bron: Veolia; Energie & Biomassa; Industriepark Kleefse Waard (IPKW), Arnhem, Nederland; 2020; turnkey procesautomatisering/integratie. |
 | Vattenfall – Migratie en upgrade PCS 7 stadsverwarming | https://powerspex.nl/dev/psx2026/projects/vattenfall-migratie-en-upgrade-pcs-7-stadsverwarming/ | Nee | **NOG MIGREREN** | Niet aanwezig. Bron: Vattenfall; Energie; Diemen, Nederland; 2021; migratie PCS 7 V7.1 SP2 naar V9.0 SP2 zonder onderbreking van de warmtelevering. |
 | Vernieuwing automatisering stadsverwarming Eindhoven | https://powerspex.nl/dev/psx2026/projects/vernieuwing-automatisering-stadsverwarming-eindhoven/ | Nee | **NOG MIGREREN** | Niet aanwezig. Bron: Ennatuurlijk; Stadsverwarming (District Heating); Eindhoven, Nederland; 2020; volledige vernieuwing van de automatisering met PCS 7-architectuur. |
-| Secundaire installatie 150kV – Velsen & IJmond | https://powerspex.nl/dev/psx2026/projects/secundaire-installatie-150kv-velsen-ijmond/ | Nee; alleen voormalige homepagekaart | **NOG MIGREREN** | Bron bevestigt Qirion / Vattenfall; Energie / Hoogspanning; Velsen & IJmond; 2020; engineering, paneelbouw, sitewerk, testen en inbedrijfstelling. Homepagekaart verwijderd tot volledige detailmigratie. |
+| Secundaire installatie 150kV – Velsen & IJmond | https://powerspex.nl/dev/psx2026/projects/secundaire-installatie-150kv-velsen-ijmond/ | Ja; lokaal Payload-draft | **BEHOUDEN** | Brongetrouw draftrecord met Qirion als opdrachtgever, Vattenfall als eindklant, sector, locatie, jaar, scope, vier contentsecties en gevalideerd featured image. Niet gepubliceerd en niet op de homepage. |
 | Procesautomatisering WarmteStad Groningen | https://powerspex.nl/dev/psx2026/projects/procesautomatisering-warmtestad-groningen/ | Ja | **CORRIGEREN** | Fallback had afwijkende klant, lege sector/locatie, los realisatiejaar, verkorte scope en andere copy. Aantoonbare velden zijn gelijkgetrokken. |
 | Turn-key bio-energie installatie – Emmtec Green Steam BV | https://powerspex.nl/dev/psx2026/projects/turn-key-bio-energie-installatie-emmtec-green-steam-bv/ | Nee; alleen voormalige homepagekaart | **NOG MIGREREN** | Bron: Emmtec Green Steam BV; Duurzame energie / Biomassa; GETEC Park, Emmen; 2023; turnkey engineering, automatisering en inbedrijfstelling. Homepagekaart verwijderd tot migratie. |
 | E&I en procesautomatisering – E-Wood biomassacentrale Beveren | https://powerspex.nl/dev/psx2026/projects/ei-en-procesautomatisering-e-wood-biomassacentrale-beveren/ | Nee | **NOG MIGREREN** | Bron: Standardkessel Baumgarte (SBG), E-Wood als eindklant; Duurzame energie / Biomassa; Haven van Antwerpen (Beveren); 2021 en 2022; engineering, E&I, DCS & SIS, testen en training. |
@@ -77,6 +77,15 @@ Deze eerder geïnventariseerde oude-site-items behoren niet tot de nieuwe migrat
 
 Een exacte match bewijst identiteit, niet zelfstandig gebruiksrecht of credit. Media wordt per migratie afzonderlijk goedgekeurd.
 
+### Velsen & IJmond — migratiestatus
+
+- Payload-status: draft; niet publiek en niet uitgelicht;
+- contentgoedkeuring: nog niet verleend;
+- media: `project_10.jpg` is byte-identiek aan `public/images/project-velsen-ijmond.jpg` (1500 × 1000); de dev-pagina bevat geen alt-tekst of credit;
+- mediarechtenstatus: in afwachting, omdat bestandsidentiteit geen zelfstandig bewijs van gebruiksrecht of rechthebbende is;
+- overige beelden: `project_single-1.jpg` en `project_single-2.jpg` zijn gedeelde templatebeelden en niet als Velsen-projectspecifiek gevalideerd; daarom niet gemigreerd;
+- relaties: Hardware engineering en Productie sluiten inhoudelijk aan op ontwerpen en paneelbouw, maar zijn niet gekoppeld zolang hun Payload-masterrecords lokaal ontbreken. Er is geen expertise afgeleid.
+
 ## 6. Relaties en CMS-aandachtspunten
 
 - Dev-disciplinelijsten mengen services met activiteiten en technologieën. Alleen aantoonbare mappings naar de bestaande taxonomie mogen worden gemigreerd.
@@ -88,13 +97,12 @@ Een exacte match bewijst identiteit, niet zelfstandig gebruiksrecht of credit. M
 
 Na afzonderlijke content- en media-goedkeuring:
 
-1. Secundaire installatie 150kV – Velsen & IJmond;
-2. Turn-key bio-energie installatie – Emmtec Green Steam BV;
-3. E&I en procesautomatisering – E-Wood biomassacentrale Beveren;
-4. Automatisering warmtebuffers – Stadsverwarming Almere;
-5. Vernieuwing automatisering stadsverwarming Eindhoven;
-6. Vattenfall – Migratie en upgrade PCS 7 stadsverwarming;
-7. Veolia – Bio-energiecentrale Industriepark Kleefse Waard.
+1. Turn-key bio-energie installatie – Emmtec Green Steam BV;
+2. E&I en procesautomatisering – E-Wood biomassacentrale Beveren;
+3. Automatisering warmtebuffers – Stadsverwarming Almere;
+4. Vernieuwing automatisering stadsverwarming Eindhoven;
+5. Vattenfall – Migratie en upgrade PCS 7 stadsverwarming;
+6. Veolia – Bio-energiecentrale Industriepark Kleefse Waard.
 
 Dit is geen publicatiegoedkeuring en start geen migratie.
 
